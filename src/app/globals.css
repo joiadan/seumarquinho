@@ -282,17 +282,24 @@
   background: #000;
 }
 
-/* Mobile: use 16:9 so content isn't too thin */
-@media (max-width: 768px) {
+/* Tablets (max-width: 1024px) */
+@media (max-width: 1024px) {
   .hero-carousel-container {
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 16 / 10;
   }
 }
 
-/* Very small screens: even taller */
-@media (max-width: 480px) {
+/* iPad / portrait tablets (max-width: 768px) */
+@media (max-width: 768px) {
   .hero-carousel-container {
     aspect-ratio: 4 / 3;
+  }
+}
+
+/* Mobile (max-width: 480px) */
+@media (max-width: 480px) {
+  .hero-carousel-container {
+    aspect-ratio: 1 / 1.1;
   }
 }
 
