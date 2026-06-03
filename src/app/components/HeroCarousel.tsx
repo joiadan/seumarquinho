@@ -1,0 +1,495 @@
+"use client";
+
+import { useState, useEffect, useCallback, useRef } from "react";
+import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+
+// All media items for the hero carousel
+const HERO_MEDIA = [
+  {
+    type: "video" as const,
+    src: "/PRODUTOS E LOGO/Boné Five Panel Preto Logo Seu Marquinho/Boné Five Panel Preto Logo Seu Marquinho vídeo 01.mp4",
+    alt: "Boné Five Panel Preto — Vídeo 01",
+  },
+  {
+    type: "video" as const,
+    src: "/PRODUTOS E LOGO/Boné Five Panel Preto Logo Seu Marquinho/Boné Five Panel Preto Logo Seu Marquinho video 02.mp4",
+    alt: "Boné Five Panel Preto — Vídeo 02",
+  },
+  {
+    type: "image" as const,
+    src: "/PRODUTOS E LOGO/fotos para a capa parte de cima do site/sm tratada.png",
+    alt: "Seu Marquinho — Streetwear Premium",
+    objectPosition: "center 39%",
+  },
+  {
+    type: "image" as const,
+    src: "/PRODUTOS E LOGO/fotos para a capa parte de cima do site/IMG_6490.jpg",
+    alt: "Seu Marquinho — Lifestyle Urbano",
+    objectPosition: "center",
+  },
+  {
+    type: "image" as const,
+    src: "/PRODUTOS E LOGO/fotos para a capa parte de cima do site/IMG_6815.jpg",
+    alt: "Seu Marquinho — Coleção Exclusiva",
+    objectPosition: "center 72%",
+  },
+  {
+    type: "image" as const,
+    src: "/PRODUTOS E LOGO/fotos para a capa parte de cima do site/IMG_6843.jpg",
+    alt: "Seu Marquinho — Estilo Carioca",
+    objectPosition: "center 28%",
+  },
+  {
+    type: "image" as const,
+    src: "/PRODUTOS E LOGO/fotos para a capa parte de cima do site/IMG_7061.jpg",
+    alt: "Seu Marquinho — Atitude Urbana",
+    objectPosition: "center 25%",
+  },
+  {
+    type: "image" as const,
+    src: "/PRODUTOS E LOGO/fotos para a capa parte de cima do site/IMG_6448.PNG",
+    alt: "Seu Marquinho — Urban Culture",
+    objectPosition: "center 32%",
+  },
+];
+
+const SLIDE_DURATION = 5000; // 5 seconds
+
+// Rio Landmarks line-art overlay options that change dynamically per transition
+const LANDMARK_DRAWINGS = [
+  // 0: Cristo + Pão de Açúcar (Combined Skyline)
+  {
+    viewBox: "240 20 710 170",
+    elements: (
+      <>
+        {/* Base line */}
+        <line x1="240" y1="180" x2="950" y2="180" stroke="rgba(255,107,26,0.12)" strokeWidth="1.25" />
+
+        {/* Cable Car Cable */}
+        <motion.line
+          x1="620"
+          y1="95"
+          x2="810"
+          y2="40"
+          stroke="rgba(255, 107, 26, 0.3)"
+          strokeWidth="1"
+          strokeDasharray="3,3"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.2 }}
+        />
+
+        {/* Cable Car Cab */}
+        <motion.rect
+          width="7"
+          height="5"
+          rx="1"
+          fill="#FF6B1A"
+          initial={{ x: 627, y: 90.1 }}
+          animate={{ x: 797, y: 40.8 }}
+          transition={{ duration: 4.6, ease: "easeInOut" }}
+          opacity={0.8}
+        />
+
+        {/* Skyline Contour Path */}
+        <motion.path
+          d="M 0,180 L 120,180 C 200,180 250,150 280,80 L 282,80 L 282,70 L 285,70 L 285,45 L 265,45 L 265,40 L 285,40 L 285,30 C 285,27 288,24 291,24 C 294,24 297,27 297,30 L 297,40 L 317,40 L 317,45 L 297,45 L 297,70 L 300,70 L 300,80 L 302,80 C 330,130 380,180 460,180 L 520,180 C 560,180 580,95 620,95 C 640,95 660,105 670,120 C 680,128 700,128 710,120 C 740,90 760,40 810,40 C 850,40 870,100 900,180 L 1000,180"
+          fill="none"
+          stroke="url(#skyline-grad)"
+          strokeWidth="2.25"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          initial={{ pathLength: 0 }}
+          animate={{ pathLength: 1 }}
+          transition={{ duration: 2.5, ease: "easeInOut" }}
+        />
+      </>
+    )
+  },
+  // 1: Arcos da Lapa
+  {
+    viewBox: "0 0 400 150",
+    elements: (
+      <>
+        {/* Base line */}
+        <line x1="20" y1="130" x2="380" y2="130" stroke="rgba(255,107,26,0.15)" strokeWidth="1.25" />
+        
+        {/* Arcos da Lapa Path */}
+        <motion.path
+          d="M 50,130 L 50,70 L 350,70 L 350,130 M 50,100 L 350,100 M 70,130 A 15 15 0 0 1 100,130 M 120,130 A 15 15 0 0 1 150,130 M 170,130 A 15 15 0 0 1 200,130 M 220,130 A 15 15 0 0 1 250,130 M 270,130 A 15 15 0 0 1 300,130 M 320,130 A 15 15 0 0 1 350,130 M 72,100 A 12 12 0 0 1 96,100 M 122,100 A 12 12 0 0 1 146,100 M 172,100 A 12 12 0 0 1 196,100 M 222,100 A 12 12 0 0 1 246,100 M 272,100 A 12 12 0 0 1 296,100 M 322,100 A 12 12 0 0 1 346,100"
+          fill="none"
+          stroke="url(#skyline-grad)"
+          strokeWidth="2.25"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          initial={{ pathLength: 0 }}
+          animate={{ pathLength: 1 }}
+          transition={{ duration: 2.2, ease: "easeInOut" }}
+        />
+      </>
+    )
+  },
+  // 2: Urca (Pão de Açúcar + Bondinho)
+  {
+    viewBox: "0 0 400 150",
+    elements: (
+      <>
+        {/* Base line */}
+        <line x1="20" y1="130" x2="380" y2="130" stroke="rgba(255,107,26,0.15)" strokeWidth="1.25" />
+        
+        {/* Cable Car Cable */}
+        <motion.line
+          x1="130"
+          y1="70"
+          x2="280"
+          y2="35"
+          stroke="rgba(255, 107, 26, 0.35)"
+          strokeWidth="1"
+          strokeDasharray="3,3"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+        />
+
+        {/* Cable Car Cab */}
+        <motion.rect
+          width="7"
+          height="5"
+          rx="1"
+          fill="#FF6B1A"
+          initial={{ x: 130, y: 67.3 }}
+          animate={{ x: 274, y: 33.7 }}
+          transition={{ duration: 4.6, ease: "easeInOut" }}
+          opacity={0.85}
+        />
+
+        {/* Skyline Urca Path */}
+        <motion.path
+          d="M 20,130 C 50,130 80,70 130,70 C 150,70 170,80 190,95 C 220,95 240,35 280,35 C 310,35 340,80 370,130 L 380,130"
+          fill="none"
+          stroke="url(#skyline-grad)"
+          strokeWidth="2.25"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          initial={{ pathLength: 0 }}
+          animate={{ pathLength: 1 }}
+          transition={{ duration: 2.2, ease: "easeInOut" }}
+        />
+      </>
+    )
+  },
+  // 3: Arpoador Sunset
+  {
+    viewBox: "0 0 400 150",
+    elements: (
+      <>
+        {/* Base line */}
+        <line x1="20" y1="130" x2="380" y2="130" stroke="rgba(255,107,26,0.15)" strokeWidth="1.25" />
+
+        {/* Sunrays & Sun */}
+        <motion.path
+          d="M 215,128 A 35 35 0 0 1 285,128 M 250,85 L 250,75 M 222,98 L 215,91 M 278,98 L 285,91"
+          fill="none"
+          stroke="rgba(255, 107, 26, 0.45)"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.8 }}
+          style={{ transformOrigin: "250px 128px" }}
+        />
+
+        {/* Pedra do Arpoador & Waves */}
+        <motion.path
+          d="M 30,130 C 50,130 70,95 95,95 C 115,95 125,90 140,115 C 145,123 150,128 160,128 M 160,128 C 190,123 220,133 250,128 C 280,123 310,133 340,128 L 380,128 M 180,136 C 210,132 240,140 270,136 C 300,132 330,140 360,136 M 210,144 C 235,141 260,147 285,144 C 310,141 335,147 360,144"
+          fill="none"
+          stroke="url(#skyline-grad)"
+          strokeWidth="2.25"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          initial={{ pathLength: 0 }}
+          animate={{ pathLength: 1 }}
+          transition={{ duration: 2.2, ease: "easeInOut" }}
+        />
+      </>
+    )
+  },
+  // 4: Ipanema (Dois Irmãos + Waves)
+  {
+    viewBox: "0 0 400 150",
+    elements: (
+      <>
+        {/* Morro Dois Irmãos Contour */}
+        <motion.path
+          d="M 100,130 C 130,130 160,85 185,85 C 200,85 210,95 220,95 C 235,95 250,40 290,40 C 310,40 330,80 360,130"
+          fill="none"
+          stroke="rgba(255, 107, 26, 0.35)"
+          strokeWidth="1.75"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          initial={{ pathLength: 0 }}
+          animate={{ pathLength: 1 }}
+          transition={{ duration: 2.2, ease: "easeInOut" }}
+        />
+
+        {/* Wavy beach lines */}
+        <motion.path
+          d="M 20,130 C 60,140 100,120 140,130 C 180,140 220,120 260,130 C 300,140 340,120 380,130 M 20,138 C 60,148 100,128 140,138 C 180,148 220,128 260,138 C 300,148 340,128 380,138 M 20,146 C 60,156 100,136 140,146 C 180,156 220,136 260,146 C 300,156 340,136 380,146"
+          fill="none"
+          stroke="url(#skyline-grad)"
+          strokeWidth="2.25"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          initial={{ pathLength: 0 }}
+          animate={{ pathLength: 1 }}
+          transition={{ duration: 2.4, ease: "easeInOut" }}
+        />
+      </>
+    )
+  },
+  // 5: Rocinha Favela
+  {
+    viewBox: "0 0 400 150",
+    elements: (
+      <>
+        {/* Base line */}
+        <line x1="20" y1="130" x2="380" y2="130" stroke="rgba(255,107,26,0.15)" strokeWidth="1.25" />
+
+        {/* Rocinha stacked houses and landscape contour */}
+        <motion.path
+          d="M 30,130 L 370,130 M 50,130 C 120,130 190,90 320,55 M 100,130 L 100,115 L 125,115 L 125,130 M 125,130 L 125,105 L 155,105 L 155,130 M 155,130 L 155,110 L 180,110 L 180,130 M 130,105 L 130,90 L 150,90 L 150,105 M 180,130 L 180,95 L 210,95 L 210,130 M 160,110 L 160,95 L 175,95 L 175,110 M 210,130 L 210,85 L 240,85 L 240,130 M 190,95 L 190,80 L 210,80 L 210,95 M 240,130 L 240,75 L 270,75 L 270,130 M 220,85 L 220,70 L 235,70 L 235,85 M 250,75 L 250,60 L 265,60 L 265,75 M 110,122 H 116 M 140,117 H 146 M 140,97 H 146 M 195,112 H 201 M 225,102 H 231 M 255,92 H 261 M 200,80 V 70 M 230,70 V 58 M 258,60 V 48"
+          fill="none"
+          stroke="url(#skyline-grad)"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          initial={{ pathLength: 0 }}
+          animate={{ pathLength: 1 }}
+          transition={{ duration: 2.5, ease: "easeInOut" }}
+        />
+      </>
+    )
+  }
+];
+
+export default function HeroCarousel() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const [direction, setDirection] = useState(1);
+  const videoRefs = useRef<Map<number, HTMLVideoElement>>(new Map());
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const goToSlide = useCallback(
+    (index: number) => {
+      setDirection(index > currentIndex ? 1 : -1);
+      setCurrentIndex(index);
+    },
+    [currentIndex]
+  );
+
+  const prevSlide = useCallback(() => {
+    setDirection(-1);
+    setCurrentIndex((prev) => (prev - 1 + HERO_MEDIA.length) % HERO_MEDIA.length);
+  }, []);
+
+  const nextSlide = useCallback(() => {
+    setDirection(1);
+    setCurrentIndex((prev) => (prev + 1) % HERO_MEDIA.length);
+  }, []);
+
+  // Auto-advance timer
+  useEffect(() => {
+    if (isPaused) return;
+
+    intervalRef.current = setInterval(() => {
+      nextSlide();
+    }, SLIDE_DURATION);
+
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
+  }, [isPaused, nextSlide]);
+
+  // Handle video playback for current slide
+  useEffect(() => {
+    const currentMedia = HERO_MEDIA[currentIndex];
+    if (currentMedia.type === "video") {
+      const videoEl = videoRefs.current.get(currentIndex);
+      if (videoEl) {
+        videoEl.currentTime = 0;
+        videoEl.play().catch(() => {});
+      }
+    }
+  }, [currentIndex]);
+
+  const currentMedia = HERO_MEDIA[currentIndex];
+  const currentDrawing = LANDMARK_DRAWINGS[currentIndex % LANDMARK_DRAWINGS.length];
+
+  // Framer motion variants for crossfade + subtle scale
+  const slideVariants = {
+    enter: (dir: number) => ({
+      opacity: 0,
+      scale: 1.08,
+      x: dir > 0 ? 40 : -40,
+    }),
+    center: {
+      opacity: 1,
+      scale: 1,
+      x: 0,
+    },
+    exit: (dir: number) => ({
+      opacity: 0,
+      scale: 0.97,
+      x: dir > 0 ? -40 : 40,
+    }),
+  };
+
+  return (
+    <div
+      className="hero-carousel-wrapper"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+    >
+      {/* Cinematic 21:9 container */}
+      <div className="hero-carousel-container">
+        {/* Ambient glow behind */}
+        <div className="hero-carousel-glow" />
+
+        {/* Slide content */}
+        <AnimatePresence mode="wait" custom={direction}>
+          <motion.div
+            key={currentIndex}
+            custom={direction}
+            variants={slideVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{
+              opacity: { duration: 0.8, ease: "easeInOut" },
+              scale: { duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] },
+              x: { duration: 0.8, ease: "easeInOut" },
+            }}
+            className="hero-carousel-slide"
+          >
+            {currentMedia.type === "image" ? (
+              <div className="hero-carousel-image-wrapper">
+                <Image
+                  src={currentMedia.src}
+                  alt={currentMedia.alt}
+                  fill
+                  priority={currentIndex === 0}
+                  sizes="100vw"
+                  className="hero-carousel-image"
+                  style={{ objectPosition: (currentMedia as any).objectPosition || "center" }}
+                />
+              </div>
+            ) : (
+              <video
+                ref={(el) => {
+                  if (el) videoRefs.current.set(currentIndex, el);
+                }}
+                src={currentMedia.src}
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="hero-carousel-video"
+              />
+            )}
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Cinematic letterbox gradients */}
+        <div className="hero-carousel-overlay-top" />
+        <div className="hero-carousel-overlay-bottom" />
+        <div className="hero-carousel-overlay-left" />
+        <div className="hero-carousel-overlay-right" />
+
+        {/* Subtle Rio Skyline Line Overlay (changes dynamically per slide) */}
+        <div className="absolute right-[4%] md:right-[10%] bottom-0 w-1/2 h-1/2 md:w-[45%] md:h-[55%] z-10 pointer-events-none select-none overflow-hidden">
+          <svg
+            key={`drawing-svg-${currentIndex}`}
+            viewBox={currentDrawing.viewBox}
+            preserveAspectRatio="xMidYMax meet"
+            className="w-full h-full"
+          >
+            <defs>
+              <linearGradient id="skyline-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="rgba(255, 107, 26, 0.4)" />
+                <stop offset="50%" stopColor="rgba(255, 107, 26, 0.85)" />
+                <stop offset="100%" stopColor="rgba(255, 107, 26, 0.6)" />
+              </linearGradient>
+            </defs>
+
+            {currentDrawing.elements}
+          </svg>
+        </div>
+
+        {/* Subtle film grain texture */}
+        <div className="hero-carousel-grain" />
+
+        {/* Navigation Arrows */}
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            prevSlide();
+          }}
+          className="absolute left-4 md:left-6 top-1/2 -translate-y-1/2 z-30 p-2.5 md:p-3 rounded-full bg-black/40 hover:bg-[#FF6B1A] text-white hover:text-white border border-white/10 hover:border-[#FF6B1A] backdrop-blur-md transition-all duration-300 active:scale-90 hover:scale-110 cursor-pointer shadow-[0_0_15px_rgba(0,0,0,0.5)] hover:shadow-[0_0_20px_rgba(255,107,26,0.4)] group pointer-events-auto"
+          aria-label="Slide anterior"
+        >
+          <ChevronLeft className="w-5 h-5 transition-transform duration-300 group-hover:-translate-x-0.5" />
+        </button>
+
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            nextSlide();
+          }}
+          className="absolute right-4 md:right-6 top-1/2 -translate-y-1/2 z-30 p-2.5 md:p-3 rounded-full bg-black/40 hover:bg-[#FF6B1A] text-white hover:text-white border border-white/10 hover:border-[#FF6B1A] backdrop-blur-md transition-all duration-300 active:scale-90 hover:scale-110 cursor-pointer shadow-[0_0_15px_rgba(0,0,0,0.5)] hover:shadow-[0_0_20px_rgba(255,107,26,0.4)] group pointer-events-auto"
+          aria-label="Próximo slide"
+        >
+          <ChevronRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-0.5" />
+        </button>
+
+        {/* Dot indicators */}
+        <div className="hero-carousel-dots">
+          {HERO_MEDIA.map((media, index) => (
+            <button
+              key={index}
+              onClick={() => goToSlide(index)}
+              className={`hero-dot ${index === currentIndex ? "hero-dot-active" : ""}`}
+              aria-label={`Ir para slide ${index + 1}`}
+            >
+              {/* Progress bar inside active dot */}
+              {index === currentIndex && !isPaused && (
+                <motion.div
+                  className="hero-dot-progress"
+                  initial={{ scaleX: 0 }}
+                  animate={{ scaleX: 1 }}
+                  transition={{
+                    duration: SLIDE_DURATION / 1000,
+                    ease: "linear",
+                  }}
+                  key={`progress-${currentIndex}`}
+                />
+              )}
+            </button>
+          ))}
+        </div>
+
+        {/* Slide counter */}
+        <div className="hero-carousel-counter">
+          <span className="hero-carousel-counter-current">
+            {String(currentIndex + 1).padStart(2, "0")}
+          </span>
+          <span className="hero-carousel-counter-sep">/</span>
+          <span className="hero-carousel-counter-total">
+            {String(HERO_MEDIA.length).padStart(2, "0")}
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
