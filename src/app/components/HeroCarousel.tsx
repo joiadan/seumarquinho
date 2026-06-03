@@ -81,37 +81,47 @@ const LANDMARK_DRAWINGS = [
           transition={{ duration: 1.2 }}
         />
 
-        {/* Cable Car Cab */}
-        {/* Cable Car Cab */}
-        <motion.rect
-          width="7"
-          height="5"
-          rx="1"
-          fill="#FF6B1A"
-          initial={{ x: 627, y: 90.1 }}
-          animate={{ x: 797, y: 40.8 }}
+        {/* Cable Car Cab (Larger Group with Warning Light) */}
+        <motion.g
+          initial={{ x: 627, y: 88 }}
+          animate={{ x: 797, y: 38.8 }}
           transition={{ duration: 8, ease: "easeInOut", repeat: Infinity, repeatType: "reverse" }}
-          opacity={0.8}
-        />
+        >
+          <rect width="13" height="8" rx="1.5" fill="#FF5500" opacity={0.9} />
+          <motion.circle
+            cx="6.5"
+            cy="0"
+            r="1.75"
+            fill="#FF0000"
+            animate={{ opacity: [0.1, 1, 0.1] }}
+            transition={{ duration: 0.8, repeat: Infinity, ease: "easeInOut" }}
+          />
+        </motion.g>
 
-        {/* Cristo Redentor Beacon */}
+        {/* Cristo Redentor Radar Beacon */}
+        <circle cx="291" cy="30" r="3.5" fill="#FF5500" />
         <motion.circle
           cx="291"
           cy="30"
-          fill="#FF6B1A"
-          initial={{ r: 2.5, opacity: 0.2 }}
-          animate={{ r: [2.5, 6.5, 2.5], opacity: [0.3, 0.95, 0.3] }}
-          transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
+          fill="none"
+          stroke="#FF5500"
+          strokeWidth="1.5"
+          initial={{ r: 3, opacity: 0.8 }}
+          animate={{ r: 18, opacity: 0 }}
+          transition={{ duration: 2.2, repeat: Infinity, ease: "easeOut" }}
         />
 
-        {/* Pão de Açúcar Beacon (Combined) */}
+        {/* Pão de Açúcar Radar Beacon */}
+        <circle cx="810" cy="40" r="3.5" fill="#FF5500" />
         <motion.circle
           cx="810"
           cy="40"
-          fill="#FF6B1A"
-          initial={{ r: 2.5, opacity: 0.2 }}
-          animate={{ r: [2.5, 6, 2.5], opacity: [0.3, 0.9, 0.3] }}
-          transition={{ duration: 2.5, delay: 0.3, repeat: Infinity, ease: "easeInOut" }}
+          fill="none"
+          stroke="#FF5500"
+          strokeWidth="1.5"
+          initial={{ r: 3, opacity: 0.8 }}
+          animate={{ r: 16, opacity: 0 }}
+          transition={{ duration: 2.5, delay: 0.3, repeat: Infinity, ease: "easeOut" }}
         />
 
         {/* Skyline Contour Path */}
@@ -138,14 +148,17 @@ const LANDMARK_DRAWINGS = [
         <line x1="20" y1="130" x2="380" y2="130" stroke="rgba(255,107,26,0.15)" strokeWidth="1.25" />
         
         {/* Arcos da Lapa Path */}
-        {/* Arcos da Lapa Beacon */}
+        {/* Arcos da Lapa Radar Beacon */}
+        <circle cx="200" cy="70" r="3.5" fill="#FF5500" />
         <motion.circle
           cx="200"
           cy="70"
-          fill="#FF6B1A"
-          initial={{ r: 2.5, opacity: 0.2 }}
-          animate={{ r: [2.5, 6, 2.5], opacity: [0.3, 0.9, 0.3] }}
-          transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
+          fill="none"
+          stroke="#FF5500"
+          strokeWidth="1.5"
+          initial={{ r: 3, opacity: 0.8 }}
+          animate={{ r: 16, opacity: 0 }}
+          transition={{ duration: 2.2, repeat: Infinity, ease: "easeOut" }}
         />
 
         {/* Arcos da Lapa Path */}
@@ -185,37 +198,47 @@ const LANDMARK_DRAWINGS = [
           transition={{ duration: 1 }}
         />
 
-        {/* Cable Car Cab */}
-        {/* Cable Car Cab */}
-        <motion.rect
-          width="7"
-          height="5"
-          rx="1"
-          fill="#FF6B1A"
-          initial={{ x: 130, y: 67.3 }}
-          animate={{ x: 274, y: 33.7 }}
+        {/* Cable Car Cab (Larger Group with Warning Light) */}
+        <motion.g
+          initial={{ x: 130, y: 64.3 }}
+          animate={{ x: 274, y: 30.7 }}
           transition={{ duration: 8, ease: "easeInOut", repeat: Infinity, repeatType: "reverse" }}
-          opacity={0.85}
-        />
+        >
+          <rect width="13" height="8" rx="1.5" fill="#FF5500" opacity={0.9} />
+          <motion.circle
+            cx="6.5"
+            cy="0"
+            r="1.75"
+            fill="#FF0000"
+            animate={{ opacity: [0.1, 1, 0.1] }}
+            transition={{ duration: 0.8, repeat: Infinity, ease: "easeInOut" }}
+          />
+        </motion.g>
 
-        {/* Sugarloaf Peak Beacon */}
+        {/* Sugarloaf Peak Radar Beacon */}
+        <circle cx="280" cy="35" r="3.5" fill="#FF5500" />
         <motion.circle
           cx="280"
           cy="35"
-          fill="#FF6B1A"
-          initial={{ r: 2.5, opacity: 0.2 }}
-          animate={{ r: [2.5, 6, 2.5], opacity: [0.3, 0.9, 0.3] }}
-          transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
+          fill="none"
+          stroke="#FF5500"
+          strokeWidth="1.5"
+          initial={{ r: 3, opacity: 0.8 }}
+          animate={{ r: 16, opacity: 0 }}
+          transition={{ duration: 2.4, repeat: Infinity, ease: "easeOut" }}
         />
 
-        {/* Urca Beacon */}
+        {/* Urca Radar Beacon */}
+        <circle cx="130" cy="70" r="3" fill="#FF5500" />
         <motion.circle
           cx="130"
           cy="70"
-          fill="#FF6B1A"
-          initial={{ r: 2, opacity: 0.2 }}
-          animate={{ r: [2, 5, 2], opacity: [0.3, 0.8, 0.3] }}
-          transition={{ duration: 2.8, delay: 0.4, repeat: Infinity, ease: "easeInOut" }}
+          fill="none"
+          stroke="#FF5500"
+          strokeWidth="1.25"
+          initial={{ r: 2.5, opacity: 0.8 }}
+          animate={{ r: 14, opacity: 0 }}
+          transition={{ duration: 2.8, delay: 0.4, repeat: Infinity, ease: "easeOut" }}
         />
 
         {/* Skyline Urca Path */}
@@ -255,14 +278,17 @@ const LANDMARK_DRAWINGS = [
         />
 
         {/* Pedra do Arpoador & Waves */}
-        {/* Arpoador Beacon */}
+        {/* Arpoador Radar Beacon */}
+        <circle cx="95" cy="95" r="3.5" fill="#FF5500" />
         <motion.circle
           cx="95"
           cy="95"
-          fill="#FF6B1A"
-          initial={{ r: 2.5, opacity: 0.2 }}
-          animate={{ r: [2.5, 6, 2.5], opacity: [0.3, 0.9, 0.3] }}
-          transition={{ duration: 2.3, repeat: Infinity, ease: "easeInOut" }}
+          fill="none"
+          stroke="#FF5500"
+          strokeWidth="1.5"
+          initial={{ r: 3, opacity: 0.8 }}
+          animate={{ r: 16, opacity: 0 }}
+          transition={{ duration: 2.3, repeat: Infinity, ease: "easeOut" }}
         />
 
         {/* Pedra do Arpoador & Waves */}
@@ -299,24 +325,30 @@ const LANDMARK_DRAWINGS = [
           transition={{ duration: 2.2, ease: "easeInOut" }}
         />
 
-        {/* Dois Irmãos Peak 1 Beacon */}
+        {/* Dois Irmãos Peak 1 Radar Beacon */}
+        <circle cx="290" cy="40" r="3.5" fill="#FF5500" />
         <motion.circle
           cx="290"
           cy="40"
-          fill="#FF6B1A"
-          initial={{ r: 2.5, opacity: 0.2 }}
-          animate={{ r: [2.5, 6, 2.5], opacity: [0.3, 0.9, 0.3] }}
-          transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
+          fill="none"
+          stroke="#FF5500"
+          strokeWidth="1.5"
+          initial={{ r: 3, opacity: 0.8 }}
+          animate={{ r: 16, opacity: 0 }}
+          transition={{ duration: 2.4, repeat: Infinity, ease: "easeOut" }}
         />
 
-        {/* Dois Irmãos Peak 2 Beacon */}
+        {/* Dois Irmãos Peak 2 Radar Beacon */}
+        <circle cx="185" cy="85" r="3" fill="#FF5500" />
         <motion.circle
           cx="185"
           cy="85"
-          fill="#FF6B1A"
-          initial={{ r: 2, opacity: 0.2 }}
-          animate={{ r: [2, 5, 2], opacity: [0.3, 0.8, 0.3] }}
-          transition={{ duration: 2.6, delay: 0.3, repeat: Infinity, ease: "easeInOut" }}
+          fill="none"
+          stroke="#FF5500"
+          strokeWidth="1.25"
+          initial={{ r: 2.5, opacity: 0.8 }}
+          animate={{ r: 14, opacity: 0 }}
+          transition={{ duration: 2.6, delay: 0.3, repeat: Infinity, ease: "easeOut" }}
         />
 
         {/* Wavy beach lines */}
@@ -343,14 +375,17 @@ const LANDMARK_DRAWINGS = [
         <line x1="20" y1="130" x2="380" y2="130" stroke="rgba(255,107,26,0.15)" strokeWidth="1.25" />
 
         {/* Rocinha stacked houses and landscape contour */}
-        {/* Rocinha Favela Beacon */}
+        {/* Rocinha Favela Radar Beacon */}
+        <circle cx="320" cy="55" r="3.5" fill="#FF5500" />
         <motion.circle
           cx="320"
           cy="55"
-          fill="#FF6B1A"
-          initial={{ r: 2.5, opacity: 0.2 }}
-          animate={{ r: [2.5, 6, 2.5], opacity: [0.3, 0.9, 0.3] }}
-          transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+          fill="none"
+          stroke="#FF5500"
+          strokeWidth="1.5"
+          initial={{ r: 3, opacity: 0.8 }}
+          animate={{ r: 16, opacity: 0 }}
+          transition={{ duration: 2.5, repeat: Infinity, ease: "easeOut" }}
         />
 
         {/* Rocinha stacked houses and landscape contour */}
