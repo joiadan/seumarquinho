@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
@@ -23,12 +23,18 @@ import {
   HelpCircle,
   Calendar,
   Clock,
-  ArrowLeft
+  ArrowLeft,
+  ChevronLeft,
+  ChevronRight
 } from "lucide-react";
 
 // Types
 
 export default function Home() {
+  // Navigation Refs for HeroCarousel
+  const prevSlideRef = useRef<(() => void) | null>(null);
+  const nextSlideRef = useRef<(() => void) | null>(null);
+
   // UI states
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -299,7 +305,11 @@ export default function Home() {
         <section id="hero" className="relative flex flex-col overflow-hidden">
           {/* Carousel with text overlay */}
           <div className="relative">
-            <HeroCarousel />
+            <HeroCarousel 
+              onPrev={(fn) => { prevSlideRef.current = fn; }}
+              onNext={(fn) => { nextSlideRef.current = fn; }}
+              showArrows={false}
+            />
             
             {/* Text overlay positioned on top of carousel */}
             <div className="absolute inset-0 z-20 flex items-start justify-start pointer-events-none pt-28 sm:pt-36 md:pt-44">
@@ -328,6 +338,29 @@ export default function Home() {
                 >
                   <span className="text-[#FF6B1A] font-semibold">Estética urbana refinada com a alma carioca.</span> Do asfalto ao topo, <span className="text-[#FF6B1A] font-semibold">Seu Marquinho</span> define o novo padrão do streetwear nacional.
                 </motion.p>
+
+                {/* Transition navigation buttons below the text */}
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.9, duration: 0.8 }}
+                  className="flex gap-4 mt-6 sm:mt-8"
+                >
+                  <button 
+                    onClick={() => prevSlideRef.current?.()}
+                    className="p-3 rounded-full bg-black/40 hover:bg-[#FF6B1A] text-white hover:text-white border border-white/10 hover:border-[#FF6B1A] backdrop-blur-md transition-all duration-300 active:scale-90 hover:scale-110 cursor-pointer shadow-[0_0_15px_rgba(0,0,0,0.5)] hover:shadow-[0_0_20px_rgba(255,107,26,0.4)] group"
+                    aria-label="Slide anterior"
+                  >
+                    <ChevronLeft className="w-5 h-5 transition-transform duration-300 group-hover:-translate-x-0.5" />
+                  </button>
+                  <button 
+                    onClick={() => nextSlideRef.current?.()}
+                    className="p-3 rounded-full bg-black/40 hover:bg-[#FF6B1A] text-white hover:text-white border border-white/10 hover:border-[#FF6B1A] backdrop-blur-md transition-all duration-300 active:scale-90 hover:scale-110 cursor-pointer shadow-[0_0_15px_rgba(0,0,0,0.5)] hover:shadow-[0_0_20px_rgba(255,107,26,0.4)] group"
+                    aria-label="Próximo slide"
+                  >
+                    <ChevronRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-0.5" />
+                  </button>
+                </motion.div>
               </div>
             </div>
           </div>

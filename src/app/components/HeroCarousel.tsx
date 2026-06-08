@@ -405,7 +405,13 @@ const LANDMARK_DRAWINGS = [
   }
 ];
 
-export default function HeroCarousel() {
+interface HeroCarouselProps {
+  onPrev?: (fn: () => void) => void;
+  onNext?: (fn: () => void) => void;
+  showArrows?: boolean;
+}
+
+export default function HeroCarousel({ onPrev, onNext, showArrows = true }: HeroCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [direction, setDirection] = useState(1);
@@ -429,6 +435,15 @@ export default function HeroCarousel() {
     setDirection(1);
     setCurrentIndex((prev) => (prev + 1) % HERO_MEDIA.length);
   }, []);
+
+  // Expose navigation functions to parent component
+  useEffect(() => {
+    if (onPrev) onPrev(prevSlide);
+  }, [onPrev, prevSlide]);
+
+  useEffect(() => {
+    if (onNext) onNext(nextSlide);
+  }, [onNext, nextSlide]);
 
   // Auto-advance timer
   useEffect(() => {
@@ -562,27 +577,31 @@ export default function HeroCarousel() {
         <div className="hero-carousel-grain" />
 
         {/* Navigation Arrows */}
-        <button
-          onClick={(e) => {
-            e.stopPropagation();
-            prevSlide();
-          }}
-          className="absolute left-4 md:left-6 top-1/2 -translate-y-1/2 z-30 p-2.5 md:p-3 rounded-full bg-black/40 hover:bg-[#FF6B1A] text-white hover:text-white border border-white/10 hover:border-[#FF6B1A] backdrop-blur-md transition-all duration-300 active:scale-90 hover:scale-110 cursor-pointer shadow-[0_0_15px_rgba(0,0,0,0.5)] hover:shadow-[0_0_20px_rgba(255,107,26,0.4)] group pointer-events-auto"
-          aria-label="Slide anterior"
-        >
-          <ChevronLeft className="w-5 h-5 transition-transform duration-300 group-hover:-translate-x-0.5" />
-        </button>
+        {showArrows && (
+          <>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                prevSlide();
+              }}
+              className="absolute left-4 md:left-6 top-1/2 -translate-y-1/2 z-30 p-2.5 md:p-3 rounded-full bg-black/40 hover:bg-[#FF6B1A] text-white hover:text-white border border-white/10 hover:border-[#FF6B1A] backdrop-blur-md transition-all duration-300 active:scale-90 hover:scale-110 cursor-pointer shadow-[0_0_15px_rgba(0,0,0,0.5)] hover:shadow-[0_0_20px_rgba(255,107,26,0.4)] group pointer-events-auto"
+              aria-label="Slide anterior"
+            >
+              <ChevronLeft className="w-5 h-5 transition-transform duration-300 group-hover:-translate-x-0.5" />
+            </button>
 
-        <button
-          onClick={(e) => {
-            e.stopPropagation();
-            nextSlide();
-          }}
-          className="absolute right-4 md:right-6 top-1/2 -translate-y-1/2 z-30 p-2.5 md:p-3 rounded-full bg-black/40 hover:bg-[#FF6B1A] text-white hover:text-white border border-white/10 hover:border-[#FF6B1A] backdrop-blur-md transition-all duration-300 active:scale-90 hover:scale-110 cursor-pointer shadow-[0_0_15px_rgba(0,0,0,0.5)] hover:shadow-[0_0_20px_rgba(255,107,26,0.4)] group pointer-events-auto"
-          aria-label="Próximo slide"
-        >
-          <ChevronRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-0.5" />
-        </button>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                nextSlide();
+              }}
+              className="absolute right-4 md:right-6 top-1/2 -translate-y-1/2 z-30 p-2.5 md:p-3 rounded-full bg-black/40 hover:bg-[#FF6B1A] text-white hover:text-white border border-white/10 hover:border-[#FF6B1A] backdrop-blur-md transition-all duration-300 active:scale-90 hover:scale-110 cursor-pointer shadow-[0_0_15px_rgba(0,0,0,0.5)] hover:shadow-[0_0_20px_rgba(255,107,26,0.4)] group pointer-events-auto"
+              aria-label="Próximo slide"
+            >
+              <ChevronRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-0.5" />
+            </button>
+          </>
+        )}
 
         {/* Dot indicators */}
         <div className="hero-carousel-dots">
