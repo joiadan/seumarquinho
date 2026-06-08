@@ -324,9 +324,9 @@ export default function Home() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.7, duration: 0.8 }}
-                  className="text-on-surface-variant font-sans text-sm sm:text-base md:text-lg max-w-xl leading-relaxed font-light drop-shadow-[0_1px_10px_rgba(0,0,0,0.9)]"
+                  className="text-white font-sans text-sm sm:text-base md:text-lg max-w-xl leading-relaxed font-light drop-shadow-[0_3px_15px_rgba(0,0,0,0.95)]"
                 >
-                  Estética urbana refinada com a alma carioca. Do asfalto ao topo, Seu Marquinho define o novo padrão do streetwear nacional.
+                  <span className="text-[#FF6B1A] font-semibold">Estética urbana refinada com a alma carioca.</span> Do asfalto ao topo, <span className="text-[#FF6B1A] font-semibold">Seu Marquinho</span> define o novo padrão do streetwear nacional.
                 </motion.p>
               </div>
             </div>
