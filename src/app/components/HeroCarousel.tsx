@@ -538,8 +538,8 @@ export default function HeroCarousel() {
         <div className="hero-carousel-overlay-left" />
         <div className="hero-carousel-overlay-right" />
 
-        {/* Subtle Rio Skyline Line Overlay (changes dynamically per slide) */}
-        <div className="absolute right-[4%] md:right-[10%] bottom-0 w-1/2 h-1/2 md:w-[45%] md:h-[55%] z-10 pointer-events-none select-none overflow-hidden">
+        {/* Rio Skyline Line Overlay — Large & Prominent (changes dynamically per slide) */}
+        <div className="absolute right-0 md:right-[2%] bottom-0 w-3/4 h-[70%] md:w-[65%] md:h-[75%] z-10 pointer-events-none select-none overflow-hidden">
           <svg
             key={`drawing-svg-${currentIndex}`}
             viewBox={currentDrawing.viewBox}
@@ -548,9 +548,9 @@ export default function HeroCarousel() {
           >
             <defs>
               <linearGradient id="skyline-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="rgba(255, 107, 26, 0.4)" />
-                <stop offset="50%" stopColor="rgba(255, 107, 26, 0.85)" />
-                <stop offset="100%" stopColor="rgba(255, 107, 26, 0.6)" />
+                <stop offset="0%" stopColor="rgba(255, 107, 26, 0.6)" />
+                <stop offset="50%" stopColor="rgba(255, 107, 26, 1)" />
+                <stop offset="100%" stopColor="rgba(255, 107, 26, 0.8)" />
               </linearGradient>
             </defs>
 

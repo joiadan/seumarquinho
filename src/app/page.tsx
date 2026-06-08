@@ -302,13 +302,13 @@ export default function Home() {
             <HeroCarousel />
             
             {/* Text overlay positioned on top of carousel */}
-            <div className="absolute inset-0 z-20 flex items-end justify-start pointer-events-none pt-16 md:pt-20">
-              <div className="px-margin-mobile md:px-margin-desktop pb-6 sm:pb-10 md:pb-20 max-w-4xl w-full pointer-events-auto">
+            <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
+              <div className="px-6 sm:px-10 md:px-16 max-w-4xl w-full text-center pointer-events-auto">
                 <motion.p 
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3, duration: 0.8 }}
-                  className="text-primary-container font-sans text-xs font-bold tracking-[0.25em] uppercase mb-2 md:mb-4 text-glow"
+                  className="text-primary-container font-sans text-xs font-bold tracking-[0.25em] uppercase mb-3 md:mb-5 text-glow"
                 >
                   Underground Essence
                 </motion.p>
@@ -316,7 +316,7 @@ export default function Home() {
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5, duration: 0.8 }}
-                  className="font-display text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold text-primary mb-3 md:mb-6 leading-[1.1] tracking-tighter uppercase drop-shadow-[0_2px_20px_rgba(0,0,0,0.8)]"
+                  className="font-display text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-primary mb-4 md:mb-6 leading-[1.1] tracking-tighter uppercase drop-shadow-[0_2px_20px_rgba(0,0,0,0.8)]"
                 >
                   Nascido no Rio.<br/>Criado para as Ruas.
                 </motion.h1>
@@ -324,32 +324,10 @@ export default function Home() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.7, duration: 0.8 }}
-                  className="text-on-surface-variant font-sans text-xs sm:text-base md:text-lg max-w-xl mb-4 sm:mb-6 md:mb-10 leading-relaxed font-light drop-shadow-[0_1px_10px_rgba(0,0,0,0.9)]"
+                  className="text-on-surface-variant font-sans text-sm sm:text-base md:text-lg max-w-xl mx-auto leading-relaxed font-light drop-shadow-[0_1px_10px_rgba(0,0,0,0.9)]"
                 >
                   Estética urbana refinada com a alma carioca. Do asfalto ao topo, Seu Marquinho define o novo padrão do streetwear nacional.
                 </motion.p>
-                <motion.div 
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.9, duration: 0.8 }}
-                  className="flex gap-4"
-                >
-                  <button 
-                    onClick={() => {
-                      setSelectedCategory("todos");
-                      scrollTo("catalogo");
-                    }}
-                    className="bg-primary-container text-on-primary-fixed px-6 sm:px-8 py-3.5 sm:py-4 font-bold tracking-tight hover:scale-105 transition-all duration-300 active:scale-95 cursor-pointer uppercase text-xs hover:shadow-[0_0_20px_rgba(255,219,88,0.45)]"
-                  >
-                    SHOP NOW
-                  </button>
-                  <button 
-                    onClick={() => scrollTo("sobre")}
-                    className="border border-white/80 text-white px-6 sm:px-8 py-3.5 sm:py-4 font-bold tracking-tight hover:bg-white hover:text-black transition-all duration-300 active:scale-95 cursor-pointer uppercase text-xs backdrop-blur-sm"
-                  >
-                    LOOKBOOK
-                  </button>
-                </motion.div>
               </div>
             </div>
           </div>
