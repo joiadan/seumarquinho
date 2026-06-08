@@ -302,8 +302,8 @@ export default function Home() {
             <HeroCarousel />
             
             {/* Text overlay positioned on top of carousel */}
-            <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
-              <div className="px-6 sm:px-10 md:px-16 max-w-4xl w-full text-center pointer-events-auto">
+            <div className="absolute inset-0 z-20 flex items-end justify-start pointer-events-none pt-16 md:pt-20">
+              <div className="px-margin-mobile md:px-margin-desktop pb-6 sm:pb-10 md:pb-20 max-w-4xl w-full pointer-events-auto">
                 <motion.p 
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -324,7 +324,7 @@ export default function Home() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.7, duration: 0.8 }}
-                  className="text-on-surface-variant font-sans text-sm sm:text-base md:text-lg max-w-xl mx-auto leading-relaxed font-light drop-shadow-[0_1px_10px_rgba(0,0,0,0.9)]"
+                  className="text-on-surface-variant font-sans text-sm sm:text-base md:text-lg max-w-xl leading-relaxed font-light drop-shadow-[0_1px_10px_rgba(0,0,0,0.9)]"
                 >
                   Estética urbana refinada com a alma carioca. Do asfalto ao topo, Seu Marquinho define o novo padrão do streetwear nacional.
                 </motion.p>
