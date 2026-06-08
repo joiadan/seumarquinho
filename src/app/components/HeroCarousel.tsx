@@ -554,7 +554,7 @@ export default function HeroCarousel({ onPrev, onNext, showArrows = true }: Hero
         <div className="hero-carousel-overlay-right" />
 
         {/* Rio Skyline Line Overlay — Large & Prominent (changes dynamically per slide) */}
-        <div className="absolute right-0 md:right-[2%] bottom-0 w-3/4 h-[70%] md:w-[65%] md:h-[75%] z-10 pointer-events-none select-none overflow-hidden">
+        <div className="absolute -right-[10%] bottom-0 w-[120%] h-[60%] sm:right-[2%] sm:w-[75%] sm:h-[70%] md:w-[65%] md:h-[75%] z-10 pointer-events-none select-none overflow-hidden">
           <svg
             key={`drawing-svg-${currentIndex}`}
             viewBox={currentDrawing.viewBox}
