@@ -302,8 +302,8 @@ export default function Home() {
             <HeroCarousel />
             
             {/* Text overlay positioned on top of carousel */}
-            <div className="absolute inset-0 z-20 flex items-end justify-start pointer-events-none pt-16 md:pt-20">
-              <div className="px-margin-mobile md:px-margin-desktop pb-6 sm:pb-10 md:pb-20 max-w-4xl w-full pointer-events-auto">
+            <div className="absolute inset-0 z-20 flex items-start justify-start pointer-events-none pt-28 sm:pt-36 md:pt-44">
+              <div className="px-margin-mobile md:px-margin-desktop max-w-4xl w-full pointer-events-auto">
                 <motion.p 
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
