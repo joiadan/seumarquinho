@@ -8,8 +8,8 @@ interface CartDrawerProps {
   isOpen: boolean;
   onClose: () => void;
   cartItems: CartItem[];
-  updateQuantity: (productId: number, size: string | null, delta: number) => void;
-  removeItem: (productId: number, size: string | null) => void;
+  updateQuantity: (productId: string, size: string | undefined, delta: number) => void;
+  removeItem: (productId: string, size?: string) => void;
 }
 
 export default function CartDrawer({
