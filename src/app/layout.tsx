@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Montserrat, Inter, Baloo_2 } from "next/font/google";
+import { Syne, Inter, Baloo_2 } from "next/font/google";
 import "./globals.css";
 
-const montserrat = Montserrat({
-  variable: "--font-montserrat",
+const syne = Syne({
+  variable: "--font-syne",
   subsets: ["latin"],
-  weight: ["700", "800", "900"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 const inter = Inter({
@@ -41,7 +41,7 @@ export default function RootLayout({
   return (
     <html
       lang="pt-BR"
-      className={`${montserrat.variable} ${inter.variable} ${baloo2.variable} h-full antialiased`}
+      className={`${syne.variable} ${inter.variable} ${baloo2.variable} h-full antialiased`}
     >
       <head>
         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />

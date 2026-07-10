@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import HeroCarousel from "./components/HeroCarousel";
+import ProductCard from "./components/ProductCard";
+import CartDrawer from "./components/CartDrawer";
 import { PRODUCTS, formatPrice } from "./data/products";
 import type { Product, CartItem } from "./data/products";
 import { 
@@ -326,7 +328,7 @@ export default function Home() {
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5, duration: 0.8 }}
-                  className="font-display text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-primary mb-4 md:mb-6 leading-[1.1] tracking-tighter uppercase drop-shadow-[0_2px_20px_rgba(0,0,0,0.8)]"
+                  className="font-display text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-street-white mb-4 md:mb-6 leading-[1.1] tracking-tighter uppercase drop-shadow-[0_2px_20px_rgba(0,0,0,0.8)]"
                 >
                   Nascido no Rio.<br/>Criado para as Ruas.
                 </motion.h1>
@@ -417,70 +419,7 @@ export default function Home() {
                   transition={{ duration: 0.4 }}
                   className="group cursor-pointer flex flex-col"
                 >
-                <Link href={`/produto/${product.id}`} className="flex flex-col flex-1">
-                  {/* Image Frame */}
-                  <div className="aspect-square mb-4 md:mb-6 overflow-hidden bg-[#080808] flex items-center justify-center relative border border-white/5 p-4 md:p-8 transition-colors duration-500 hover:bg-[#111111]">
-                    <div className="relative w-full h-full">
-                      <Image 
-                        src={product.image} 
-                        alt={product.name} 
-                        fill
-                        sizes="(max-width: 768px) 50vw, 350px"
-                        className="object-contain transition-transform duration-700 group-hover:scale-108"
-                      />
-                    </div>
-                    
-                    {/* Status / Badge Tags */}
-                    {product.esgotado ? (
-                      <span className="absolute top-2 left-2 md:top-4 md:left-4 bg-[#333333] text-[#cfc6af] px-2 py-0.5 md:px-3 md:py-1 font-sans text-[9px] md:text-xs font-bold uppercase tracking-wider">
-                        Esgotado
-                      </span>
-                    ) : product.badge ? (
-                      <span className={`absolute top-2 left-2 md:top-4 md:left-4 px-2 py-0.5 md:px-3 md:py-1 font-sans text-[9px] md:text-xs font-bold uppercase tracking-wider ${
-                        product.badge === "LIMITED" ? "bg-secondary-container text-on-secondary-container" : "bg-primary-container text-on-primary-fixed"
-                      }`}>
-                        {product.badge}
-                      </span>
-                    ) : null}
-                  </div>
-
-                  {/* Info details */}
-                  <div className="flex flex-col sm:flex-row justify-between items-start gap-1 sm:gap-4">
-                    <div className="flex-1">
-                      <h3 className="font-display text-sm sm:text-lg font-bold text-primary mb-0.5 sm:mb-1 group-hover:text-primary-container transition-colors line-clamp-1">
-                        {product.name}
-                      </h3>
-                      <p className="text-on-surface-variant font-sans text-[9px] sm:text-[11px] uppercase tracking-wider">
-                        {product.category === "bones" ? "Boné Premium" : "Camiseta / Boxy"}
-                      </p>
-                    </div>
-                    <p className="text-primary-container font-display font-extrabold text-sm sm:text-lg flex-shrink-0">
-                      R$ {formatPrice(product.price)}
-                    </p>
-                  </div>
-
-                </Link>
-                  {/* Description snippet — hidden on mobile for cleaner card layout */}
-                  <p className="text-on-surface-variant font-sans text-xs mt-3 mb-4 leading-relaxed line-clamp-2 hidden sm:block">
-                    {product.description}
-                  </p>
-
-                  {/* CTA Action Button */}
-                  {product.esgotado ? (
-                    <button 
-                      disabled
-                      className="w-full bg-[#1b1c1c] text-[#5c5d5d] py-2 sm:py-3.5 font-bold uppercase tracking-widest text-[10px] sm:text-xs border border-white/5 cursor-not-allowed mt-3 sm:mt-0 text-center"
-                    >
-                      Esgotado
-                    </button>
-                  ) : (
-                    <Link
-                      href={`/produto/${product.id}`}
-                      className="w-full border border-white/10 group-hover:bg-[#ffdb58] group-hover:text-[#231b00] group-hover:border-[#ffdb58] py-2 sm:py-3.5 font-bold uppercase tracking-widest text-[10px] sm:text-xs transition-all duration-300 active:scale-97 cursor-pointer mt-3 sm:mt-0 text-center block"
-                    >
-                      Comprar
-                    </Link>
-                  )}
+                  <ProductCard product={product} />
                 </motion.div>
               ))}
             </div>
@@ -610,7 +549,7 @@ export default function Home() {
 
 
         {/* 9. BRAND IDENTITY & CONCEPT SHOWCASE */}
-        <section className="py-32 overflow-hidden bg-black">
+        <section className="py-32 overflow-hidden bg-street-black">
           <div className="px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto">
             <div className="flex flex-col md:flex-row items-center gap-16 md:gap-24">
               
@@ -634,7 +573,7 @@ export default function Home() {
               {/* Identity & Rio de Janeiro Reference Highlights */}
               <div className="w-full md:w-1/2">
                 <p className="text-primary-container font-sans text-xs font-bold tracking-[0.25em] mb-4 uppercase">IDENTIDADE</p>
-                <h2 className="font-display text-3xl md:text-4xl font-extrabold text-primary mb-8 leading-tight uppercase">
+                <h2 className="font-display text-4xl md:text-5xl font-black text-street-white mb-8 leading-tight uppercase tracking-tighter">
                   Nossa Origem &amp;<br/>Conceito.
                 </h2>
                 
@@ -717,7 +656,7 @@ export default function Home() {
       </main>
 
       {/* 11. FOOTER */}
-      <footer className="w-full py-16 px-margin-mobile md:px-margin-desktop bg-surface-container-lowest border-t border-outline-variant">
+      <footer className="w-full py-16 px-margin-mobile md:px-margin-desktop bg-street-black border-t border-street-dark">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 items-start">
           
           {/* Logo brand & copyrights */}
@@ -822,161 +761,13 @@ export default function Home() {
         </div>
       </footer>
 
-      {/* --- CART DRAWER OVERLAY --- */}
-      <AnimatePresence>
-        {isCartOpen && (
-          <>
-            {/* Backdrop overlay */}
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 0.65 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setIsCartOpen(false)}
-              className="fixed inset-0 bg-black z-50 cursor-pointer"
-            />
-
-            {/* Slide drawer panel */}
-            <motion.div 
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-              transition={{ type: "tween", duration: 0.3 }}
-              className="fixed top-0 right-0 bottom-0 w-full max-w-[450px] bg-[#121414] border-l border-white/10 shadow-2xl z-55 flex flex-col"
-            >
-              {/* Header */}
-              <div className="p-6 border-b border-white/10 flex items-center justify-between">
-                <div className="flex items-center gap-2.5">
-                  <ShoppingBag className="w-5 h-5 text-[#ffdb58]" />
-                  <span className="font-display font-extrabold uppercase tracking-widest text-sm text-white">Seu Carrinho ({cartCount})</span>
-                </div>
-                <button 
-                  onClick={() => setIsCartOpen(false)}
-                  className="p-1 hover:text-[#ffdb58] text-zinc-400 cursor-pointer transition-colors"
-                  aria-label="Fechar"
-                >
-                  <X className="w-5 h-5" />
-                </button>
-              </div>
-
-              {/* Items List */}
-              <div className="flex-1 overflow-y-auto p-6 space-y-6">
-                {cart.length === 0 ? (
-                  <div className="h-full flex flex-col items-center justify-center text-center">
-                    <div className="w-16 h-16 rounded-full bg-black border border-white/5 flex items-center justify-center text-zinc-500 mb-4">
-                      <ShoppingBag className="w-6 h-6" />
-                    </div>
-                    <h3 className="font-bold text-sm uppercase tracking-wider text-white">Carrinho Vazio</h3>
-                    <p className="text-xs text-on-surface-variant font-light max-w-[240px] mt-2 leading-relaxed">
-                      Adicione peças exclusivas do nosso catálogo para vê-las aqui.
-                    </p>
-                    <button 
-                      onClick={() => {
-                        setIsCartOpen(false);
-                        scrollTo("catalogo");
-                      }}
-                      className="mt-6 text-xs text-[#ffdb58] font-bold border-b border-[#ffdb58] pb-0.5 hover:text-white hover:border-white transition-colors cursor-pointer"
-                    >
-                      EXPLORAR PRODUTOS
-                    </button>
-                  </div>
-                ) : (
-                  cart.map((item) => (
-                    <div key={item.product.id} className="flex gap-4 border-b border-white/5 pb-6">
-                      
-                      {/* Product Thumbnail frame */}
-                      <div className="relative w-20 h-20 bg-black border border-white/5 overflow-hidden flex-shrink-0 p-2 flex items-center justify-center">
-                        <div className="relative w-full h-full">
-                          <Image 
-                            src={item.product.image} 
-                            alt={item.product.name} 
-                            fill
-                            sizes="80px"
-                            className="object-contain"
-                          />
-                        </div>
-                      </div>
-
-                      {/* Item contents */}
-                      <div className="flex-1 flex flex-col justify-between">
-                        <div>
-                          <div className="flex justify-between items-start gap-2">
-                            <h4 className="text-xs font-bold uppercase tracking-wider text-white line-clamp-2">{item.product.name}</h4>
-                            <button 
-                              onClick={() => removeFromCart(item.product.id, item.size)}
-                              className="text-zinc-500 hover:text-red-500 transition-colors p-1 cursor-pointer"
-                              aria-label={`Remover ${item.product.name}`}
-                            >
-                              <Trash2 className="w-4 h-4" />
-                            </button>
-                          </div>
-                          <span className="text-[10px] text-primary-container font-bold tracking-widest mt-1 block">
-                            R$ {formatPrice(item.product.price)}{item.size && ` | TAM: ${item.size}`}
-                          </span>
-                        </div>
-
-                        {/* Quantity and sub-item total */}
-                        <div className="flex justify-between items-center mt-3">
-                          
-                          {/* Counter actions */}
-                          <div className="flex items-center border border-white/10 bg-black">
-                            <button 
-                              onClick={() => updateQuantity(item.product.id, item.size, -1)}
-                              className="px-2 py-1 text-zinc-400 hover:text-white hover:bg-zinc-900 transition-colors cursor-pointer"
-                            >
-                              <Minus className="w-3 h-3" />
-                            </button>
-                            <span className="px-3 text-xs font-mono font-bold text-white">{item.quantity}</span>
-                            <button 
-                              onClick={() => updateQuantity(item.product.id, item.size, 1)}
-                              className="px-2 py-1 text-zinc-400 hover:text-white hover:bg-zinc-900 transition-colors cursor-pointer"
-                            >
-                              <Plus className="w-3 h-3" />
-                            </button>
-                          </div>
-
-                          {/* Total price for quantity */}
-                          <span className="text-xs font-bold text-[#ffdb58] font-mono">
-                            R$ {formatPrice(item.product.price * item.quantity)}
-                          </span>
-
-                        </div>
-                      </div>
-
-                    </div>
-                  ))
-                )}
-              </div>
-
-              {/* Cart Subtotal footer & checkout */}
-              {cart.length > 0 && (
-                <div className="p-6 pb-[calc(1.5rem+env(safe-area-inset-bottom,0px))] border-t border-white/10 bg-black flex flex-col gap-4">
-                  <div className="flex justify-between items-center">
-                    <span className="text-xs text-zinc-400 uppercase tracking-widest">Subtotal</span>
-                    <span className="text-base font-black text-[#ffdb58] font-mono">
-                      R$ {formatPrice(cartSubtotal)}
-                    </span>
-                  </div>
-                  <div className="flex items-start gap-2 bg-[#1a1300] border border-[#4c4635] p-3 rounded-none">
-                    <AlertTriangle className="w-4 h-4 text-primary-container shrink-0 mt-0.5" />
-                    <p className="text-[10px] text-on-surface-variant font-light leading-relaxed">
-                      O pagamento será combinado diretamente via <strong>WhatsApp</strong> após o envio dos itens do carrinho.
-                    </p>
-                  </div>
-                  
-                  <button 
-                    onClick={handleWhatsAppCheckout}
-                    className="w-full py-4 bg-[#ffdb58] text-[#231b00] font-bold text-xs uppercase tracking-widest hover:bg-[#ffe179] transition-colors rounded-none flex items-center justify-center gap-2 cursor-pointer hover:shadow-[0_0_20px_rgba(255,219,88,0.3)]"
-                  >
-                    Enviar Pedido por WhatsApp
-                    <ArrowRight className="w-4 h-4" />
-                  </button>
-                </div>
-              )}
-
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
+      <CartDrawer 
+        isOpen={isCartOpen} 
+        onClose={() => setIsCartOpen(false)} 
+        cartItems={cart} 
+        updateQuantity={updateQuantity} 
+        removeItem={removeFromCart} 
+      />
 
       {/* --- SEARCH MODAL OVERLAY --- */}
       <AnimatePresence>

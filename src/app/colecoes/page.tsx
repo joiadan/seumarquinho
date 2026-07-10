@@ -19,6 +19,8 @@ import {
   Check,
   Copy
 } from "lucide-react";
+import ProductCard from "../components/ProductCard";
+import CartDrawer from "../components/CartDrawer";
 import { PRODUCTS, formatPrice } from "../data/products";
 import type { Product, CartItem } from "../data/products";
 
@@ -36,6 +38,20 @@ export default function ColecoesPage() {
   const [cart, setCart] = useState<CartItem[]>([]);
   const [isCartLoaded, setIsCartLoaded] = useState(false);
   const [addedPopup, setAddedPopup] = useState<string | null>(null);
+
+  // Banner transition state
+  const [currentBannerIndex, setCurrentBannerIndex] = useState(0);
+  const bannerImages = [
+    "/PRODUTOS E LOGO/drop_002_teaser.png",
+    "/PRODUTOS E LOGO/drop_002_modelos.png"
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentBannerIndex((prev) => (prev + 1) % bannerImages.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [bannerImages.length]);
 
   // Load cart from localStorage once on mount
   useEffect(() => {
@@ -227,9 +243,18 @@ export default function ColecoesPage() {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="fixed top-16 left-0 right-0 z-40 bg-white border-b border-[#e5e5e5] px-6 py-6 flex flex-col gap-5 md:hidden"
+            transition={{ duration: 0.2 }}
+            className="fixed top-16 left-0 right-0 z-40 bg-white border-b border-[#e5e5e5] px-6 py-6 flex flex-col gap-5 md:hidden shadow-xl"
           >
-            <Link href="/#catalogo" onClick={() => setIsMobileMenuOpen(false)} className="text-left text-base uppercase tracking-widest font-bold py-2 border-b border-zinc-100 text-[#1a1a1a] hover:text-[#c9a830]">Drops</Link>
+            <button
+              onClick={() => {
+                setSelectedCategory("todos");
+                setIsMobileMenuOpen(false);
+              }}
+              className={`text-left text-base uppercase tracking-widest font-bold py-2 border-b border-zinc-100 transition-colors text-[#1a1a1a] hover:text-[#c9a830]`}
+            >
+              Drops
+            </button>
             <Link href="/colecoes" onClick={() => setIsMobileMenuOpen(false)} className="text-left text-base uppercase tracking-widest font-bold py-2 border-b border-zinc-100 text-[#c9a830] font-extrabold">Coleções</Link>
             <Link href="/blog" onClick={() => setIsMobileMenuOpen(false)} className="text-left text-base uppercase tracking-widest font-bold py-2 border-b border-zinc-100 text-[#1a1a1a] hover:text-[#c9a830]">Blog</Link>
             <Link href="/blog#origem" onClick={() => setIsMobileMenuOpen(false)} className="text-left text-base uppercase tracking-widest font-bold py-2 border-b border-zinc-100 text-[#1a1a1a] hover:text-[#c9a830]">História</Link>
@@ -278,6 +303,44 @@ export default function ColecoesPage() {
 
       {/* ── MAIN CONTENT AREA (Offset by sidebar width) ── */}
       <main className="pt-16 md:pt-20 pl-[40px] lg:pl-[80px]">
+        {/* ── UPCOMING DROPS ── */}
+        <div className="w-full bg-black flex justify-center">
+          <section className="relative w-full max-w-[1024px] aspect-[21/9] overflow-hidden group">
+            {/* Banner Images with crossfade transition */}
+            {bannerImages.map((img, idx) => (
+              <Image 
+                key={idx}
+                src={img} 
+                alt={`Drop 002 Teaser ${idx + 1}`} 
+                fill 
+                className={`object-cover object-center transition-all duration-1000 group-hover:scale-105 ${
+                  currentBannerIndex === idx ? "opacity-100" : "opacity-0"
+                }`}
+                priority={idx === 0}
+              />
+            ))}
+            {/* Overlay Gradients */}
+            <div className="absolute inset-x-0 bottom-0 h-1/3 md:h-1/4 bg-gradient-to-t from-[#000000] to-transparent pointer-events-none" />
+            <div className="absolute inset-y-0 left-0 w-16 md:w-32 bg-gradient-to-r from-[#000000] to-transparent pointer-events-none" />
+            <div className="absolute inset-y-0 right-0 w-16 md:w-32 bg-gradient-to-l from-[#000000] to-transparent pointer-events-none" />
+
+            {/* Brutalist Button Aligned Right */}
+            <div className="absolute bottom-6 md:bottom-10 right-4 md:right-10 z-20 flex flex-col items-end">
+              <a 
+                href="https://wa.me/5521981676041?text=Ol%C3%A1%20Seu%20Marquinho!%20Gostaria%20de%20fazer%20uma%20reserva%20para%20o%20Drop%20002!"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-end justify-between border-b-2 border-white pb-2 w-[220px] md:w-[280px] transition-colors hover:border-[#FF6B1A] cursor-pointer"
+              >
+                <span className="bg-transparent text-white font-bold uppercase tracking-widest text-xs md:text-sm text-left group-hover:text-[#FF6B1A] transition-colors pl-2">
+                  Reservas no Whats
+                </span>
+                <ArrowRight className="w-4 h-4 md:w-5 md:h-5 text-white group-hover:text-[#FF6B1A] transition-colors" />
+              </a>
+            </div>
+          </section>
+        </div>
+
         {/* Breadcrumb row */}
         <div className="border-b border-[#e5e5e5] bg-[#fafafa]">
           <div className="max-w-7xl mx-auto px-4 md:px-10 py-3">
@@ -341,78 +404,19 @@ export default function ColecoesPage() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  className="group flex flex-col justify-between border border-[#e5e5e5] bg-white p-3 md:p-4 hover:shadow-[0_4px_20px_rgba(0,0,0,0.05)] transition-all duration-300"
+                  className="group cursor-pointer flex flex-col"
                 >
-                  <Link href={`/produto/${product.id}`} className="flex flex-col flex-1">
-                    {/* Image Frame */}
-                    <div className="aspect-[3/4] mb-4 overflow-hidden bg-[#f5f5f5] flex items-center justify-center relative border border-[#e5e5e5] p-4 transition-colors duration-500 hover:bg-[#eaeaea]">
-                      <div className="relative w-full h-full">
-                        <Image
-                          src={product.image}
-                          alt={product.name}
-                          fill
-                          sizes="(max-width: 768px) 50vw, 250px"
-                          className="object-contain transition-transform duration-700 group-hover:scale-105"
-                        />
-                      </div>
-
-                      {/* Status / Badge Tags */}
-                      {product.esgotado ? (
-                        <span className="absolute top-2 left-2 bg-[#333333] text-white px-2 py-0.5 font-sans text-[9px] font-bold uppercase tracking-wider">
-                          Esgotado
-                        </span>
-                      ) : product.badge ? (
-                        <span className={`absolute top-2 left-2 px-2 py-0.5 font-sans text-[9px] font-bold uppercase tracking-wider ${
-                          product.badge === "LIMITED" ? "bg-[#d30017] text-white" : "bg-[#ffdb58] text-black"
-                        }`}>
-                          {product.badge}
-                        </span>
-                      ) : null}
-                    </div>
-
-                    {/* Info details */}
-                    <div className="mb-3">
-                      <h3 className="font-display text-xs md:text-sm font-extrabold text-[#1a1a1a] mb-1 group-hover:text-[#c9a830] transition-colors line-clamp-2">
-                        {product.name}
-                      </h3>
-                      <p className="text-[#888] font-sans text-[9px] md:text-[10px] uppercase tracking-wider">
-                        {product.category === "bones" ? "Boné Premium" : "Camiseta Street"}
-                      </p>
-                    </div>
-                  </Link>
-
-                  <div>
-                    {/* Price with credit/installments visual info */}
-                    <div className="flex flex-col mb-3">
-                      <span className="text-base font-extrabold text-[#1a1a1a]">R$ {formatPrice(product.price)}</span>
-                      <span className="text-[9px] text-[#888]">3x de R$ {formatPrice(product.price / 3)} sem juros</span>
-                    </div>
-
-                    {/* CTA Button */}
-                    {product.esgotado ? (
-                      <button
-                        disabled
-                        className="w-full bg-[#eaeaea] text-[#999] py-2 md:py-2.5 font-bold uppercase tracking-widest text-[9px] md:text-xs cursor-not-allowed text-center"
-                      >
-                        Esgotado
-                      </button>
-                    ) : (
-                      <Link
-                        href={`/produto/${product.id}`}
-                        className="w-full bg-[#1a1a1a] hover:bg-[#333] text-white py-2 md:py-2.5 font-bold uppercase tracking-widest text-[9px] md:text-xs transition-colors cursor-pointer text-center block"
-                      >
-                        Comprar
-                      </Link>
-                    )}
-                  </div>
+                  <ProductCard product={product} />
                 </motion.div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* ── WHITE THEMED FOOTER ── */}
-        <footer className="w-full py-12 px-4 md:px-10 bg-[#fafafa] border-t border-[#e5e5e5] mt-12 text-[#1a1a1a]">
+
+
+        {/* ── BRUTALIST THEMED FOOTER ── */}
+        <footer className="w-full py-16 px-4 md:px-10 bg-street-black border-t border-street-dark mt-12 text-street-white">
           <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
             <div className="md:col-span-5 flex flex-col items-center md:items-start text-center md:text-left gap-3">
               <Link href="/" className="flex items-center gap-3">
@@ -425,7 +429,7 @@ export default function ColecoesPage() {
                     className="object-contain"
                   />
                 </div>
-                <span className="font-display font-extrabold text-lg text-[#1a1a1a] tracking-tighter uppercase">
+                <span className="font-display font-black text-lg text-street-white tracking-tighter uppercase">
                   Seu Marquinho
                 </span>
               </Link>
@@ -487,128 +491,13 @@ export default function ColecoesPage() {
         </footer>
       </main>
 
-      {/* ── CART DRAWER ── */}
-      <AnimatePresence>
-        {isCartOpen && (
-          <>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 0.65 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setIsCartOpen(false)}
-              className="fixed inset-0 bg-black z-50 cursor-pointer"
-            />
-            <motion.div
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-              transition={{ type: "tween", duration: 0.3 }}
-              className="fixed top-0 right-0 bottom-0 w-full max-w-[450px] bg-[#121414] border-l border-white/10 shadow-2xl z-55 flex flex-col text-white"
-            >
-              <div className="p-6 border-b border-white/10 flex items-center justify-between">
-                <div className="flex items-center gap-2.5">
-                  <ShoppingBag className="w-5 h-5 text-[#ffdb58]" />
-                  <span className="font-display font-extrabold uppercase tracking-widest text-sm text-white">
-                    Seu Carrinho ({cartCount})
-                  </span>
-                </div>
-                <button
-                  onClick={() => setIsCartOpen(false)}
-                  className="p-2.5 hover:text-[#ffdb58] text-zinc-400 cursor-pointer transition-colors"
-                  aria-label="Fechar"
-                >
-                  <X className="w-5 h-5" />
-                </button>
-              </div>
-
-              <div className="flex-1 overflow-y-auto p-6 space-y-6">
-                {cart.length === 0 ? (
-                  <div className="h-full flex flex-col items-center justify-center text-center">
-                    <div className="w-16 h-16 rounded-full bg-black border border-white/5 flex items-center justify-center text-zinc-500 mb-4">
-                      <ShoppingBag className="w-6 h-6" />
-                    </div>
-                    <h3 className="font-bold text-sm uppercase tracking-wider text-white">Carrinho Vazio</h3>
-                    <p className="text-xs text-zinc-400 font-light max-w-[240px] mt-2 leading-relaxed">
-                      Adicione peças exclusivas do nosso catálogo para vê-las aqui.
-                    </p>
-                  </div>
-                ) : (
-                  cart.map((item) => (
-                    <div key={`${item.product.id}-${item.size || "nosize"}`} className="flex gap-4 border-b border-white/5 pb-6">
-                      <div className="relative w-20 h-20 bg-black border border-white/5 overflow-hidden flex-shrink-0 p-2 flex items-center justify-center">
-                        <div className="relative w-full h-full">
-                          <Image
-                            src={item.product.image}
-                            alt={item.product.name}
-                            fill
-                            sizes="80px"
-                            className="object-contain"
-                          />
-                        </div>
-                      </div>
-                      <div className="flex-1 flex flex-col justify-between">
-                        <div>
-                          <div className="flex justify-between items-start gap-2">
-                            <h4 className="text-xs font-bold uppercase tracking-wider text-white line-clamp-2">{item.product.name}</h4>
-                            <button
-                              onClick={() => removeFromCart(item.product.id, item.size)}
-                              className="text-zinc-500 hover:text-red-500 transition-colors p-1 cursor-pointer"
-                              aria-label={`Remover ${item.product.name}`}
-                            >
-                              <Trash2 className="w-4 h-4" />
-                            </button>
-                          </div>
-                          <span className="text-[10px] text-[#ffdb58] font-bold tracking-widest mt-1 block">
-                            R$ {formatPrice(item.product.price)}{item.size && ` | TAM: ${item.size}`}
-                          </span>
-                        </div>
-                        <div className="flex justify-between items-center mt-3">
-                          <div className="flex items-center border border-white/10 bg-black">
-                            <button onClick={() => updateQuantity(item.product.id, item.size, -1)} className="px-2 py-1 text-zinc-400 hover:text-white hover:bg-zinc-900 transition-colors cursor-pointer">
-                              <Minus className="w-3 h-3" />
-                            </button>
-                            <span className="px-3 text-xs font-mono font-bold text-white">{item.quantity}</span>
-                            <button onClick={() => updateQuantity(item.product.id, item.size, 1)} className="px-2 py-1 text-zinc-400 hover:text-white hover:bg-zinc-900 transition-colors cursor-pointer">
-                              <Plus className="w-3 h-3" />
-                            </button>
-                          </div>
-                          <span className="text-xs font-bold text-[#ffdb58] font-mono">
-                            R$ {formatPrice(item.product.price * item.quantity)}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  ))
-                )}
-              </div>
-
-              {cart.length > 0 && (
-                <div className="p-6 pb-[calc(1.5rem+env(safe-area-inset-bottom,0px))] border-t border-white/10 bg-black flex flex-col gap-4">
-                  <div className="flex justify-between items-center">
-                    <span className="text-xs text-zinc-400 uppercase tracking-widest">Subtotal</span>
-                    <span className="text-base font-black text-[#ffdb58] font-mono">
-                      R$ {formatPrice(cartSubtotal)}
-                    </span>
-                  </div>
-                  <div className="flex items-start gap-2 bg-[#1a1300] border border-[#4c4635] p-3 rounded-none">
-                    <AlertTriangle className="w-4 h-4 text-[#ffdb58] shrink-0 mt-0.5" />
-                    <p className="text-[10px] text-zinc-400 font-light leading-relaxed">
-                      O pagamento será combinado diretamente via <strong>WhatsApp</strong> após o envio dos itens do carrinho.
-                    </p>
-                  </div>
-                  <button
-                    onClick={handleWhatsAppCheckout}
-                    className="w-full py-4 bg-[#ffdb58] text-[#231b00] font-bold text-xs uppercase tracking-widest hover:bg-[#ffe179] transition-colors rounded-none flex items-center justify-center gap-2 cursor-pointer hover:shadow-[0_0_20px_rgba(255,219,88,0.3)]"
-                  >
-                    Enviar Pedido por WhatsApp
-                    <ArrowRight className="w-4 h-4" />
-                  </button>
-                </div>
-              )}
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
+      <CartDrawer
+        isOpen={isCartOpen}
+        onClose={() => setIsCartOpen(false)}
+        cartItems={cart}
+        updateQuantity={updateQuantity}
+        removeItem={removeFromCart}
+      />
 
       {/* ── SEARCH MODAL ── */}
       <AnimatePresence>

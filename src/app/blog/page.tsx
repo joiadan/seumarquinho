@@ -394,7 +394,7 @@ export default function BlogPage() {
         </section>
 
         {/* Nossa Origem Section */}
-        <section id="origem" className="py-24 px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto border-b border-white/5 bg-[#050505] overflow-hidden">
+        <section id="origem" className="py-24 px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto border-b border-white/5 bg-street-black overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
             
             {/* LEFT — Text content */}
@@ -409,7 +409,7 @@ export default function BlogPage() {
                 <p className="text-[#FF6B1A] font-sans text-xs font-bold tracking-[0.3em] uppercase mb-4 opacity-80">
                   NOSSA HISTÓRIA
                 </p>
-                <h2 className="bubble-title text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl mb-8">
+                <h2 className="font-display font-black text-street-white uppercase tracking-tighter text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-8 leading-[0.9]">
                   A Resenha<br/>Que Virou<br/>Marca.
                 </h2>
               </motion.div>
@@ -633,7 +633,7 @@ export default function BlogPage() {
       </main>
 
       {/* FOOTER */}
-      <footer className="w-full py-16 px-margin-mobile md:px-margin-desktop bg-surface-container-lowest border-t border-outline-variant">
+      <footer className="w-full py-16 px-margin-mobile md:px-margin-desktop bg-street-black border-t border-street-dark">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 items-start text-left">
           
           {/* Logo brand & copyrights */}

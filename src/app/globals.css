@@ -2,7 +2,7 @@
 
 @theme {
   --font-sans: var(--font-inter), sans-serif;
-  --font-display: var(--font-montserrat), sans-serif;
+  --font-display: var(--font-syne), sans-serif;
   --font-baloo: var(--font-baloo), sans-serif;
   
   /* Spacing */
@@ -13,6 +13,10 @@
   --spacing-base: 8px;
   
   /* Colors */
+  --color-street-black: #000000;
+  --color-street-dark: #0A0A0A;
+  --color-street-white: #F5F5F5;
+  
   --color-primary: #fff9f3;
   --color-primary-container: #ffdb58;
   --color-primary-fixed: #ffe179;
@@ -72,6 +76,18 @@
   --radius-lg: 0.25rem;
   --radius-xl: 0.5rem;
   --radius-full: 0.75rem;
+
+  /* Animations */
+  --animate-marquee: marquee 25s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
 }
 
 @layer base {
