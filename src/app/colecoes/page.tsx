@@ -151,21 +151,21 @@ export default function ColecoesPage() {
     <div className="relative min-h-screen bg-white text-[#1a1a1a] font-sans overflow-x-hidden selection:bg-[#ffdb58] selection:text-black">
       {/* ── WHITE THEMED HEADER ── */}
       <header className="fixed top-0 left-0 right-0 w-full z-45 bg-white/80 backdrop-blur-md border-b border-[#e5e5e5] transition-all duration-300">
-        <div className="max-w-7xl mx-auto px-6 h-16 md:h-20 flex justify-between items-center">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 h-14 md:h-20 flex justify-between items-center">
           <Link
             href="/"
-            className="flex items-center gap-3 cursor-pointer text-left focus:outline-none"
+            className="flex items-center gap-2 md:gap-3 cursor-pointer text-left focus:outline-none"
           >
-            <div className="relative w-9 h-9 md:w-11 md:h-11 flex-shrink-0">
+            <div className="relative w-8 h-8 md:w-11 md:h-11 flex-shrink-0">
               <Image
                 src="/PRODUTOS E LOGO/logo_preta.png"
                 alt="Seu Marquinho Logo"
                 fill
-                sizes="44px"
+                sizes="(max-width: 768px) 32px, 44px"
                 className="object-contain"
               />
             </div>
-            <span className="font-display font-extrabold text-lg md:text-2xl tracking-tighter text-[#1a1a1a] hover:text-[#c9a830] transition-colors uppercase">
+            <span className="font-display font-extrabold text-[15px] md:text-2xl tracking-tighter text-[#1a1a1a] hover:text-[#c9a830] transition-colors uppercase">
               Seu Marquinho
             </span>
           </Link>
@@ -197,25 +197,25 @@ export default function ColecoesPage() {
             </Link>
           </nav>
 
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-1 md:gap-6">
             <button
               onClick={() => setIsSearchOpen(true)}
-              className="hover:scale-110 transition-all duration-300 active:scale-95 text-[#1a1a1a] cursor-pointer p-2.5"
+              className="hover:scale-110 transition-all duration-300 active:scale-95 text-[#1a1a1a] cursor-pointer p-1.5 md:p-2.5"
               aria-label="Buscar produtos"
             >
-              <Search className="w-5 h-5" />
+              <Search className="w-5 h-5 md:w-5 md:h-5" />
             </button>
             <button
               onClick={() => setIsCartOpen(true)}
-              className="hover:scale-110 transition-all duration-300 active:scale-95 text-[#1a1a1a] relative cursor-pointer p-2.5"
+              className="hover:scale-110 transition-all duration-300 active:scale-95 text-[#1a1a1a] relative cursor-pointer p-1.5 md:p-2.5"
               aria-label="Carrinho"
             >
-              <ShoppingBag className="w-5 h-5" />
+              <ShoppingBag className="w-5 h-5 md:w-5 md:h-5" />
               {cartCount > 0 && (
                 <motion.span
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
-                  className="absolute -top-1.5 -right-1.5 bg-[#d30017] text-[#ffe2de] text-[10px] w-4.5 h-4.5 flex items-center justify-center rounded-full font-bold border border-white"
+                  className="absolute top-0 right-0 md:-top-1.5 md:-right-1.5 bg-[#d30017] text-[#ffe2de] text-[9px] md:text-[10px] w-4 h-4 md:w-4.5 md:h-4.5 flex items-center justify-center rounded-full font-bold border border-white"
                 >
                   {cartCount}
                 </motion.span>
@@ -223,13 +223,13 @@ export default function ColecoesPage() {
             </button>
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2.5 text-[#1a1a1a] hover:text-[#c9a830] cursor-pointer"
+              className="md:hidden p-1.5 text-[#1a1a1a] hover:text-[#c9a830] cursor-pointer"
               aria-label="Menu"
             >
               {isMobileMenuOpen ? (
-                <X className="w-6 h-6" />
+                <X className="w-5 h-5" />
               ) : (
-                <Menu className="w-6 h-6" />
+                <Menu className="w-5 h-5" />
               )}
             </button>
           </div>
