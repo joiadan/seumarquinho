@@ -325,14 +325,14 @@ export default function ColecoesPage() {
             <div className="absolute inset-y-0 right-0 w-16 md:w-32 bg-gradient-to-l from-[#000000] to-transparent pointer-events-none" />
 
             {/* Brutalist Button Aligned Right */}
-            <div className="absolute bottom-3 md:bottom-10 right-3 md:right-10 z-20 flex flex-col items-end">
+            <div className="absolute bottom-1 md:bottom-10 right-1 md:right-10 z-20 flex flex-col items-end">
               <a 
                 href="https://wa.me/5521981676041?text=Ol%C3%A1%20Seu%20Marquinho!%20Gostaria%20de%20fazer%20uma%20reserva%20para%20o%20Drop%20002!"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-end justify-between border-b border-white md:border-b-2 pb-1 md:pb-2 w-[130px] md:w-[280px] transition-colors hover:border-[#FF6B1A] cursor-pointer"
+                className="group flex items-end justify-between border-b border-white md:border-b-2 pb-1 md:pb-2 w-[110px] md:w-[280px] transition-colors hover:border-[#FF6B1A] cursor-pointer"
               >
-                <span className="bg-transparent text-white font-bold uppercase tracking-widest text-[9px] md:text-sm text-left group-hover:text-[#FF6B1A] transition-colors pl-1 md:pl-2">
+                <span className="bg-transparent text-white font-bold uppercase tracking-widest text-[8px] md:text-sm text-left group-hover:text-[#FF6B1A] transition-colors pl-1 md:pl-2">
                   Reservas no Whats
                 </span>
                 <ArrowRight className="w-3 h-3 md:w-5 md:h-5 text-white group-hover:text-[#FF6B1A] transition-colors mb-0.5 md:mb-0" />

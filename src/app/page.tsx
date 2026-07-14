@@ -346,21 +346,21 @@ export default function Home() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.9, duration: 0.8 }}
-                  className="flex gap-4 mt-6 sm:mt-8"
+                  className="flex gap-2 md:gap-4 mt-4 sm:mt-8"
                 >
                   <button 
                     onClick={() => prevSlideRef.current?.()}
-                    className="p-3 rounded-full bg-black/40 hover:bg-[#FF6B1A] text-white hover:text-white border border-white/10 hover:border-[#FF6B1A] backdrop-blur-md transition-all duration-300 active:scale-90 hover:scale-110 cursor-pointer shadow-[0_0_15px_rgba(0,0,0,0.5)] hover:shadow-[0_0_20px_rgba(255,107,26,0.4)] group"
+                    className="p-2 md:p-3 rounded-full bg-black/40 hover:bg-[#FF6B1A] text-white hover:text-white border border-white/10 hover:border-[#FF6B1A] backdrop-blur-md transition-all duration-300 active:scale-90 hover:scale-110 cursor-pointer shadow-[0_0_15px_rgba(0,0,0,0.5)] hover:shadow-[0_0_20px_rgba(255,107,26,0.4)] group"
                     aria-label="Slide anterior"
                   >
-                    <ChevronLeft className="w-5 h-5 transition-transform duration-300 group-hover:-translate-x-0.5" />
+                    <ChevronLeft className="w-4 h-4 md:w-5 md:h-5 transition-transform duration-300 group-hover:-translate-x-0.5" />
                   </button>
                   <button 
                     onClick={() => nextSlideRef.current?.()}
-                    className="p-3 rounded-full bg-black/40 hover:bg-[#FF6B1A] text-white hover:text-white border border-white/10 hover:border-[#FF6B1A] backdrop-blur-md transition-all duration-300 active:scale-90 hover:scale-110 cursor-pointer shadow-[0_0_15px_rgba(0,0,0,0.5)] hover:shadow-[0_0_20px_rgba(255,107,26,0.4)] group"
+                    className="p-2 md:p-3 rounded-full bg-black/40 hover:bg-[#FF6B1A] text-white hover:text-white border border-white/10 hover:border-[#FF6B1A] backdrop-blur-md transition-all duration-300 active:scale-90 hover:scale-110 cursor-pointer shadow-[0_0_15px_rgba(0,0,0,0.5)] hover:shadow-[0_0_20px_rgba(255,107,26,0.4)] group"
                     aria-label="Próximo slide"
                   >
-                    <ChevronRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-0.5" />
+                    <ChevronRight className="w-4 h-4 md:w-5 md:h-5 transition-transform duration-300 group-hover:translate-x-0.5" />
                   </button>
                 </motion.div>
               </div>
