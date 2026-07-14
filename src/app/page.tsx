@@ -314,13 +314,13 @@ export default function Home() {
             />
             
             {/* Text overlay positioned on top of carousel */}
-            <div className="absolute inset-0 z-20 flex items-start justify-start pointer-events-none pt-28 sm:pt-36 md:pt-44">
+            <div className="absolute inset-0 z-20 flex items-start justify-start pointer-events-none pt-16 sm:pt-28 md:pt-36 lg:pt-44">
               <div className="px-margin-mobile md:px-margin-desktop max-w-4xl w-full pointer-events-auto">
                 <motion.p 
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3, duration: 0.8 }}
-                  className="text-primary-container font-sans text-xs font-bold tracking-[0.25em] uppercase mb-3 md:mb-5 text-glow"
+                  className="text-primary-container font-sans text-xs font-bold tracking-[0.25em] uppercase mb-2 md:mb-5 text-glow"
                 >
                   Underground Essence
                 </motion.p>
@@ -328,7 +328,7 @@ export default function Home() {
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5, duration: 0.8 }}
-                  className="font-display text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-street-white mb-4 md:mb-6 leading-[1.1] tracking-tighter uppercase drop-shadow-[0_2px_20px_rgba(0,0,0,0.8)]"
+                  className="font-display text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-street-white mb-2 sm:mb-4 md:mb-6 leading-[1.1] tracking-tighter uppercase drop-shadow-[0_2px_20px_rgba(0,0,0,0.8)]"
                 >
                   Nascido no Rio.<br/>Criado para as Ruas.
                 </motion.h1>
@@ -346,7 +346,7 @@ export default function Home() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.9, duration: 0.8 }}
-                  className="flex gap-2 md:gap-4 mt-4 sm:mt-8"
+                  className="flex gap-2 md:gap-4 mt-2 sm:mt-6 md:mt-8"
                 >
                   <button 
                     onClick={() => prevSlideRef.current?.()}
