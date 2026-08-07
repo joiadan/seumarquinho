@@ -58,24 +58,25 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: "prod-3",
-    name: "Boné DadHat Preto SM",
+    name: "Boné Five Panel Preto Logo Seu Marquinho",
     price: 135.00,
-    image: "/PRODUTOS E LOGO/IMG_2971.PNG",
+    image: "/PRODUTOS E LOGO/Boné Five Panel Preto Logo Seu Marquinho.PNG",
     images: [
-      "/PRODUTOS E LOGO/IMG_2971.PNG",
+      "/PRODUTOS E LOGO/Boné Five Panel Preto Logo Seu Marquinho.PNG",
+      "/PRODUTOS E LOGO/Boné Five Panel Preto Logo Seu Marquinho (verso foto 02).webp"
     ],
     category: "bones",
     badge: "LIMITED",
-    description: "Boné Dad Hat clássico preto com bordado geométrico SM. Edição limitada premium.",
-    descriptionLong: "O Dad Hat Preto SM traz o monograma geométrico 'SM' bordado com precisão no painel frontal. Sarja premium preta com acabamento matte. Aba curvada desestruturada para máximo conforto. Fecho regulável com passante metálico."
+    description: "Boné Five Panel Preto Logo Seu Marquinho.",
+    descriptionLong: "Boné Five Panel Preto Logo Seu Marquinho\n\nEspecificações:\n- Desestruturado\n- Tecido 100% Poliamida\n- Tamanho Único\n\nKit Seu Marquinho:\n- ziplock\n- sacola reutilizável\n- chaveiro retrô"
   },
   {
     id: "prod-4",
     name: "Boné Dadhat Preto Logo Seu Marquinho",
     price: 117.00,
-    image: "/PRODUTOS E LOGO/IMG_2969.PNG",
+    image: "/PRODUTOS E LOGO/Boné Dadhat Preto Logo Seu Marquinho.PNG",
     images: [
-      "/PRODUTOS E LOGO/IMG_2969.PNG",
+      "/PRODUTOS E LOGO/Boné Dadhat Preto Logo Seu Marquinho.PNG"
     ],
     category: "bones",
     description: "Boné Dad Hat em sarja preta de alta gramatura com fecho regulável e o bordado frontal clássico do Seu Marquinho.",
@@ -83,28 +84,30 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: "prod-5",
-    name: "Boné Five Panel Redinha Preto SM",
+    name: "Boné DadHat Preto SM",
     price: 117.00,
-    image: "/PRODUTOS E LOGO/IMG_2972.PNG",
+    image: "/PRODUTOS E LOGO/Boné DadHat Preto SM (esse que está esgotado).webp",
     images: [
-      "/PRODUTOS E LOGO/IMG_2972.PNG",
+      "/PRODUTOS E LOGO/Boné DadHat Preto SM (esse que está esgotado).webp",
+      "/PRODUTOS E LOGO/Boné DadHat Preto SM (verso foto 02).webp"
     ],
     category: "bones",
     esgotado: true,
-    description: "Boné Five Panel com ajuste strapback e lateral em tela (redinha) respirável para o máximo conforto.",
-    descriptionLong: "O Boné Five Panel Redinha Preto SM é a fusão perfeita entre estilo urbano e funcionalidade. Conta com painéis laterais em tela (redinha) que garantem ventilação superior nos dias quentes do Rio. Estrutura five panel clássica com frente flat e bordado frontal do logo SM. Edição limitada que esgotou rapidamente — testamento da demanda pelo estilo Seu Marquinho."
+    description: "Boné Dad Hat clássico preto com bordado geométrico SM. Edição limitada premium.",
+    descriptionLong: "O Dad Hat Preto SM traz o monograma geométrico 'SM' bordado com precisão no painel frontal. Sarja premium preta com acabamento matte. Aba curvada desestruturada para máximo conforto. Fecho regulável com passante metálico. Edição limitada que esgotou rapidamente — testamento da demanda pelo estilo Seu Marquinho."
   },
   {
     id: "prod-6",
-    name: "Boné Five Panel Preto Logo Seu Marquinho",
+    name: "Boné Five Panel Redinha Preto SM",
     price: 135.00,
-    image: "/PRODUTOS E LOGO/IMG_2971.PNG",
+    image: "/PRODUTOS E LOGO/Boné Five Panel Redinha Preto SM.PNG",
     images: [
-      "/PRODUTOS E LOGO/IMG_2971.PNG",
+      "/PRODUTOS E LOGO/Boné Five Panel Redinha Preto SM.PNG",
+      "/PRODUTOS E LOGO/Boné Five Panel Redinha Preto SM (verso foto 02).webp"
     ],
     category: "bones",
-    description: "Boné Five Panel Preto Logo Seu Marquinho.",
-    descriptionLong: "Boné Five Panel Preto Logo Seu Marquinho\n\nEspecificações:\n- Desestruturado\n- Tecido 100% Poliamida\n- Tamanho Único\n\nKit Seu Marquinho:\n- ziplock\n- sacola reutilizável\n- chaveiro retrô"
+    description: "Boné Five Panel com ajuste strapback e lateral em tela (redinha) respirável para o máximo conforto.",
+    descriptionLong: "O Boné Five Panel Redinha Preto SM é a fusão perfeita entre estilo urbano e funcionalidade. Conta com painéis laterais em tela (redinha) que garantem ventilação superior nos dias quentes do Rio. Estrutura five panel clássica com frente flat e bordado frontal do logo SM. Ajuste strapback regulável para encaixe perfeito."
   }
 ];
 
