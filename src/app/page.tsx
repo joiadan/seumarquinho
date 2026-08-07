@@ -44,8 +44,7 @@ export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<"todos" | "bones" | "camisas">("todos");
   const [activeSection, setActiveSection] = useState("hero");
-  
-
+  const [heroSlideIndex, setHeroSlideIndex] = useState(0);
   
   // Cart state
   const [cart, setCart] = useState<CartItem[]>([]);
@@ -310,57 +309,66 @@ export default function Home() {
             <HeroCarousel 
               onPrev={(fn) => { prevSlideRef.current = fn; }}
               onNext={(fn) => { nextSlideRef.current = fn; }}
+              onSlideChange={setHeroSlideIndex}
               showArrows={false}
             />
             
             {/* Text overlay positioned on top of carousel */}
-            <div className="absolute inset-0 z-20 flex items-start justify-start pointer-events-none pt-16 sm:pt-28 md:pt-36 lg:pt-44">
-              <div className="px-margin-mobile md:px-margin-desktop max-w-4xl w-full pointer-events-auto">
-                <motion.p 
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3, duration: 0.8 }}
-                  className="text-primary-container font-sans text-xs font-bold tracking-[0.25em] uppercase mb-2 md:mb-5 text-glow"
+            <div className="absolute inset-0 z-20 flex items-start justify-start pointer-events-none pt-16 sm:pt-24 md:pt-44 lg:pt-52">
+              <div className="px-6 sm:px-10 md:px-margin-desktop max-w-4xl w-full flex flex-col items-start text-left justify-start">
+                
+                {/* TEXT CONTAINER (Only visible on first slide) */}
+                <div 
+                  className={`transition-all duration-1000 ease-out transform flex flex-col items-start ${
+                    heroSlideIndex === 0 ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-4 md:-translate-y-8 pointer-events-none"
+                  }`}
                 >
-                  Underground Essence
-                </motion.p>
-                <motion.h1 
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5, duration: 0.8 }}
-                  className="font-display text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-street-white mb-2 sm:mb-4 md:mb-6 leading-[1.1] tracking-tighter uppercase drop-shadow-[0_2px_20px_rgba(0,0,0,0.8)]"
-                >
-                  Nascido no Rio.<br/>Criado para as Ruas.
-                </motion.h1>
-                <motion.p 
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.7, duration: 0.8 }}
-                  className="text-white font-sans text-sm sm:text-base md:text-lg max-w-xl leading-relaxed font-light drop-shadow-[0_3px_15px_rgba(0,0,0,0.95)]"
-                >
-                  <span className="text-[#FF6B1A] font-semibold">Estética urbana refinada com a alma carioca.</span> Do asfalto ao topo, <span className="text-[#FF6B1A] font-semibold">Seu Marquinho</span> define o novo padrão do streetwear nacional.
-                </motion.p>
+                  <motion.p 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3, duration: 0.8 }}
+                    className="text-primary-container font-sans text-[10px] sm:text-xs font-bold tracking-[0.2em] md:tracking-[0.25em] uppercase mb-1 sm:mb-2 md:mb-5 text-glow drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]"
+                  >
+                    Underground Essence
+                  </motion.p>
+                  <motion.h1 
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.5, duration: 0.8 }}
+                    className="font-display text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-black text-street-white mb-2 sm:mb-3 md:mb-6 leading-tight md:leading-[1.1] tracking-tight uppercase drop-shadow-[0_4px_25px_rgba(0,0,0,1)] w-full"
+                  >
+                    Nascido no Rio. Criado para as Ruas.
+                  </motion.h1>
+                  <motion.p 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.7, duration: 0.8 }}
+                    className="text-white/95 font-sans text-xs sm:text-sm md:text-lg max-w-2xl leading-relaxed md:leading-relaxed font-light drop-shadow-[0_4px_25px_rgba(0,0,0,1)]"
+                  >
+                    <span className="text-[#FF6B1A] font-semibold">Estética urbana refinada.</span> Do asfalto ao topo, <span className="text-[#FF6B1A] font-semibold">Seu Marquinho</span> define o streetwear nacional.
+                  </motion.p>
+                </div>
 
-                {/* Transition navigation buttons below the text */}
+                {/* Transition navigation buttons below the text (Always visible) */}
                 <motion.div 
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.9, duration: 0.8 }}
-                  className="flex gap-2 md:gap-4 mt-2 sm:mt-6 md:mt-8"
+                  className="flex gap-3 md:gap-4 mt-5 sm:mt-6 md:mt-8 pointer-events-auto justify-start"
                 >
                   <button 
                     onClick={() => prevSlideRef.current?.()}
                     className="p-2 md:p-3 rounded-full bg-black/40 hover:bg-[#FF6B1A] text-white hover:text-white border border-white/10 hover:border-[#FF6B1A] backdrop-blur-md transition-all duration-300 active:scale-90 hover:scale-110 cursor-pointer shadow-[0_0_15px_rgba(0,0,0,0.5)] hover:shadow-[0_0_20px_rgba(255,107,26,0.4)] group"
                     aria-label="Slide anterior"
                   >
-                    <ChevronLeft className="w-4 h-4 md:w-5 md:h-5 transition-transform duration-300 group-hover:-translate-x-0.5" />
+                    <ChevronLeft className="w-5 h-5 md:w-5 md:h-5 transition-transform duration-300 group-hover:-translate-x-0.5" />
                   </button>
                   <button 
                     onClick={() => nextSlideRef.current?.()}
                     className="p-2 md:p-3 rounded-full bg-black/40 hover:bg-[#FF6B1A] text-white hover:text-white border border-white/10 hover:border-[#FF6B1A] backdrop-blur-md transition-all duration-300 active:scale-90 hover:scale-110 cursor-pointer shadow-[0_0_15px_rgba(0,0,0,0.5)] hover:shadow-[0_0_20px_rgba(255,107,26,0.4)] group"
                     aria-label="Próximo slide"
                   >
-                    <ChevronRight className="w-4 h-4 md:w-5 md:h-5 transition-transform duration-300 group-hover:translate-x-0.5" />
+                    <ChevronRight className="w-5 h-5 md:w-5 md:h-5 transition-transform duration-300 group-hover:translate-x-0.5" />
                   </button>
                 </motion.div>
               </div>
@@ -428,7 +436,7 @@ export default function Home() {
         </section>
 
         {/* 4. BRAND ORIGIN STORY */}
-        <section id="sobre" className="relative overflow-hidden bg-[#050505] py-16 md:py-24 px-margin-mobile md:px-margin-desktop border-b border-white/5">
+        <section id="sobre" className="relative overflow-hidden bg-[#050505] pt-16 pb-8 md:py-24 px-margin-mobile md:px-margin-desktop border-b border-white/5">
           <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
             
             {/* LEFT — Text content */}
@@ -497,7 +505,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.6 }}
-                className="mt-10 flex flex-wrap gap-4"
+                className="mt-6 flex flex-wrap gap-4"
               >
                 <button 
                   onClick={() => {
@@ -549,25 +557,35 @@ export default function Home() {
 
 
         {/* 9. BRAND IDENTITY & CONCEPT SHOWCASE */}
-        <section className="py-32 overflow-hidden bg-street-black">
+        <section className="pt-8 pb-24 md:py-32 overflow-hidden bg-street-black">
           <div className="px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto">
             <div className="flex flex-col md:flex-row items-center gap-16 md:gap-24">
               
               {/* Logo Image Frame with golden-yellow brackets */}
-              <div className="w-full md:w-1/2 relative">
-                <div className="absolute -top-6 -left-6 w-32 h-32 border-t-2 border-l-2 border-primary-container/30"></div>
-                <div className="relative w-full aspect-square overflow-hidden border border-white/10 bg-white flex items-center justify-center p-8">
-                  <div className="relative w-full h-full">
-                    <Image 
-                      src="/PRODUTOS E LOGO/IMG_3898.PNG"
-                      alt="Logo Oficial Seu Marquinho e Monograma SM"
-                      fill
-                      sizes="(max-w-768px) 100vw, 550px"
-                      className="object-contain scale-95 pointer-events-none select-none"
-                    />
-                  </div>
+              <div className="w-full md:w-1/2 relative mt-4 md:mt-0">
+                <div className="absolute -top-3 -left-3 md:-top-6 md:-left-6 w-20 h-20 md:w-32 md:h-32 border-t-2 border-l-2 border-primary-container/60 z-0"></div>
+                
+                <div className="relative w-full aspect-square md:aspect-[4/3] bg-white flex items-center justify-center overflow-hidden rounded-2xl shadow-[0_15px_50px_-10px_rgba(0,0,0,0.8)] z-10 border border-white/5">
+                  
+                  {/* Main Logo Container */}
+                  <motion.div 
+                    className="relative w-full h-full flex items-center justify-center z-10 p-2"
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ duration: 0.5, ease: "easeOut" }}
+                  >
+                    <div className="relative w-full h-full">
+                      <Image 
+                        src="/PRODUTOS E LOGO/logos seu marquinho fundo transparente.png"
+                        alt="Logo Oficial Seu Marquinho e Monograma SM"
+                        fill
+                        sizes="(max-width: 768px) 100vw, 550px"
+                        className="object-contain scale-100 pointer-events-none select-none drop-shadow-lg"
+                      />
+                    </div>
+                  </motion.div>
                 </div>
-                <div className="absolute -bottom-6 -right-6 w-32 h-32 border-b-2 border-r-2 border-primary-container/30"></div>
+
+                <div className="absolute -bottom-3 -right-3 md:-bottom-6 md:-right-6 w-20 h-20 md:w-32 md:h-32 border-b-2 border-r-2 border-primary-container/60 z-0"></div>
               </div>
 
               {/* Identity & Rio de Janeiro Reference Highlights */}
