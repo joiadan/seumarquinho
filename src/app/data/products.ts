@@ -26,7 +26,7 @@ export const PRODUCTS: Product[] = [
   {
     id: "prod-1",
     name: "Camiseta Street Logo Off-White",
-    price: 120.00,
+    price: 180.00,
     image: "/PRODUTOS E LOGO/OFF-WHITE.png",
     images: [
       "/PRODUTOS E LOGO/OFF-WHITE.png",
@@ -44,7 +44,7 @@ export const PRODUCTS: Product[] = [
   {
     id: "prod-2",
     name: "Camiseta Street Logo Preta",
-    price: 120.00,
+    price: 180.00,
     image: "/PRODUTOS E LOGO/BLACK 01.png",
     images: [
       "/PRODUTOS E LOGO/BLACK 01.png",
@@ -92,9 +92,8 @@ export const PRODUCTS: Product[] = [
       "/PRODUTOS E LOGO/Boné DadHat Preto SM (verso foto 02).webp"
     ],
     category: "bones",
-    esgotado: true,
     description: "Boné Dad Hat clássico preto com bordado geométrico SM. Edição limitada premium.",
-    descriptionLong: "O Dad Hat Preto SM traz o monograma geométrico 'SM' bordado com precisão no painel frontal. Sarja premium preta com acabamento matte. Aba curvada desestruturada para máximo conforto. Fecho regulável com passante metálico. Edição limitada que esgotou rapidamente — testamento da demanda pelo estilo Seu Marquinho."
+    descriptionLong: "O Dad Hat Preto SM traz o monograma geométrico 'SM' bordado com precisão no painel frontal. Sarja premium preta com acabamento matte. Aba curvada desestruturada para máximo conforto. Fecho regulável com passante metálico."
   },
   {
     id: "prod-6",
@@ -113,7 +112,7 @@ export const PRODUCTS: Product[] = [
   {
     id: "prod-7",
     name: "DadHat Cinza SM",
-    price: 135.00,
+    price: 117.00,
     image: "/PRODUTOS E LOGO/LANÇAMENTOS BONÉS/DadHat Cinza SM - Frente.png",
     images: [
       "/PRODUTOS E LOGO/LANÇAMENTOS BONÉS/DadHat Cinza SM - Frente.png",
@@ -128,7 +127,7 @@ export const PRODUCTS: Product[] = [
   {
     id: "prod-8",
     name: "DadHat Off White SM",
-    price: 135.00,
+    price: 117.00,
     image: "/PRODUTOS E LOGO/LANÇAMENTOS BONÉS/DadHat Off White SM -  Frente.png",
     images: [
       "/PRODUTOS E LOGO/LANÇAMENTOS BONÉS/DadHat Off White SM -  Frente.png",
