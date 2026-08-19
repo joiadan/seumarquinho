@@ -376,6 +376,34 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ── LANÇAMENTOS (NEW RELEASES) SECTION ── */}
+        {PRODUCTS.some((p) => p.badge === "LANÇAMENTO") && (
+          <section className="pt-12 md:pt-16 pb-8 md:pb-12 bg-gradient-to-b from-[#111111] to-black border-y border-white/5">
+            <div className="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop">
+              <div className="flex flex-col mb-8 md:mb-10">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-2 h-2 rounded-full bg-[#d30017] animate-pulse" />
+                  <p className="text-[#d30017] font-sans text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase">Acabou de Chegar</p>
+                </div>
+                <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-extrabold text-street-white uppercase">Lançamentos</h2>
+              </div>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-8 md:gap-x-8 md:gap-y-12">
+                {PRODUCTS.filter((p) => p.badge === "LANÇAMENTO").map((product) => (
+                  <motion.div
+                    key={`release-${product.id}`}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="group cursor-pointer flex flex-col"
+                  >
+                    <ProductCard product={product} />
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
         {/* 3. PRODUCT CATALOG GRID WITH FILTER TABS */}
         <section id="catalogo" className="py-20 bg-surface-container-lowest border-y border-white/5">
           <div className="px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto">
