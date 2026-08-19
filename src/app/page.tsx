@@ -160,19 +160,19 @@ export default function Home() {
       
       {/* 1. TOP NAVIGATION BAR */}
       <header className="fixed top-0 left-0 right-0 w-full z-45 glass-nav transition-all duration-300">
-        <div className="max-w-7xl mx-auto px-4 md:px-6 h-14 md:h-20 flex justify-between items-center">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 h-12 md:h-16 flex justify-between items-center">
           
           {/* Logo & Brand Name Container */}
           <button 
             onClick={() => scrollTo("hero")} 
             className="flex items-center gap-2 md:gap-3 cursor-pointer text-left focus:outline-none"
           >
-            <div className="relative w-8 h-8 md:w-11 md:h-11 flex-shrink-0">
+            <div className="relative w-7 h-7 md:w-9 md:h-9 flex-shrink-0">
               <Image 
                 src="/PRODUTOS E LOGO/logo_preta.png" 
                 alt="Seu Marquinho Logo" 
                 fill 
-                sizes="(max-width: 768px) 32px, 44px"
+                sizes="(max-width: 768px) 28px, 36px"
                 className="object-contain"
               />
             </div>
@@ -300,7 +300,7 @@ export default function Home() {
         )}
       </AnimatePresence>
 
-      <main className="mt-0">
+      <main className="pt-12 md:pt-16">
         
         {/* 2. HERO SECTION — CINEMATIC CAROUSEL */}
         <section id="hero" className="relative flex flex-col overflow-hidden">

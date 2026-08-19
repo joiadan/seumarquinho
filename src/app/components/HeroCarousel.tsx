@@ -8,6 +8,18 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 // All media items for the hero carousel
 const HERO_MEDIA = [
   {
+    type: "image" as const,
+    src: "/PRODUTOS E LOGO/fotos para a capa parte de cima do site/transição sm floral.png",
+    alt: "Seu Marquinho — Transição Floral",
+    objectPosition: "center",
+  },
+  {
+    type: "image" as const,
+    src: "/PRODUTOS E LOGO/fotos para a capa parte de cima do site/transição sm grafite.png",
+    alt: "Seu Marquinho — Transição Grafite",
+    objectPosition: "center",
+  },
+  {
     type: "video" as const,
     src: "/PRODUTOS E LOGO/VÍDEOS PARA PÁGINA INICIAL/VÍDEO LANÇAMENTO SITE.mp4",
     alt: "Vídeo Lançamento Site",
@@ -29,18 +41,6 @@ const HERO_MEDIA = [
     src: "/PRODUTOS E LOGO/fotos para a capa parte de cima do site/IMG_6815.jpg",
     alt: "Seu Marquinho — Coleção Exclusiva",
     objectPosition: "center 72%",
-  },
-  {
-    type: "image" as const,
-    src: "/PRODUTOS E LOGO/fotos para a capa parte de cima do site/transição sm floral.png",
-    alt: "Seu Marquinho — Transição Floral",
-    objectPosition: "center",
-  },
-  {
-    type: "image" as const,
-    src: "/PRODUTOS E LOGO/fotos para a capa parte de cima do site/transição sm grafite.png",
-    alt: "Seu Marquinho — Transição Grafite",
-    objectPosition: "center",
   },
   {
     type: "image" as const,
