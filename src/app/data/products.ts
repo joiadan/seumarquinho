@@ -26,7 +26,7 @@ export const PRODUCTS: Product[] = [
   {
     id: "prod-1",
     name: "Camiseta Street Logo Off-White",
-    price: 180.00,
+    price: 120.00,
     image: "/PRODUTOS E LOGO/OFF-WHITE.png",
     images: [
       "/PRODUTOS E LOGO/OFF-WHITE.png",
@@ -44,7 +44,7 @@ export const PRODUCTS: Product[] = [
   {
     id: "prod-2",
     name: "Camiseta Street Logo Preta",
-    price: 180.00,
+    price: 120.00,
     image: "/PRODUTOS E LOGO/BLACK 01.png",
     images: [
       "/PRODUTOS E LOGO/BLACK 01.png",
@@ -142,7 +142,7 @@ export const PRODUCTS: Product[] = [
   {
     id: "prod-9",
     name: "Camiseta Street Logo Floral SM Off White",
-    price: 180.00,
+    price: 120.00,
     image: "/PRODUTOS E LOGO/LANÇAMENTOS CAMISETAS/Camiseta Street Logo Floral SM Off White 01.png",
     images: [
       "/PRODUTOS E LOGO/LANÇAMENTOS CAMISETAS/Camiseta Street Logo Floral SM Off White 01.png",
@@ -155,12 +155,12 @@ export const PRODUCTS: Product[] = [
     badge: "LANÇAMENTO",
     sizes: ["P", "M", "G", "GG", "XG"],
     description: "Camiseta Street Logo Floral SM Off White com design urbano e estampa exclusiva.",
-    descriptionLong: "A Camiseta Street Logo Floral SM Off White destaca-se pela sua estampa marcante e qualidade excepcional. Feita em 100% algodão, proporciona conforto absoluto e um estilo inconfundível para o dia a dia."
+    descriptionLong: "🔥 **OFERTA DE LANÇAMENTO:** De R$ 180,00 por R$ 120,00! A Camiseta Street Logo Floral SM Off White destaca-se pela sua estampa marcante e qualidade excepcional. Feita em 100% algodão, proporciona conforto absoluto e um estilo inconfundível para o dia a dia."
   },
   {
     id: "prod-10",
     name: "Camiseta Street Logo Grafite SM Preta",
-    price: 180.00,
+    price: 120.00,
     image: "/PRODUTOS E LOGO/LANÇAMENTOS CAMISETAS/Camiseta Street Logo Grafite SM Preta 01.png",
     images: [
       "/PRODUTOS E LOGO/LANÇAMENTOS CAMISETAS/Camiseta Street Logo Grafite SM Preta 01.png",
@@ -173,7 +173,7 @@ export const PRODUCTS: Product[] = [
     badge: "LANÇAMENTO",
     sizes: ["P", "M", "G", "GG", "XG"],
     description: "Camiseta Street Logo Grafite SM Preta com visual moderno e atitude.",
-    descriptionLong: "Com a Camiseta Street Logo Grafite SM Preta, você leva o estilo das ruas para o seu guarda-roupa. Confeccionada com materiais premium, oferece durabilidade e um caimento impecável."
+    descriptionLong: "🔥 **OFERTA DE LANÇAMENTO:** De R$ 180,00 por R$ 120,00! Com a Camiseta Street Logo Grafite SM Preta, você leva o estilo das ruas para o seu guarda-roupa. Confeccionada com materiais premium, oferece durabilidade e um caimento impecável."
   }
 ];
 
