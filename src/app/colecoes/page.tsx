@@ -42,8 +42,8 @@ export default function ColecoesPage() {
   // Banner transition state
   const [currentBannerIndex, setCurrentBannerIndex] = useState(0);
   const bannerImages = [
-    "/PRODUTOS E LOGO/drop_002_teaser.png",
-    "/PRODUTOS E LOGO/drop_002_modelos.png"
+    "/PRODUTOS E LOGO/fotos para a capa parte de cima do site/transição sm floral.png",
+    "/PRODUTOS E LOGO/fotos para a capa parte de cima do site/transição sm grafite.png"
   ];
 
   useEffect(() => {
@@ -333,7 +333,7 @@ export default function ColecoesPage() {
                 className="group flex items-end justify-between border-b border-white md:border-b-2 pb-1 md:pb-2 w-[110px] md:w-[280px] transition-colors hover:border-[#FF6B1A] cursor-pointer"
               >
                 <span className="bg-transparent text-white font-bold uppercase tracking-widest text-[8px] md:text-sm text-left group-hover:text-[#FF6B1A] transition-colors pl-1 md:pl-2">
-                  Reservas no Whats
+                  Disponível
                 </span>
                 <ArrowRight className="w-3 h-3 md:w-5 md:h-5 text-white group-hover:text-[#FF6B1A] transition-colors mb-0.5 md:mb-0" />
               </a>

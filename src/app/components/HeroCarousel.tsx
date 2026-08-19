@@ -32,9 +32,15 @@ const HERO_MEDIA = [
   },
   {
     type: "image" as const,
-    src: "/PRODUTOS E LOGO/fotos para a capa parte de cima do site/IMG_6843.jpg",
-    alt: "Seu Marquinho — Estilo Carioca",
-    objectPosition: "center 28%",
+    src: "/PRODUTOS E LOGO/fotos para a capa parte de cima do site/transição sm floral.png",
+    alt: "Seu Marquinho — Transição Floral",
+    objectPosition: "center",
+  },
+  {
+    type: "image" as const,
+    src: "/PRODUTOS E LOGO/fotos para a capa parte de cima do site/transição sm grafite.png",
+    alt: "Seu Marquinho — Transição Grafite",
+    objectPosition: "center",
   },
   {
     type: "image" as const,
