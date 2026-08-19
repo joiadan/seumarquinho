@@ -42,8 +42,8 @@ export default function ColecoesPage() {
   // Banner transition state
   const [currentBannerIndex, setCurrentBannerIndex] = useState(0);
   const bannerImages = [
-    "/PRODUTOS E LOGO/fotos para a capa parte de cima do site/transição sm floral.png",
-    "/PRODUTOS E LOGO/fotos para a capa parte de cima do site/transição sm grafite.png"
+    "/PRODUTOS E LOGO/fotos para a capa parte de cima do site/transicao-sm-floral.png",
+    "/PRODUTOS E LOGO/fotos para a capa parte de cima do site/transicao-sm-grafite.png"
   ];
 
   useEffect(() => {
