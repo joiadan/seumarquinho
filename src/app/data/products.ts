@@ -142,21 +142,21 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: "prod-9",
-    name: "Camiseta Street Logo Floral SM Preta",
+    name: "Camiseta Street Logo Floral SM Off White",
     price: 180.00,
-    image: "/PRODUTOS E LOGO/LANÇAMENTOS CAMISETAS/Camiseta Street Logo Floral SM Preta 01.png",
+    image: "/PRODUTOS E LOGO/LANÇAMENTOS CAMISETAS/Camiseta Street Logo Floral SM Off White 01.png",
     images: [
-      "/PRODUTOS E LOGO/LANÇAMENTOS CAMISETAS/Camiseta Street Logo Floral SM Preta 01.png",
+      "/PRODUTOS E LOGO/LANÇAMENTOS CAMISETAS/Camiseta Street Logo Floral SM Off White 01.png",
       "/PRODUTOS E LOGO/LANÇAMENTOS CAMISETAS/Camiseta Street Logo Floral SM Preta 02.png",
-      "/PRODUTOS E LOGO/LANÇAMENTOS CAMISETAS/Camiseta Street Logo Floral SM Preta 03.png",
-      "/PRODUTOS E LOGO/LANÇAMENTOS CAMISETAS/Camiseta Street Logo Floral SM Preta 04.png",
-      "/PRODUTOS E LOGO/LANÇAMENTOS CAMISETAS/Camiseta Street Logo Floral SM Preta 05.png"
+      "/PRODUTOS E LOGO/LANÇAMENTOS CAMISETAS/Camiseta Street Logo Floral SM Off White 03.png",
+      "/PRODUTOS E LOGO/LANÇAMENTOS CAMISETAS/Camiseta Street Logo Floral SM Off White 04.png",
+      "/PRODUTOS E LOGO/LANÇAMENTOS CAMISETAS/Camiseta Street Logo Floral SM Off White 05.png"
     ],
     category: "camisas",
     badge: "LANÇAMENTO",
     sizes: ["P", "M", "G", "GG", "XG"],
-    description: "Camiseta Street Logo Floral SM Preta com design urbano e estampa exclusiva.",
-    descriptionLong: "A Camiseta Street Logo Floral SM Preta destaca-se pela sua estampa marcante e qualidade excepcional. Feita em 100% algodão, proporciona conforto absoluto e um estilo inconfundível para o dia a dia."
+    description: "Camiseta Street Logo Floral SM Off White com design urbano e estampa exclusiva.",
+    descriptionLong: "A Camiseta Street Logo Floral SM Off White destaca-se pela sua estampa marcante e qualidade excepcional. Feita em 100% algodão, proporciona conforto absoluto e um estilo inconfundível para o dia a dia."
   },
   {
     id: "prod-10",
