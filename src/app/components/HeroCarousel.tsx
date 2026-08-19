@@ -60,7 +60,14 @@ const LANDMARK_DRAWINGS = [
     elements: (
       <>
         {/* Base line */}
-        <line x1="240" y1="180" x2="950" y2="180" stroke="rgba(255,107,26,0.12)" strokeWidth="1.25" />
+        <line
+          x1="240"
+          y1="180"
+          x2="950"
+          y2="180"
+          stroke="rgba(255,107,26,0.12)"
+          strokeWidth="1.25"
+        />
 
         {/* Cable Car Cable */}
         <motion.line
@@ -80,7 +87,12 @@ const LANDMARK_DRAWINGS = [
         <motion.g
           initial={{ x: 627, y: 88 }}
           animate={{ x: 797, y: 38.8 }}
-          transition={{ duration: 14, ease: "easeInOut", repeat: Infinity, repeatType: "reverse" }}
+          transition={{
+            duration: 14,
+            ease: "easeInOut",
+            repeat: Infinity,
+            repeatType: "reverse",
+          }}
         >
           <rect width="13" height="8" rx="1.5" fill="#FF5500" opacity={0.9} />
           <motion.circle
@@ -116,7 +128,12 @@ const LANDMARK_DRAWINGS = [
           strokeWidth="1.5"
           initial={{ r: 3, opacity: 0.8 }}
           animate={{ r: 24, opacity: 0 }}
-          transition={{ duration: 4, delay: 0.5, repeat: Infinity, ease: "easeOut" }}
+          transition={{
+            duration: 4,
+            delay: 0.5,
+            repeat: Infinity,
+            ease: "easeOut",
+          }}
         />
 
         {/* Skyline Contour Path */}
@@ -132,7 +149,7 @@ const LANDMARK_DRAWINGS = [
           transition={{ duration: 4, ease: [0.25, 1, 0.36, 1] }}
         />
       </>
-    )
+    ),
   },
   // 1: Arcos da Lapa
   {
@@ -140,8 +157,15 @@ const LANDMARK_DRAWINGS = [
     elements: (
       <>
         {/* Base line */}
-        <line x1="20" y1="130" x2="380" y2="130" stroke="rgba(255,107,26,0.15)" strokeWidth="1.25" />
-        
+        <line
+          x1="20"
+          y1="130"
+          x2="380"
+          y2="130"
+          stroke="rgba(255,107,26,0.15)"
+          strokeWidth="1.25"
+        />
+
         {/* Arcos da Lapa Path */}
         {/* Arcos da Lapa Radar Beacon */}
         <circle cx="200" cy="70" r="3.5" fill="#FF5500" />
@@ -169,7 +193,7 @@ const LANDMARK_DRAWINGS = [
           transition={{ duration: 4, ease: [0.25, 1, 0.36, 1] }}
         />
       </>
-    )
+    ),
   },
   // 2: Urca (Pão de Açúcar + Bondinho)
   {
@@ -177,8 +201,15 @@ const LANDMARK_DRAWINGS = [
     elements: (
       <>
         {/* Base line */}
-        <line x1="20" y1="130" x2="380" y2="130" stroke="rgba(255,107,26,0.15)" strokeWidth="1.25" />
-        
+        <line
+          x1="20"
+          y1="130"
+          x2="380"
+          y2="130"
+          stroke="rgba(255,107,26,0.15)"
+          strokeWidth="1.25"
+        />
+
         {/* Cable Car Cable */}
         <motion.line
           x1="130"
@@ -197,7 +228,12 @@ const LANDMARK_DRAWINGS = [
         <motion.g
           initial={{ x: 130, y: 64.3 }}
           animate={{ x: 274, y: 30.7 }}
-          transition={{ duration: 14, ease: "easeInOut", repeat: Infinity, repeatType: "reverse" }}
+          transition={{
+            duration: 14,
+            ease: "easeInOut",
+            repeat: Infinity,
+            repeatType: "reverse",
+          }}
         >
           <rect width="13" height="8" rx="1.5" fill="#FF5500" opacity={0.9} />
           <motion.circle
@@ -233,7 +269,12 @@ const LANDMARK_DRAWINGS = [
           strokeWidth="1.25"
           initial={{ r: 2.5, opacity: 0.8 }}
           animate={{ r: 20, opacity: 0 }}
-          transition={{ duration: 4, delay: 0.5, repeat: Infinity, ease: "easeOut" }}
+          transition={{
+            duration: 4,
+            delay: 0.5,
+            repeat: Infinity,
+            ease: "easeOut",
+          }}
         />
 
         {/* Skyline Urca Path */}
@@ -249,7 +290,7 @@ const LANDMARK_DRAWINGS = [
           transition={{ duration: 4, ease: [0.25, 1, 0.36, 1] }}
         />
       </>
-    )
+    ),
   },
   // 3: Arpoador Sunset
   {
@@ -257,7 +298,14 @@ const LANDMARK_DRAWINGS = [
     elements: (
       <>
         {/* Base line */}
-        <line x1="20" y1="130" x2="380" y2="130" stroke="rgba(255,107,26,0.15)" strokeWidth="1.25" />
+        <line
+          x1="20"
+          y1="130"
+          x2="380"
+          y2="130"
+          stroke="rgba(255,107,26,0.15)"
+          strokeWidth="1.25"
+        />
 
         {/* Sunrays & Sun */}
         <motion.path
@@ -299,7 +347,7 @@ const LANDMARK_DRAWINGS = [
           transition={{ duration: 4, ease: [0.25, 1, 0.36, 1] }}
         />
       </>
-    )
+    ),
   },
   // 4: Ipanema (Dois Irmãos + Waves)
   {
@@ -343,7 +391,12 @@ const LANDMARK_DRAWINGS = [
           strokeWidth="1.25"
           initial={{ r: 2.5, opacity: 0.8 }}
           animate={{ r: 20, opacity: 0 }}
-          transition={{ duration: 4, delay: 0.5, repeat: Infinity, ease: "easeOut" }}
+          transition={{
+            duration: 4,
+            delay: 0.5,
+            repeat: Infinity,
+            ease: "easeOut",
+          }}
         />
 
         {/* Wavy beach lines */}
@@ -359,7 +412,7 @@ const LANDMARK_DRAWINGS = [
           transition={{ duration: 4, ease: [0.25, 1, 0.36, 1] }}
         />
       </>
-    )
+    ),
   },
   // 5: Rocinha Favela
   {
@@ -367,7 +420,14 @@ const LANDMARK_DRAWINGS = [
     elements: (
       <>
         {/* Base line */}
-        <line x1="20" y1="130" x2="380" y2="130" stroke="rgba(255,107,26,0.15)" strokeWidth="1.25" />
+        <line
+          x1="20"
+          y1="130"
+          x2="380"
+          y2="130"
+          stroke="rgba(255,107,26,0.15)"
+          strokeWidth="1.25"
+        />
 
         {/* Rocinha stacked houses and landscape contour */}
         {/* Rocinha Favela Radar Beacon */}
@@ -396,8 +456,8 @@ const LANDMARK_DRAWINGS = [
           transition={{ duration: 4, ease: [0.25, 1, 0.36, 1] }}
         />
       </>
-    )
-  }
+    ),
+  },
 ];
 
 interface HeroCarouselProps {
@@ -407,7 +467,12 @@ interface HeroCarouselProps {
   onSlideChange?: (index: number) => void;
 }
 
-export default function HeroCarousel({ onPrev, onNext, showArrows = true, onSlideChange }: HeroCarouselProps) {
+export default function HeroCarousel({
+  onPrev,
+  onNext,
+  showArrows = true,
+  onSlideChange,
+}: HeroCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [direction, setDirection] = useState(1);
@@ -419,12 +484,14 @@ export default function HeroCarousel({ onPrev, onNext, showArrows = true, onSlid
       setDirection(index > currentIndex ? 1 : -1);
       setCurrentIndex(index);
     },
-    [currentIndex]
+    [currentIndex],
   );
 
   const prevSlide = useCallback(() => {
     setDirection(-1);
-    setCurrentIndex((prev) => (prev - 1 + HERO_MEDIA.length) % HERO_MEDIA.length);
+    setCurrentIndex(
+      (prev) => (prev - 1 + HERO_MEDIA.length) % HERO_MEDIA.length,
+    );
   }, []);
 
   const nextSlide = useCallback(() => {
@@ -472,7 +539,8 @@ export default function HeroCarousel({ onPrev, onNext, showArrows = true, onSlid
   }, [currentIndex]);
 
   const currentMedia = HERO_MEDIA[currentIndex];
-  const currentDrawing = LANDMARK_DRAWINGS[currentIndex % LANDMARK_DRAWINGS.length];
+  const currentDrawing =
+    LANDMARK_DRAWINGS[currentIndex % LANDMARK_DRAWINGS.length];
 
   // Framer motion variants for crossfade + subtle scale
   const slideVariants = {
@@ -530,7 +598,10 @@ export default function HeroCarousel({ onPrev, onNext, showArrows = true, onSlid
                   sizes="100vw"
                   quality={90}
                   className="hero-carousel-image"
-                  style={{ objectPosition: (currentMedia as any).objectPosition || "center" }}
+                  style={{
+                    objectPosition:
+                      (currentMedia as any).objectPosition || "center",
+                  }}
                 />
               </div>
             ) : (
@@ -539,10 +610,10 @@ export default function HeroCarousel({ onPrev, onNext, showArrows = true, onSlid
                   if (el) videoRefs.current.set(currentIndex, el);
                 }}
                 src={currentMedia.src}
-                autoPlay
-                muted
-                loop
-                playsInline
+                autoPlay={true}
+                muted={true}
+                loop={true}
+                playsInline={true}
                 className="hero-carousel-video"
               />
             )}
@@ -569,7 +640,13 @@ export default function HeroCarousel({ onPrev, onNext, showArrows = true, onSlid
               className="w-full h-full drop-shadow-[0_0_15px_rgba(255,107,26,0.3)]"
             >
               <defs>
-                <linearGradient id="skyline-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <linearGradient
+                  id="skyline-grad"
+                  x1="0%"
+                  y1="0%"
+                  x2="100%"
+                  y2="0%"
+                >
                   <stop offset="0%" stopColor="rgba(255, 107, 26, 0)" />
                   <stop offset="20%" stopColor="rgba(255, 107, 26, 0.8)" />
                   <stop offset="50%" stopColor="rgba(255, 107, 26, 1)" />
