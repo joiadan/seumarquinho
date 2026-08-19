@@ -7,7 +7,7 @@ export interface Product {
   image: string;
   images?: string[]; // additional gallery images
   category: "camisas" | "bones";
-  badge?: "NEW" | "LIMITED";
+  badge?: "NEW" | "LIMITED" | "LANÇAMENTO";
   description: string;
   descriptionLong?: string;
   sizes?: string[];
@@ -108,6 +108,73 @@ export const PRODUCTS: Product[] = [
     category: "bones",
     description: "Boné Five Panel com ajuste strapback e lateral em tela (redinha) respirável para o máximo conforto.",
     descriptionLong: "O Boné Five Panel Redinha Preto SM é a fusão perfeita entre estilo urbano e funcionalidade. Conta com painéis laterais em tela (redinha) que garantem ventilação superior nos dias quentes do Rio. Estrutura five panel clássica com frente flat e bordado frontal do logo SM. Ajuste strapback regulável para encaixe perfeito."
+  }
+,
+  {
+    id: "prod-7",
+    name: "DadHat Cinza SM",
+    price: 135.00,
+    image: "/PRODUTOS E LOGO/LANÇAMENTOS BONÉS/DadHat Cinza SM - Frente.png",
+    images: [
+      "/PRODUTOS E LOGO/LANÇAMENTOS BONÉS/DadHat Cinza SM - Frente.png",
+      "/PRODUTOS E LOGO/LANÇAMENTOS BONÉS/DadHat Cinza SM - Lateral etiqueta.png",
+      "/PRODUTOS E LOGO/LANÇAMENTOS BONÉS/DadHat Cinza SM - Traseira.png"
+    ],
+    category: "bones",
+    badge: "LANÇAMENTO",
+    description: "Boné DadHat Cinza SM com acabamento premium e estilo único.",
+    descriptionLong: "O DadHat Cinza SM é a escolha perfeita para um visual urbano e sofisticado. Com material resistente e ajuste perfeito, é ideal para o uso diário."
+  },
+  {
+    id: "prod-8",
+    name: "DadHat Off White SM",
+    price: 135.00,
+    image: "/PRODUTOS E LOGO/LANÇAMENTOS BONÉS/DadHat Off White SM -  Frente.png",
+    images: [
+      "/PRODUTOS E LOGO/LANÇAMENTOS BONÉS/DadHat Off White SM -  Frente.png",
+      "/PRODUTOS E LOGO/LANÇAMENTOS BONÉS/DadHat Off White SM - Lateral Etiqueta.png",
+      "/PRODUTOS E LOGO/LANÇAMENTOS BONÉS/DadHat Off White SM - Traseira.png"
+    ],
+    category: "bones",
+    badge: "LANÇAMENTO",
+    description: "Boné DadHat Off White SM para um estilo autêntico.",
+    descriptionLong: "Com o DadHat Off White SM, você eleva seu estilo com um toque clássico e moderno. Estrutura durável e design exclusivo para combinar com qualquer look."
+  },
+  {
+    id: "prod-9",
+    name: "Camiseta Street Logo Floral SM Preta",
+    price: 180.00,
+    image: "/PRODUTOS E LOGO/LANÇAMENTOS CAMISETAS/Camiseta Street Logo Floral SM Preta 01.png",
+    images: [
+      "/PRODUTOS E LOGO/LANÇAMENTOS CAMISETAS/Camiseta Street Logo Floral SM Preta 01.png",
+      "/PRODUTOS E LOGO/LANÇAMENTOS CAMISETAS/Camiseta Street Logo Floral SM Preta 02.png",
+      "/PRODUTOS E LOGO/LANÇAMENTOS CAMISETAS/Camiseta Street Logo Floral SM Preta 03.png",
+      "/PRODUTOS E LOGO/LANÇAMENTOS CAMISETAS/Camiseta Street Logo Floral SM Preta 04.png",
+      "/PRODUTOS E LOGO/LANÇAMENTOS CAMISETAS/Camiseta Street Logo Floral SM Preta 05.png"
+    ],
+    category: "camisas",
+    badge: "LANÇAMENTO",
+    sizes: ["P", "M", "G", "GG", "XG"],
+    description: "Camiseta Street Logo Floral SM Preta com design urbano e estampa exclusiva.",
+    descriptionLong: "A Camiseta Street Logo Floral SM Preta destaca-se pela sua estampa marcante e qualidade excepcional. Feita em 100% algodão, proporciona conforto absoluto e um estilo inconfundível para o dia a dia."
+  },
+  {
+    id: "prod-10",
+    name: "Camiseta Street Logo Grafite SM Preta",
+    price: 180.00,
+    image: "/PRODUTOS E LOGO/LANÇAMENTOS CAMISETAS/Camiseta Street Logo Grafite SM Preta 01.png",
+    images: [
+      "/PRODUTOS E LOGO/LANÇAMENTOS CAMISETAS/Camiseta Street Logo Grafite SM Preta 01.png",
+      "/PRODUTOS E LOGO/LANÇAMENTOS CAMISETAS/Camiseta Street Logo Grafite SM Preta 02.png",
+      "/PRODUTOS E LOGO/LANÇAMENTOS CAMISETAS/Camiseta Street Logo Grafite SM Preta 03.png",
+      "/PRODUTOS E LOGO/LANÇAMENTOS CAMISETAS/Camiseta Street Logo Grafite SM Preta 04.png",
+      "/PRODUTOS E LOGO/LANÇAMENTOS CAMISETAS/Camiseta Street Logo Grafite SM Preta 05.png"
+    ],
+    category: "camisas",
+    badge: "LANÇAMENTO",
+    sizes: ["P", "M", "G", "GG", "XG"],
+    description: "Camiseta Street Logo Grafite SM Preta com visual moderno e atitude.",
+    descriptionLong: "Com a Camiseta Street Logo Grafite SM Preta, você leva o estilo das ruas para o seu guarda-roupa. Confeccionada com materiais premium, oferece durabilidade e um caimento impecável."
   }
 ];
 

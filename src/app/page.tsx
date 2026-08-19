@@ -466,13 +466,7 @@ export default function Home() {
                 className="space-y-5"
               >
                 <p className="text-[#e2e2e2] font-sans text-sm sm:text-base leading-relaxed font-light">
-                  <span className="text-[#FF6B1A] font-bold">Seu Marquinho</span>, a marca que começou através de uma resenha. Bruno, Daniel e Felipe não tinham o hábito de se chamarem pelo próprio nome, então usavam apelidos como por exemplo: 
-                  <span className="text-white font-semibold"> Roger, Cleitin e Marquinho...</span>
-                </p>
-                
-                <p className="text-[#e2e2e2] font-sans text-sm sm:text-base leading-relaxed font-light">
-                  Até que um dia, numa pequena loja de conveniência dentro da favela do 
-                  <span className="text-white font-semibold"> Vidigal</span>, Felipe se vira para Bruno e diz:
+                  Tudo começou de bobeira, numa tarde de sol no Rio. Bruno, Daniel e Felipe sempre se comunicaram por apelidos. Mas a virada de chave rolou numa conveniência no Vidigal. Felipe soltou:
                 </p>
                 
                 {/* The quote — highlighted */}
@@ -484,18 +478,21 @@ export default function Home() {
                   className="border-l-4 border-[#FF6B1A] pl-5 py-3 my-6 bg-[#FF6B1A]/5 rounded-r-lg"
                 >
                   <p className="text-white font-sans text-base sm:text-lg md:text-xl font-semibold italic leading-relaxed">
-                    &ldquo;Marquinho, vai querer comprar mais alguma coisa?&rdquo;
+                    &ldquo;Coé Marquinho, vai querer mais alguma coisa?&rdquo;
                   </p>
                 </motion.div>
                 
                 <p className="text-[#e2e2e2] font-sans text-sm sm:text-base leading-relaxed font-light">
-                  Nessa hora entra um senhor escutando esse nome e vem na direção do Bruno dizendo: 
+                  Um senhor que entrava no local ouviu e começou a chamar o Bruno com entusiasmo: 
                   <span className="story-quote text-base sm:text-lg">&ldquo;Seu Marquinho! Seu Marquinho!&rdquo;</span>
                 </p>
                 
-                <p className="text-[#e2e2e2] font-sans text-sm sm:text-base leading-relaxed font-light">
-                  E esse foi o start para que tudo começasse. Desenvolveram uma logo e resolveram criar uma marca de produtos e alguns acessórios. Dessa forma e <span className="text-white font-semibold">literalmente através de uma resenha e zoeira</span> era criado o 
-                  <span className="text-[#FF6B1A] font-bold"> Seu Marquinho</span>.
+                <p className="text-[#e2e2e2] font-sans text-sm sm:text-base leading-relaxed font-light mt-4">
+                  A zoeira virou piada interna e, logo depois, o estalo definitivo. Aquele nome tinha a energia e a espontaneidade da resenha deles. Dali para o papel foi um pulo: desenharam a logo e decidiram criar uma marca de bonés e acessórios. Assim nasceu o <span className="text-[#FF6B1A] font-bold"> Seu Marquinho</span>: uma marca que não surgiu de planos corporativos, mas da vivência real da favela.
+                </p>
+
+                <p className="text-[#e2e2e2] font-sans text-sm sm:text-base leading-relaxed font-light mt-4 font-semibold italic">
+                  &ldquo;O streetwear nacional não consome apenas tendências, ele dita o passo do asfalto global.&rdquo;
                 </p>
               </motion.div>
 
@@ -614,8 +611,11 @@ export default function Home() {
                     </div>
                     <div>
                       <h4 className="text-primary font-bold mb-2 uppercase text-sm tracking-wider">O Personagem &amp; Monograma SM</h4>
+                      <p className="text-on-surface-variant font-sans text-sm leading-relaxed font-light mb-2">
+                        O monograma SM nasceu com a missão de unir as três linhas retas do asfalto com as curvas e labirintos das vielas. Cada ângulo foi planejado para carregar peso e presença.
+                      </p>
                       <p className="text-on-surface-variant font-sans text-sm leading-relaxed font-light">
-                        Nossa logo une a figura clássica do malandro carioca — com seu chapéu e charuto característicos — ao monograma geométrico "SM", unindo a malandragem tradicional à estética moderna das ruas.
+                        O Marquinho queríamos um personagem raiz, nada contemporâneo, mas que carregasse a alma do malandro carioca. O olhar do personagem pode dizer várias coisas ou simplesmente nada!
                       </p>
                     </div>
                   </div>

@@ -37,118 +37,18 @@ interface BlogPost {
 const BLOG_POSTS: BlogPost[] = [
   {
     id: "post-1",
-    title: "O Start: Da Resenha no Vidigal para as Ruas",
+    title: "Do Vidigal para as Ruas: A Origem do Seu Marquinho",
     date: "15 MAI 2026",
-    excerpt: "Como uma brincadeira de apelidos entre Bruno, Daniel e Felipe em uma conveniência no topo do Vidigal se transformou na alma de uma marca nacional.",
+    excerpt: "Tudo começou de bobeira, numa tarde de sol no Rio. A zoeira virou piada interna e, logo depois, o estalo definitivo.",
     image: "/PRODUTOS E LOGO/fotos para a capa parte de cima do site/IMG_6490.jpg",
     imageAlt: "Estética Seu Marquinho lifestyle urbano no Rio de Janeiro.",
     hotDrop: true,
     content: [
-      "Tudo começou sem pretensão, em uma dessas noites quentes do Rio. Bruno, Daniel e Felipe nunca se chamavam pelos nomes reais. Para eles, o cotidiano era guiado por apelidos — Roger, Cleitin, Marquinho. Era a linguagem da cumplicidade, a resenha pura e simples que define a amizade nascida nas ladeiras do Vidigal.",
-      "A virada de chave aconteceu em um cenário improvável: uma pequena loja de conveniência no coração da comunidade. Felipe se virou para Bruno e disparou a frase que mudaria tudo: 'Marquinho, vai querer comprar mais alguma coisa?'. Nesse exato momento, um senhor que passava ouviu a brincadeira, olhou fixamente para Bruno e começou a chamá-lo com entusiasmo: 'Seu Marquinho! Seu Marquinho!'.",
-      "O riso foi geral, mas o estalo foi imediato. Aquele nome tinha força, tinha a cara da rua, do Rio de Janeiro e da espontaneidade carioca. Dali para o papel foi um salto. Eles desenharam o primeiro esboço da logo, estruturaram a ideia de criar bonés e acessórios e decidiram que a marca levaria essa verdade no peito. Nascia oficialmente a Seu Marquinho: uma marca que não veio de planos corporativos, mas sim de uma legítima resenha e zoeira de favela."
+      "Tudo começou de bobeira, numa tarde de sol no Rio. Bruno, Daniel e Felipe sempre se comunicaram por apelidos. Mas a virada de chave rolou numa conveniência no Vidigal. Felipe soltou: 'Coé Marquinho, vai querer mais alguma coisa?'.",
+      "Um senhor que entrava no local ouviu e começou a chamar o Bruno com entusiasmo: 'Seu Marquinho! Seu Marquinho!'.",
+      "A zoeira virou piada interna e, logo depois, o estalo definitivo. Aquele nome tinha a energia e a espontaneidade da resenha deles. Dali para o papel foi um pulo: desenharam a logo e decidiram criar uma marca de bonés e acessórios. Assim nasceu o Seu Marquinho: uma marca que não surgiu de planos corporativos, mas da vivência real da favela.",
+      "O streetwear nacional não consome apenas tendências, ele dita o passo do asfalto global."
     ]
-  },
-  {
-    id: "post-2",
-    title: "Estética das Vielas: O Monograma SM",
-    date: "20 MAI 2026",
-    excerpt: "A história por trás do desenvolvimento visual do nosso monograma e como traduzimos a arquitetura orgânica das favelas em design premium.",
-    image: "/PRODUTOS E LOGO/fotos para a capa parte de cima do site/sm tratada.png",
-    imageAlt: "Design gráfico do monograma Seu Marquinho tratada para estampa premium.",
-    content: [
-      "Criar uma identidade visual para a Seu Marquinho exigia mais do que apenas um desenho bonito; era preciso traduzir a geometria e o contraste da nossa realidade. O monograma SM nasceu com essa missão: unir as linhas retas e cruas do asfalto com as curvas e labirintos das vielas da comunidade.",
-      "Cada ângulo do nosso logotipo foi planejado para carregar peso e presença. O monograma foi desenvolvido para ser de fácil reconhecimento e forte impacto visual, seja bordado na frente de um boné Five Panel ou estampado em silk em uma camiseta boxy de alta gramatura. Queríamos que quem usasse a marca sentisse o orgulho da representatividade urbana em cada detalhe.",
-      "A imagem 'sm tratada' reflete perfeitamente esse espírito. Ela une fotografia urbana analógica com contraste agressivo, celebrando o monograma como um selo de autenticidade. Nosso design é o reflexo de quem vive a rua intensamente e entende que a moda de periferia é, hoje, a vanguarda do design global."
-    ]
-  },
-  {
-    id: "post-3",
-    title: "Atitude Five Panel: A Cultura das Calçadas",
-    date: "28 MAI 2026",
-    excerpt: "Conheça os detalhes do design do nosso boné clássico Five Panel e por que ele se tornou o maior símbolo de conexão urbana da Seu Marquinho.",
-    image: "/PRODUTOS E LOGO/fotos para a capa parte de cima do site/IMG_6815.jpg",
-    imageAlt: "Close-up do modelo vestindo o boné Five Panel Preto da Seu Marquinho.",
-    content: [
-      "No streetwear, o boné Five Panel é mais do que um acessório; é uma coroa urbana. Quando decidimos desenvolver o nosso modelo clássico em preto, sabíamos que ele precisava ser impecável no caimento e resistente para aguentar a rotina intensa de quem corre atrás do seu espaço no Rio de Janeiro.",
-      "Focamos na tela respirável na parte traseira para garantir conforto térmico sob o sol carioca, combinada com um tecido de alta resistência na parte frontal que serve como base para o nosso monograma bordado. O ajuste com fivela traseira foi pensado para se adaptar perfeitamente a qualquer estilo de cabelo e postura. O design é ergonômico, clean e direto ao ponto.",
-      "Cada drop do Five Panel preto representa nossa conexão direta com a comunidade. Ver os jovens do Vidigal e de todo o Rio ocupando praças, praias e as pistas de skate com o boné é a validação definitiva de que a Seu Marquinho não é apenas vestuário — é um código visual de pertencimento e atitude."
-    ]
-  }
-];
-
-const LOOKBOOK_IMAGES = [
-  {
-    src: "/PRODUTOS E LOGO/fotos para a capa parte de cima do site/IMG_6448.PNG",
-    alt: "Seu Marquinho — Urban Culture",
-    caption: "A Origem no Vidigal",
-    aspect: "aspect-[9/16]"
-  },
-  {
-    src: "/PRODUTOS E LOGO/fotos para a capa parte de cima do site/IMG_6490.jpg",
-    alt: "Seu Marquinho — Lifestyle Urbano",
-    caption: "Da Resenha ao Drop",
-    aspect: "aspect-[16/9]"
-  },
-  {
-    src: "/PRODUTOS E LOGO/fotos para a capa parte de cima do site/IMG_6815.jpg",
-    alt: "Seu Marquinho — Coleção Exclusiva",
-    caption: "Conexão com a Cidade",
-    aspect: "aspect-[3/4]"
-  },
-  {
-    src: "/PRODUTOS E LOGO/fotos para a capa parte de cima do site/IMG_6843.jpg",
-    alt: "Seu Marquinho — Estilo Carioca",
-    caption: "Atitude Five Panel",
-    aspect: "aspect-[3/4]"
-  },
-  {
-    src: "/PRODUTOS E LOGO/fotos para a capa parte de cima do site/IMG_7061.jpg",
-    alt: "Seu Marquinho — Atitude Urbana",
-    caption: "Cultura Urbana Real",
-    aspect: "aspect-[3/4]"
-  },
-  {
-    src: "/PRODUTOS E LOGO/fotos para a capa parte de cima do site/sm tratada.png",
-    alt: "Seu Marquinho — Streetwear Premium",
-    caption: "Essência Premium",
-    aspect: "aspect-[9/19]"
-  }
-];
-
-export default function BlogPage() {
-  const [activeBlogPost, setActiveBlogPost] = useState<BlogPost | null>(null);
-  const [activeLookbookIndex, setActiveLookbookIndex] = useState<number | null>(null);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [scrollY, setScrollY] = useState(0);
-
-  // Cart & Search States
-  const [isCartOpen, setIsCartOpen] = useState(false);
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
-  
-  // Cart state
-  const [cart, setCart] = useState<CartItem[]>([]);
-  const [isCartLoaded, setIsCartLoaded] = useState(false);
-
-  // Load cart from localStorage once on mount
-  useEffect(() => {
-    const savedCart = localStorage.getItem("seu-marquinho-cart");
-    if (savedCart) {
-      try {
-        setCart(JSON.parse(savedCart));
-      } catch (e) {
-        console.error("Failed to parse cart", e);
-      }
-    }
-    setIsCartLoaded(true);
-  }, []);
-
-  // Save cart to localStorage whenever it changes
-  useEffect(() => {
-    if (isCartLoaded) {
-      localStorage.setItem("seu-marquinho-cart", JSON.stringify(cart));
-    }
   }, [cart, isCartLoaded]);
 
   // Cart operations
@@ -423,13 +323,7 @@ export default function BlogPage() {
                 className="space-y-5"
               >
                 <p className="text-[#e2e2e2] font-sans text-sm sm:text-base leading-relaxed font-light">
-                  <span className="text-[#FF6B1A] font-bold">Seu Marquinho</span>, a marca que começou através de uma resenha. Bruno, Daniel e Felipe não tinham o hábito de se chamarem pelo próprio nome, então usavam apelidos como por exemplo: 
-                  <span className="text-white font-semibold"> Roger, Cleitin e Marquinho...</span>
-                </p>
-                
-                <p className="text-[#e2e2e2] font-sans text-sm sm:text-base leading-relaxed font-light">
-                  Até que um dia, numa pequena loja de conveniência dentro da favela do 
-                  <span className="text-white font-semibold"> Vidigal</span>, Felipe se vira para Bruno e diz:
+                  Tudo começou de bobeira, numa tarde de sol no Rio. Bruno, Daniel e Felipe sempre se comunicaram por apelidos. Mas a virada de chave rolou numa conveniência no Vidigal. Felipe soltou:
                 </p>
                 
                 {/* The quote — highlighted */}
@@ -441,18 +335,21 @@ export default function BlogPage() {
                   className="border-l-4 border-[#FF6B1A] pl-5 py-3 my-6 bg-[#FF6B1A]/5 rounded-r-lg"
                 >
                   <p className="text-white font-sans text-base sm:text-lg md:text-xl font-semibold italic leading-relaxed">
-                    &ldquo;Marquinho, vai querer comprar mais alguma coisa?&rdquo;
+                    &ldquo;Coé Marquinho, vai querer mais alguma coisa?&rdquo;
                   </p>
                 </motion.div>
                 
                 <p className="text-[#e2e2e2] font-sans text-sm sm:text-base leading-relaxed font-light">
-                  Nessa hora entra um senhor escutando esse nome e vem na direção do Bruno dizendo: 
+                  Um senhor que entrava no local ouviu e começou a chamar o Bruno com entusiasmo: 
                   <span className="text-[#FF6B1A] font-semibold italic text-base sm:text-lg">&ldquo;Seu Marquinho! Seu Marquinho!&rdquo;</span>
                 </p>
                 
-                <p className="text-[#e2e2e2] font-sans text-sm sm:text-base leading-relaxed font-light">
-                  E esse foi o start para que tudo começasse. Desenvolveram uma logo e resolveram criar uma marca de produtos e alguns acessórios. Dessa forma e <span className="text-white font-semibold">literalmente através de uma resenha e zoeira</span> era criado o 
-                  <span className="text-[#FF6B1A] font-bold"> Seu Marquinho</span>.
+                <p className="text-[#e2e2e2] font-sans text-sm sm:text-base leading-relaxed font-light mt-4">
+                  A zoeira virou piada interna e, logo depois, o estalo definitivo. Aquele nome tinha a energia e a espontaneidade da resenha deles. Dali para o papel foi um pulo: desenharam a logo e decidiram criar uma marca de bonés e acessórios. Assim nasceu o <span className="text-[#FF6B1A] font-bold"> Seu Marquinho</span>: uma marca que não surgiu de planos corporativos, mas da vivência real da favela.
+                </p>
+
+                <p className="text-[#e2e2e2] font-sans text-sm sm:text-base leading-relaxed font-light mt-4 font-semibold italic">
+                  &ldquo;O streetwear nacional não consome apenas tendências, ele dita o passo do asfalto global.&rdquo;
                 </p>
               </motion.div>
             </div>

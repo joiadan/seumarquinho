@@ -9,13 +9,8 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 const HERO_MEDIA = [
   {
     type: "video" as const,
-    src: "/PRODUTOS E LOGO/Boné Five Panel Preto Logo Seu Marquinho/Boné Five Panel Preto Logo Seu Marquinho vídeo 01.mp4",
-    alt: "Boné Five Panel Preto — Vídeo 01",
-  },
-  {
-    type: "video" as const,
-    src: "/PRODUTOS E LOGO/Boné Five Panel Preto Logo Seu Marquinho/Boné Five Panel Preto Logo Seu Marquinho video 02.mp4",
-    alt: "Boné Five Panel Preto — Vídeo 02",
+    src: "/PRODUTOS E LOGO/VÍDEOS PARA PÁGINA INICIAL/VÍDEO LANÇAMENTO SITE.mp4",
+    alt: "Vídeo Lançamento Site",
   },
   {
     type: "image" as const,
