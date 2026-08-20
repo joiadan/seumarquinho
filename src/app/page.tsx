@@ -647,18 +647,6 @@ export default function Home() {
                       </p>
                     </div>
                   </div>
-
-                  <div className="flex gap-6">
-                    <div className="w-10 h-10 rounded-full border border-primary-container/30 flex items-center justify-center text-primary-container bg-[#111] shrink-0">
-                      <span className="material-symbols-outlined text-sm">local_shipping</span>
-                    </div>
-                    <div>
-                      <h4 className="text-primary font-bold mb-2 uppercase text-sm tracking-wider">Produção Local Autêntica</h4>
-                      <p className="text-on-surface-variant font-sans text-sm leading-relaxed font-light">
-                        Cada peça é concebida e estampada localmente no Rio, garantindo qualidade artesanal e valorizando a economia local de forma ética e transparente.
-                      </p>
-                    </div>
-                  </div>
                 </div>
               </div>
 
