@@ -113,9 +113,9 @@ export const PRODUCTS: Product[] = [
     id: "prod-7",
     name: "DadHat Cinza SM",
     price: 117.00,
-    image: "/PRODUTOS E LOGO/LANÇAMENTOS BONÉS/DadHat Cinza SM - Frente.png",
+    image: "/PRODUTOS E LOGO/LANÇAMENTOS BONÉS/DadHat-Cinza-SM-Frente.png",
     images: [
-      "/PRODUTOS E LOGO/LANÇAMENTOS BONÉS/DadHat Cinza SM - Frente.png",
+      "/PRODUTOS E LOGO/LANÇAMENTOS BONÉS/DadHat-Cinza-SM-Frente.png",
       "/PRODUTOS E LOGO/LANÇAMENTOS BONÉS/DadHat Cinza SM - Lateral etiqueta.png",
       "/PRODUTOS E LOGO/LANÇAMENTOS BONÉS/DadHat Cinza SM - Traseira.png"
     ],
