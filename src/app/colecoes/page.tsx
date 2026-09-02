@@ -423,6 +423,66 @@ export default function ColecoesPage() {
               </div>
             </div>
 
+            {/* ── HIGHLIGHT: DADHAT SM COLLECTION ── */}
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="mb-12 grid grid-cols-1 lg:grid-cols-12 gap-0 items-stretch bg-white border border-[#e5e5e5] overflow-hidden relative shadow-sm"
+            >
+              <div className="lg:col-span-5 p-8 md:p-12 z-10 flex flex-col justify-center border-b lg:border-b-0 lg:border-r border-[#e5e5e5]">
+                <div className="inline-flex items-center gap-2 mb-6">
+                  <div className="w-1.5 h-1.5 rounded-full bg-[#c9a830]" />
+                  <span className="text-[#c9a830] text-[10px] font-bold tracking-[0.2em] uppercase">The Triple Threat</span>
+                </div>
+                <h3 className="font-display text-3xl md:text-5xl font-black text-[#1a1a1a] uppercase leading-[1.1] mb-4 tracking-tighter">
+                  DadHat SM
+                </h3>
+                <p className="text-[#666] font-sans text-sm md:text-base leading-relaxed mb-8 max-w-md">
+                  A modelagem clássica com acabamento impecável. Escolha sua cor: <strong className="text-black">Preto, Cinza ou Off-White</strong>.
+                </p>
+                <div className="flex">
+                  <button 
+                    onClick={() => setSelectedCategory("bones")}
+                    className="bg-[#1a1a1a] text-white px-8 py-3.5 text-xs font-bold uppercase tracking-widest hover:bg-[#c9a830] transition-colors"
+                  >
+                    Explorar Modelos
+                  </button>
+                </div>
+              </div>
+              
+              {/* Asymmetric Image Layout */}
+              <div className="lg:col-span-7 relative h-[300px] md:h-[450px] w-full bg-[#fafafa] overflow-hidden flex items-center justify-center">
+                {/* Center Main - Preto */}
+                <motion.div 
+                  className="absolute z-20 w-[55%] md:w-[45%] drop-shadow-2xl"
+                  whileHover={{ scale: 1.05, zIndex: 30 }}
+                  transition={{ type: "spring", stiffness: 200, damping: 20 }}
+                >
+                  <Image src="/PRODUTOS E LOGO/Boné DadHat Preto SM (esse que está esgotado).png" alt="DadHat Preto" width={500} height={500} className="w-full object-contain" />
+                </motion.div>
+                
+                {/* Left - Cinza */}
+                <motion.div 
+                  className="absolute z-10 w-[45%] md:w-[35%] -translate-x-[40%] md:-translate-x-[60%] -rotate-12 opacity-70 hover:opacity-100 drop-shadow-xl"
+                  whileHover={{ scale: 1.1, zIndex: 30, rotate: 0 }}
+                  transition={{ type: "spring", stiffness: 200, damping: 20 }}
+                >
+                  <Image src="/PRODUTOS E LOGO/LANÇAMENTOS BONÉS/DadHat-Cinza-SM-Frente.png" alt="DadHat Cinza" width={400} height={400} className="w-full object-contain" />
+                </motion.div>
+
+                {/* Right - Off White */}
+                <motion.div 
+                  className="absolute z-10 w-[45%] md:w-[35%] translate-x-[40%] md:translate-x-[60%] rotate-12 opacity-70 hover:opacity-100 drop-shadow-xl"
+                  whileHover={{ scale: 1.1, zIndex: 30, rotate: 0 }}
+                  transition={{ type: "spring", stiffness: 200, damping: 20 }}
+                >
+                  <Image src="/PRODUTOS E LOGO/LANÇAMENTOS BONÉS/DadHat-Off-White-SM-Frente.jpeg" alt="DadHat Off-White" width={400} height={400} className="w-full object-contain" />
+                </motion.div>
+              </div>
+            </motion.div>
+
             {/* Catalog Grid (2 columns on mobile, 3 on tablet, 4 on desktop) */}
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-8 md:gap-x-6 md:gap-y-10">
               {displayedProducts.map((product) => (

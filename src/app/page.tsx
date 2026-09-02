@@ -387,19 +387,41 @@ export default function Home() {
                 </div>
                 <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-extrabold text-street-white uppercase">Lançamentos</h2>
               </div>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-8 md:gap-x-8 md:gap-y-12">
+              <motion.div 
+                className="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-8 md:gap-x-8 md:gap-y-12"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-50px" }}
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: {
+                    opacity: 1,
+                    transition: { staggerChildren: 0.15 }
+                  }
+                }}
+              >
                 {PRODUCTS.filter((p) => p.badge === "LANÇAMENTO").map((product) => (
                   <motion.div
                     key={`release-${product.id}`}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="group cursor-pointer flex flex-col"
+                    variants={{
+                      hidden: { opacity: 0, y: 40 },
+                      visible: { 
+                        opacity: 1, 
+                        y: 0, 
+                        transition: { type: "spring", stiffness: 80, damping: 20 } 
+                      }
+                    }}
+                    whileHover={{ 
+                      y: -4,
+                      scale: 1.02,
+                      transition: { type: "spring", stiffness: 300, damping: 20 }
+                    }}
+                    className="group cursor-pointer flex flex-col relative will-change-transform"
                   >
                     <ProductCard product={product} />
                   </motion.div>
                 ))}
-              </div>
+              </motion.div>
             </div>
           </section>
         )}
@@ -408,6 +430,66 @@ export default function Home() {
         <section id="catalogo" className="py-20 bg-surface-container-lowest border-y border-white/5">
           <div className="px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto">
             
+            {/* ── HIGHLIGHT: DADHAT SM COLLECTION ── */}
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="mb-16 grid grid-cols-1 lg:grid-cols-12 gap-0 items-stretch bg-[#080808] border border-white/5 overflow-hidden relative group"
+            >
+              <div className="lg:col-span-5 p-8 md:p-12 z-10 flex flex-col justify-center border-b lg:border-b-0 lg:border-r border-white/5">
+                <div className="inline-flex items-center gap-2 mb-6">
+                  <div className="w-1.5 h-1.5 rounded-full bg-[#ffdb58]" />
+                  <span className="text-[#ffdb58] text-[10px] font-bold tracking-[0.2em] uppercase">Coleção Cápsula</span>
+                </div>
+                <h3 className="font-display text-4xl md:text-5xl font-black text-white uppercase leading-[1.1] mb-5 tracking-tighter">
+                  DadHat SM <br/><span className="text-zinc-600">Premium</span>
+                </h3>
+                <p className="text-zinc-400 font-sans text-sm md:text-base leading-relaxed mb-8 max-w-md">
+                  Acabamento matte, sarja de alta gramatura e o icônico monograma geométrico. Três cores exclusivas para elevar seu estilo urbano: <strong className="text-white">Preto, Cinza e Off-White</strong>.
+                </p>
+                <div className="flex">
+                  <button 
+                    onClick={() => { setSelectedCategory("bones"); scrollTo("catalogo"); }}
+                    className="bg-white text-black px-8 py-3.5 text-xs font-bold uppercase tracking-widest hover:bg-[#ffdb58] transition-colors"
+                  >
+                    Ver Linha Completa
+                  </button>
+                </div>
+              </div>
+              
+              {/* Asymmetric Image Layout */}
+              <div className="lg:col-span-7 relative h-[350px] md:h-[500px] w-full bg-[#0a0a0a] overflow-hidden flex items-center justify-center">
+                {/* Center Main - Cinza */}
+                <motion.div 
+                  className="absolute z-20 w-[55%] md:w-[45%] drop-shadow-2xl"
+                  whileHover={{ scale: 1.05, zIndex: 30 }}
+                  transition={{ type: "spring", stiffness: 200, damping: 20 }}
+                >
+                  <Image src="/PRODUTOS E LOGO/LANÇAMENTOS BONÉS/DadHat-Cinza-SM-Frente.png" alt="DadHat Cinza" width={500} height={500} className="w-full object-contain" />
+                </motion.div>
+                
+                {/* Left - Preto */}
+                <motion.div 
+                  className="absolute z-10 w-[45%] md:w-[35%] -translate-x-[40%] md:-translate-x-[60%] -rotate-12 opacity-80 blur-[2px] hover:blur-none hover:opacity-100 drop-shadow-xl"
+                  whileHover={{ scale: 1.1, zIndex: 30, rotate: 0 }}
+                  transition={{ type: "spring", stiffness: 200, damping: 20 }}
+                >
+                  <Image src="/PRODUTOS E LOGO/Boné DadHat Preto SM (esse que está esgotado).png" alt="DadHat Preto" width={400} height={400} className="w-full object-contain" />
+                </motion.div>
+
+                {/* Right - Off White */}
+                <motion.div 
+                  className="absolute z-10 w-[45%] md:w-[35%] translate-x-[40%] md:translate-x-[60%] rotate-12 opacity-80 blur-[2px] hover:blur-none hover:opacity-100 drop-shadow-xl"
+                  whileHover={{ scale: 1.1, zIndex: 30, rotate: 0 }}
+                  transition={{ type: "spring", stiffness: 200, damping: 20 }}
+                >
+                  <Image src="/PRODUTOS E LOGO/LANÇAMENTOS BONÉS/DadHat-Off-White-SM-Frente.jpeg" alt="DadHat Off-White" width={400} height={400} className="w-full object-contain" />
+                </motion.div>
+              </div>
+            </motion.div>
+
             {/* Header info */}
             <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12">
               <div>

@@ -86,10 +86,11 @@ export const PRODUCTS: Product[] = [
     id: "prod-5",
     name: "Boné DadHat Preto SM",
     price: 117.00,
-    image: "/PRODUTOS E LOGO/Boné DadHat Preto SM (esse que está esgotado).webp",
+    image: "/PRODUTOS E LOGO/Boné DadHat Preto SM (esse que está esgotado).png",
     images: [
-      "/PRODUTOS E LOGO/Boné DadHat Preto SM (esse que está esgotado).webp",
-      "/PRODUTOS E LOGO/Boné DadHat Preto SM (verso foto 02).webp"
+      "/PRODUTOS E LOGO/Boné DadHat Preto SM (esse que está esgotado).png",
+      "/PRODUTOS E LOGO/Boné DadHat Preto SM Lateral.png",
+      "/PRODUTOS E LOGO/Boné DadHat Preto SM Traseira.png"
     ],
     category: "bones",
     description: "Boné Dad Hat clássico preto com bordado geométrico SM. Edição limitada premium.",

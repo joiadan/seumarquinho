@@ -43,9 +43,14 @@ export default function ProductCard({ product }: ProductCardProps) {
             ESGOTADO
           </span>
         ) : product.badge ? (
-          <span className={`absolute ${product.category === 'camisas' ? 'bottom-2 left-2' : 'top-2 left-2'} bg-[#000000] text-[#FFFFFF] text-[10px] tracking-widest font-bold px-2 py-1 uppercase z-10 border border-white/10`}>
-            {product.badge}
-          </span>
+          <div className={`absolute ${product.category === 'camisas' ? 'bottom-2 left-2' : 'top-2 left-2'} z-10 overflow-hidden`}>
+            <span className="relative block bg-[#000000] text-[#FFFFFF] text-[10px] tracking-widest font-bold px-2 py-1 uppercase border border-white/10 overflow-hidden group-hover:border-white/30 transition-colors">
+              {product.badge}
+              {product.badge === 'LANÇAMENTO' && (
+                <div className="absolute inset-0 -translate-x-[150%] bg-gradient-to-r from-transparent via-white/40 to-transparent group-hover:animate-[shimmer_1.5s_infinite] skew-x-[-20deg]" />
+              )}
+            </span>
+          </div>
         ) : null}
       </div>
 
