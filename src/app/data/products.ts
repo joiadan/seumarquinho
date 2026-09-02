@@ -128,9 +128,9 @@ export const PRODUCTS: Product[] = [
     id: "prod-8",
     name: "DadHat Off White SM",
     price: 117.00,
-    image: "/PRODUTOS E LOGO/LANÇAMENTOS BONÉS/DadHat-Off-White-SM-Frente.png",
+    image: "/PRODUTOS E LOGO/LANÇAMENTOS BONÉS/DadHat-Off-White-SM-Frente.jpeg",
     images: [
-      "/PRODUTOS E LOGO/LANÇAMENTOS BONÉS/DadHat-Off-White-SM-Frente.png",
+      "/PRODUTOS E LOGO/LANÇAMENTOS BONÉS/DadHat-Off-White-SM-Frente.jpeg",
       "/PRODUTOS E LOGO/LANÇAMENTOS BONÉS/DadHat Off White SM - Lateral Etiqueta.png",
       "/PRODUTOS E LOGO/LANÇAMENTOS BONÉS/DadHat Off White SM - Traseira.png"
     ],
