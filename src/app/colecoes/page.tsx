@@ -200,14 +200,14 @@ export default function ColecoesPage() {
           <div className="flex items-center gap-1 md:gap-6">
             <button
               onClick={() => setIsSearchOpen(true)}
-              className="hover:scale-110 transition-all duration-300 active:scale-95 text-[#1a1a1a] cursor-pointer p-1.5 md:p-2.5"
+              className="hover:scale-110 transition-all duration-300 active:scale-95 text-[#1a1a1a] cursor-pointer p-1.5 md:p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center"
               aria-label="Buscar produtos"
             >
               <Search className="w-5 h-5 md:w-5 md:h-5" />
             </button>
             <button
               onClick={() => setIsCartOpen(true)}
-              className="hover:scale-110 transition-all duration-300 active:scale-95 text-[#1a1a1a] relative cursor-pointer p-1.5 md:p-2.5"
+              className="hover:scale-110 transition-all duration-300 active:scale-95 text-[#1a1a1a] relative cursor-pointer p-1.5 md:p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center"
               aria-label="Carrinho"
             >
               <ShoppingBag className="w-5 h-5 md:w-5 md:h-5" />
@@ -223,7 +223,7 @@ export default function ColecoesPage() {
             </button>
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-1.5 text-[#1a1a1a] hover:text-[#c9a830] cursor-pointer"
+              className="md:hidden p-1.5 text-[#1a1a1a] hover:text-[#c9a830] cursor-pointer min-w-[44px] min-h-[44px] flex items-center justify-center"
               aria-label="Menu"
             >
               {isMobileMenuOpen ? (
@@ -456,8 +456,9 @@ export default function ColecoesPage() {
               <div className="lg:col-span-7 relative h-[300px] md:h-[450px] w-full bg-[#fafafa] overflow-hidden flex items-center justify-center">
                 {/* Center Main - Preto */}
                 <motion.div 
-                  className="absolute z-20 w-[55%] md:w-[45%] drop-shadow-2xl"
+                  className="absolute z-20 w-[45%] md:w-[45%] drop-shadow-2xl"
                   whileHover={{ scale: 1.05, zIndex: 30 }}
+                  whileTap={{ scale: 0.95, zIndex: 30 }}
                   transition={{ type: "spring", stiffness: 200, damping: 20 }}
                 >
                   <Image src="/PRODUTOS E LOGO/Boné DadHat Preto SM (esse que está esgotado).png" alt="DadHat Preto" width={500} height={500} className="w-full object-contain" />
@@ -465,8 +466,9 @@ export default function ColecoesPage() {
                 
                 {/* Left - Cinza */}
                 <motion.div 
-                  className="absolute z-10 w-[45%] md:w-[35%] -translate-x-[40%] md:-translate-x-[60%] -rotate-12 opacity-70 hover:opacity-100 drop-shadow-xl"
+                  className="absolute z-10 w-[35%] md:w-[35%] -translate-x-[55%] md:-translate-x-[80%] -rotate-12 opacity-70 hover:opacity-100 drop-shadow-xl"
                   whileHover={{ scale: 1.1, zIndex: 30, rotate: 0 }}
+                  whileTap={{ scale: 0.95, zIndex: 30, rotate: 0 }}
                   transition={{ type: "spring", stiffness: 200, damping: 20 }}
                 >
                   <Image src="/PRODUTOS E LOGO/LANÇAMENTOS BONÉS/DadHat-Cinza-SM-Frente.png" alt="DadHat Cinza" width={400} height={400} className="w-full object-contain" />
@@ -474,8 +476,9 @@ export default function ColecoesPage() {
 
                 {/* Right - Off White */}
                 <motion.div 
-                  className="absolute z-10 w-[45%] md:w-[35%] translate-x-[40%] md:translate-x-[60%] rotate-12 opacity-70 hover:opacity-100 drop-shadow-xl"
+                  className="absolute z-10 w-[35%] md:w-[35%] translate-x-[55%] md:translate-x-[80%] rotate-12 opacity-70 hover:opacity-100 drop-shadow-xl"
                   whileHover={{ scale: 1.1, zIndex: 30, rotate: 0 }}
+                  whileTap={{ scale: 0.95, zIndex: 30, rotate: 0 }}
                   transition={{ type: "spring", stiffness: 200, damping: 20 }}
                 >
                   <Image src="/PRODUTOS E LOGO/LANÇAMENTOS BONÉS/DadHat-Off-White-SM-Frente.jpeg" alt="DadHat Off-White" width={400} height={400} className="w-full object-contain" />
