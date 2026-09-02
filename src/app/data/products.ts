@@ -39,7 +39,7 @@ export const PRODUCTS: Product[] = [
     badge: "NEW",
     sizes: ["P", "M", "G", "GG", "XG"],
     description: "Pensa num produto que tem história, é essa camiseta!",
-    descriptionLong: "Pensa num produto que tem história, é essa camiseta!\n\nInformações Técnicas:\n- 100% algodão fio 30.1 penteado\n- Gramatura: 180 g/m²\n- Gola de 2,7 cm, ribana canelada 2×1 com elastano e pesponto de 2 agulhas\n- Reforço ombro a ombro\n- Bainha e barras com 2 cm\n- Etiqueta interna de composição\n- Etiqueta de tamanho no ombro\n\nTabela de Medidas:\n- P: Larg. 54 cm | Comp. 73 cm | Man. 22 cm\n- M: Larg. 56 cm | Comp. 75 cm | Man. 23 cm\n- G: Larg. 58 cm | Comp. 77 cm | Man. 24 cm\n- GG: Larg. 60 cm | Comp. 79 cm | Man. 25 cm\n- XG: Larg. 62 cm | Comp. 81 cm | Man. 26 cm\n\nKit Seu Marquinho:\n- ziplock\n- sacola reutilizável\n- chaveiro retrô"
+    descriptionLong: "🔥 **OFERTA DE LANÇAMENTO:** De R$ 180,00 por R$ 120,00! Pensa num produto que tem história, é essa camiseta! Produzida em 100% algodão fio 30.1, com gramatura de 180 g/m² e acabamentos reforçados. Caimento característico do estilo streetwear. Gola de 2,7 cm em ribana canelada 2x1 com elastano. Reforço ombro a ombro para maior durabilidade."
   },
   {
     id: "prod-2",
@@ -54,7 +54,7 @@ export const PRODUCTS: Product[] = [
     category: "camisas",
     sizes: ["P", "M", "G", "GG", "XG"],
     description: "Pensa num produto que tem história, é essa camiseta!",
-    descriptionLong: "Pensa num produto que tem história, é essa camiseta!\n\nInformações Técnicas:\n- 100% algodão fio 30.1 penteado\n- Gramatura: 180 g/m²\n- Gola de 2,7 cm, ribana canelada 2×1 com elastano e pesponto de 2 agulhas\n- Reforço ombro a ombro\n- Bainha e barras com 2 cm\n- Etiqueta interna de composição\n- Etiqueta de tamanho no ombro\n\nTabela de Medidas:\n- P: Larg. 54 cm | Comp. 73 cm | Man. 22 cm\n- M: Larg. 56 cm | Comp. 75 cm | Man. 23 cm\n- G: Larg. 58 cm | Comp. 77 cm | Man. 24 cm\n- GG: Larg. 60 cm | Comp. 79 cm | Man. 25 cm\n- XG: Larg. 62 cm | Comp. 81 cm | Man. 26 cm\n\nKit Seu Marquinho:\n- ziplock\n- sacola reutilizável\n- chaveiro retrô"
+    descriptionLong: "🔥 **OFERTA DE LANÇAMENTO:** De R$ 180,00 por R$ 120,00! Pensa num produto que tem história, é essa camiseta! Produzida em 100% algodão fio 30.1, com gramatura de 180 g/m² e acabamentos reforçados. Caimento característico do estilo streetwear. Gola de 2,7 cm em ribana canelada 2x1 com elastano. Reforço ombro a ombro para maior durabilidade."
   },
   {
     id: "prod-3",
@@ -155,7 +155,7 @@ export const PRODUCTS: Product[] = [
     badge: "LANÇAMENTO",
     sizes: ["P", "M", "G", "GG", "XG"],
     description: "Camiseta Street Logo Floral SM Off White com design urbano e estampa exclusiva.",
-    descriptionLong: "🔥 **OFERTA DE LANÇAMENTO:** De R$ 180,00 por R$ 120,00! A Camiseta Street Logo Floral SM Off White destaca-se pela sua estampa marcante e qualidade excepcional. Feita em 100% algodão, proporciona conforto absoluto e um estilo inconfundível para o dia a dia."
+    descriptionLong: "🔥 **OFERTA DE LANÇAMENTO:** De R$ 180,00 por R$ 120,00! A Camiseta Street Logo Floral SM Off White destaca-se pela sua estampa marcante e qualidade excepcional. Produzida em 100% algodão fio 30.1, com gramatura de 180 g/m² e acabamentos reforçados. Caimento característico do estilo streetwear. Gola de 2,7 cm em ribana canelada 2x1 com elastano. Reforço ombro a ombro para maior durabilidade."
   },
   {
     id: "prod-10",
@@ -173,7 +173,7 @@ export const PRODUCTS: Product[] = [
     badge: "LANÇAMENTO",
     sizes: ["P", "M", "G", "GG", "XG"],
     description: "Camiseta Street Logo Grafite SM Preta com visual moderno e atitude.",
-    descriptionLong: "🔥 **OFERTA DE LANÇAMENTO:** De R$ 180,00 por R$ 120,00! Com a Camiseta Street Logo Grafite SM Preta, você leva o estilo das ruas para o seu guarda-roupa. Confeccionada com materiais premium, oferece durabilidade e um caimento impecável."
+    descriptionLong: "🔥 **OFERTA DE LANÇAMENTO:** De R$ 180,00 por R$ 120,00! Com a Camiseta Street Logo Grafite SM Preta, você leva o estilo das ruas para o seu guarda-roupa. Produzida em 100% algodão fio 30.1, com gramatura de 180 g/m² e acabamentos reforçados. Caimento característico do estilo streetwear. Gola de 2,7 cm em ribana canelada 2x1 com elastano. Reforço ombro a ombro para maior durabilidade."
   }
 ];
 
