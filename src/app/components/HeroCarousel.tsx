@@ -9,13 +9,13 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 const HERO_MEDIA = [
   {
     type: "image" as const,
-    src: "/PRODUTOS E LOGO/fotos para a capa parte de cima do site/transicao-sm-floral-v2.png",
+    src: "/PRODUTOS E LOGO/fotos para a capa parte de cima do site/transicao-sm-grafite-v4.png",
     alt: "Seu Marquinho — Transição Floral",
     objectPosition: "center",
   },
   {
     type: "image" as const,
-    src: "/PRODUTOS E LOGO/fotos para a capa parte de cima do site/transicao-sm-grafite-v2.png",
+    src: "/PRODUTOS E LOGO/fotos para a capa parte de cima do site/transicao-sm-grafite-v3.png",
     alt: "Seu Marquinho — Transição Grafite",
     objectPosition: "center",
   },
