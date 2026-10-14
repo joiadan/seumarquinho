@@ -90,7 +90,7 @@ export const PRODUCTS: Product[] = [
     images: [
       "/PRODUTOS E LOGO/Boné DadHat Preto SM (esse que está esgotado).png",
       "/PRODUTOS E LOGO/Boné DadHat Preto SM Lateral.png",
-      "/PRODUTOS E LOGO/Boné DadHat Preto SM Traseira.png"
+      "/PRODUTOS E LOGO/Boné DadHat Preto SM Traseira-v2.png"
     ],
     category: "bones",
     description: "Boné Dad Hat clássico preto com bordado geométrico SM. Edição limitada premium.",
@@ -118,7 +118,7 @@ export const PRODUCTS: Product[] = [
     images: [
       "/PRODUTOS E LOGO/LANÇAMENTOS BONÉS/DadHat-Cinza-SM-Frente.png",
       "/PRODUTOS E LOGO/LANÇAMENTOS BONÉS/DadHat Cinza SM - Lateral etiqueta.png",
-      "/PRODUTOS E LOGO/LANÇAMENTOS BONÉS/DadHat Cinza SM - Traseira.png"
+      "/PRODUTOS E LOGO/LANÇAMENTOS BONÉS/DadHat Cinza SM - Traseira-v2.png"
     ],
     category: "bones",
     badge: "LANÇAMENTO",
@@ -133,7 +133,7 @@ export const PRODUCTS: Product[] = [
     images: [
       "/PRODUTOS E LOGO/LANÇAMENTOS BONÉS/DadHat-Off-White-SM-Frente.jpeg",
       "/PRODUTOS E LOGO/LANÇAMENTOS BONÉS/DadHat Off White SM - Lateral Etiqueta.png",
-      "/PRODUTOS E LOGO/LANÇAMENTOS BONÉS/DadHat Off White SM - Traseira.png"
+      "/PRODUTOS E LOGO/LANÇAMENTOS BONÉS/DadHat Off White SM - Traseira-v2.png"
     ],
     category: "bones",
     badge: "LANÇAMENTO",
