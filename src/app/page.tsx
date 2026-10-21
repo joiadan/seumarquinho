@@ -303,7 +303,7 @@ export default function Home() {
       <main className="pt-12 md:pt-16">
         
         {/* 2. HERO SECTION — CINEMATIC CAROUSEL */}
-        <section id="hero" className="relative flex flex-col overflow-hidden">
+        <section id="hero" className="relative flex flex-col overflow-hidden bg-[#0a0a0a]">
           {/* Carousel with text overlay */}
           <div className="relative">
             <HeroCarousel 
@@ -314,79 +314,119 @@ export default function Home() {
             />
             
             {/* Text overlay positioned on top of carousel */}
-            <div className="absolute inset-0 z-20 flex items-start justify-start pointer-events-none pt-16 sm:pt-24 md:pt-44 lg:pt-52">
+            <div className="absolute inset-0 z-20 flex items-start justify-start pointer-events-none pt-14 sm:pt-20 md:pt-36 lg:pt-48">
               <div className="px-6 sm:px-10 md:px-margin-desktop max-w-4xl w-full flex flex-col items-start text-left justify-start">
                 
-                {/* TEXT CONTAINER (Only visible on first slide) */}
+                {/* TEXT CONTAINER (Only visible on first slide, with smooth editorial transition) */}
                 <div 
-                  className={`transition-all duration-1000 ease-out transform flex flex-col items-start ${
-                    heroSlideIndex === 0 ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-4 md:-translate-y-8 pointer-events-none"
+                  className={`transition-all duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] transform flex flex-col items-start ${
+                    heroSlideIndex === 0
+                      ? "opacity-100 translate-y-0 blur-0 pointer-events-auto"
+                      : "opacity-0 -translate-y-6 blur-sm pointer-events-none"
                   }`}
                 >
-                  <motion.p 
-                    initial={{ opacity: 0, y: 20 }}
+                  <motion.div
+                    initial={{ opacity: 0, y: 18 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.3, duration: 0.8 }}
-                    className="text-primary-container font-sans text-[10px] sm:text-xs font-bold tracking-[0.2em] md:tracking-[0.25em] uppercase mb-1 sm:mb-2 md:mb-5 text-glow drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]"
+                    transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.2 }}
+                    className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-[#0a0a0a]/65 backdrop-blur-xl border border-[#ffdb58]/30 mb-3 sm:mb-4 md:mb-6 shadow-[0_4px_20px_rgba(0,0,0,0.6)]"
                   >
-                    Underground Essence
-                  </motion.p>
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#ffdb58] animate-pulse" />
+                    <span className="text-[#ffdb58] font-sans text-[10px] sm:text-[11px] font-bold tracking-[0.22em] md:tracking-[0.28em] uppercase">
+                      Underground Essence
+                    </span>
+                  </motion.div>
                   <motion.h1 
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 28 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.5, duration: 0.8 }}
-                    className="font-display text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-black text-street-white mb-2 sm:mb-3 md:mb-6 leading-tight md:leading-[1.1] tracking-tight uppercase drop-shadow-[0_4px_25px_rgba(0,0,0,1)] w-full"
+                    transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.35 }}
+                    className="font-display text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-black text-[#fff9f3] mb-2 sm:mb-3 md:mb-6 leading-[1.05] tracking-tight uppercase drop-shadow-[0_6px_30px_rgba(0,0,0,0.95)] w-full"
                   >
                     Nascido no Rio. Criado para as Ruas.
                   </motion.h1>
                   <motion.p 
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.7, duration: 0.8 }}
-                    className="text-white/95 font-sans text-xs sm:text-sm md:text-lg max-w-2xl leading-relaxed md:leading-relaxed font-light drop-shadow-[0_4px_25px_rgba(0,0,0,1)]"
+                    transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.5 }}
+                    className="text-[#fff9f3]/95 font-sans text-xs sm:text-sm md:text-lg max-w-2xl leading-relaxed font-light drop-shadow-[0_4px_25px_rgba(0,0,0,1)]"
                   >
                     <span className="text-[#FF6B1A] font-semibold">Estética urbana refinada.</span> Do asfalto ao topo, <span className="text-[#FF6B1A] font-semibold">Seu Marquinho</span> define o streetwear nacional.
                   </motion.p>
                 </div>
 
-                {/* Transition navigation buttons below the text (Always visible) */}
+                {/* Transition navigation buttons below the text (Always visible, tactile glassmorphism) */}
                 <motion.div 
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.9, duration: 0.8 }}
-                  className="flex gap-3 md:gap-4 mt-5 sm:mt-6 md:mt-8 pointer-events-auto justify-start"
+                  transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.65 }}
+                  className="flex items-center gap-3 md:gap-4 mt-4 sm:mt-6 md:mt-8 pointer-events-auto justify-start"
                 >
-                  <button 
+                  <motion.button 
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.92 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
                     onClick={() => prevSlideRef.current?.()}
-                    className="p-2 md:p-3 rounded-full bg-black/40 hover:bg-[#FF6B1A] text-white hover:text-white border border-white/10 hover:border-[#FF6B1A] backdrop-blur-md transition-all duration-300 active:scale-90 hover:scale-110 cursor-pointer shadow-[0_0_15px_rgba(0,0,0,0.5)] hover:shadow-[0_0_20px_rgba(255,107,26,0.4)] group"
+                    className="w-11 h-11 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-[#0a0a0a]/60 hover:bg-[#FF6B1A] text-[#fff9f3] hover:text-white border border-[#ffdb58]/25 hover:border-[#FF6B1A] backdrop-blur-xl transition-colors duration-300 cursor-pointer shadow-[0_8px_25px_rgba(0,0,0,0.65)] hover:shadow-[0_0_25px_rgba(255,107,26,0.45)] group"
                     aria-label="Slide anterior"
                   >
-                    <ChevronLeft className="w-5 h-5 md:w-5 md:h-5 transition-transform duration-300 group-hover:-translate-x-0.5" />
-                  </button>
-                  <button 
+                    <ChevronLeft className="w-5 h-5 transition-transform duration-300 group-hover:-translate-x-0.5" />
+                  </motion.button>
+                  <motion.button 
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.92 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
                     onClick={() => nextSlideRef.current?.()}
-                    className="p-2 md:p-3 rounded-full bg-black/40 hover:bg-[#FF6B1A] text-white hover:text-white border border-white/10 hover:border-[#FF6B1A] backdrop-blur-md transition-all duration-300 active:scale-90 hover:scale-110 cursor-pointer shadow-[0_0_15px_rgba(0,0,0,0.5)] hover:shadow-[0_0_20px_rgba(255,107,26,0.4)] group"
+                    className="w-11 h-11 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-[#0a0a0a]/60 hover:bg-[#FF6B1A] text-[#fff9f3] hover:text-white border border-[#ffdb58]/25 hover:border-[#FF6B1A] backdrop-blur-xl transition-colors duration-300 cursor-pointer shadow-[0_8px_25px_rgba(0,0,0,0.65)] hover:shadow-[0_0_25px_rgba(255,107,26,0.45)] group"
                     aria-label="Próximo slide"
                   >
-                    <ChevronRight className="w-5 h-5 md:w-5 md:h-5 transition-transform duration-300 group-hover:translate-x-0.5" />
-                  </button>
+                    <ChevronRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-0.5" />
+                  </motion.button>
                 </motion.div>
               </div>
+            </div>
+          </div>
+
+          {/* Subtle Editorial Streetwear Marquee Divider */}
+          <div className="w-full bg-[#0a0a0a] border-y border-white/[0.07] py-2.5 overflow-hidden flex select-none">
+            <div className="flex whitespace-nowrap animate-[marquee_28s_linear_infinite] items-center gap-10 text-[10px] md:text-[11px] font-mono uppercase tracking-[0.28em] text-[#cfc6af]/70">
+              {Array.from({ length: 6 }).map((_, i) => (
+                <div key={i} className="flex items-center gap-10 shrink-0">
+                  <span className="text-[#fff9f3]/90 font-semibold">SEU MARQUINHO</span>
+                  <span className="w-1 h-1 rounded-full bg-[#ffdb58]" />
+                  <span>RIO DE JANEIRO STREETWEAR</span>
+                  <span className="w-1 h-1 rounded-full bg-[#FF6B1A]" />
+                  <span className="text-[#ffdb58]">DROPS LIMITADOS</span>
+                  <span className="w-1 h-1 rounded-full bg-[#ffdb58]" />
+                  <span>DO ASFALTO AO TOPO</span>
+                  <span className="w-1 h-1 rounded-full bg-[#FF6B1A]" />
+                </div>
+              ))}
             </div>
           </div>
         </section>
 
         {/* ── LANÇAMENTOS (NEW RELEASES) SECTION ── */}
         {PRODUCTS.some((p) => p.badge === "LANÇAMENTO") && (
-          <section className="pt-12 md:pt-16 pb-8 md:pb-12 bg-gradient-to-b from-[#111111] to-black border-y border-white/5">
+          <section className="pt-14 md:pt-20 pb-12 md:pb-16 bg-gradient-to-b from-[#0a0a0a] via-[#111113] to-[#0a0a0a] border-b border-white/[0.06] relative overflow-hidden">
             <div className="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop">
-              <div className="flex flex-col mb-8 md:mb-10">
-                <div className="flex items-center gap-3 mb-2">
-                  <div className="w-2 h-2 rounded-full bg-[#d30017] animate-pulse" />
-                  <p className="text-[#d30017] font-sans text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase">Acabou de Chegar</p>
+              <motion.div
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ type: "spring", stiffness: 100, damping: 20 }}
+                className="flex flex-col md:flex-row md:items-end justify-between mb-10 md:mb-12 pb-6 border-b border-white/[0.07]"
+              >
+                <div>
+                  <div className="inline-flex items-center gap-2.5 px-3 py-1 rounded-full bg-[#d30017]/10 border border-[#d30017]/30 mb-3">
+                    <div className="w-2 h-2 rounded-full bg-[#d30017] animate-pulse" />
+                    <p className="text-[#ffb4ab] font-sans text-[10px] md:text-xs font-bold tracking-[0.22em] uppercase">Acabou de Chegar</p>
+                  </div>
+                  <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-extrabold text-[#fff9f3] tracking-tight uppercase">Lançamentos</h2>
                 </div>
-                <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-extrabold text-street-white uppercase">Lançamentos</h2>
-              </div>
+                <p className="text-xs md:text-sm text-[#cfc6af]/70 font-sans mt-2 md:mt-0 tracking-wide">
+                  Peças recém-saídas da fábrica com tiragem exclusiva.
+                </p>
+              </motion.div>
               <motion.div 
                 className="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-8 md:gap-x-8 md:gap-y-12"
                 initial="hidden"
@@ -396,7 +436,7 @@ export default function Home() {
                   hidden: { opacity: 0 },
                   visible: {
                     opacity: 1,
-                    transition: { staggerChildren: 0.15 }
+                    transition: { staggerChildren: 0.12 }
                   }
                 }}
               >
@@ -404,16 +444,15 @@ export default function Home() {
                   <motion.div
                     key={`release-${product.id}`}
                     variants={{
-                      hidden: { opacity: 0, y: 40 },
+                      hidden: { opacity: 0, y: 36 },
                       visible: { 
                         opacity: 1, 
                         y: 0, 
-                        transition: { type: "spring", stiffness: 80, damping: 20 } 
+                        transition: { type: "spring", stiffness: 100, damping: 20 } 
                       }
                     }}
                     whileHover={{ 
-                      y: -4,
-                      scale: 1.02,
+                      y: -5,
                       transition: { type: "spring", stiffness: 300, damping: 20 }
                     }}
                     className="group cursor-pointer flex flex-col relative will-change-transform"
@@ -427,40 +466,43 @@ export default function Home() {
         )}
 
         {/* 3. PRODUCT CATALOG GRID WITH FILTER TABS */}
-        <section id="catalogo" className="py-20 bg-surface-container-lowest border-y border-white/5">
+        <section id="catalogo" className="py-20 md:py-24 bg-[#0d0f0f] border-b border-white/[0.06]">
           <div className="px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto">
             
             {/* ── HIGHLIGHT: DADHAT SM COLLECTION ── */}
             <motion.div 
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 32 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="mb-16 grid grid-cols-1 lg:grid-cols-12 gap-0 items-stretch bg-white border border-[#e5e5e5] overflow-hidden relative shadow-sm"
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ type: "spring", stiffness: 100, damping: 20 }}
+              className="mb-20 grid grid-cols-1 lg:grid-cols-12 gap-0 items-stretch bg-[#fff9f3] border border-[#c9a830]/30 rounded-2xl overflow-hidden relative shadow-[0_25px_70px_-15px_rgba(0,0,0,0.75)]"
             >
-              <div className="lg:col-span-5 p-8 md:p-12 z-10 flex flex-col justify-center border-b lg:border-b-0 lg:border-r border-[#e5e5e5]">
-                <div className="inline-flex items-center gap-2 mb-6">
+              <div className="lg:col-span-5 p-8 md:p-12 z-10 flex flex-col justify-center border-b lg:border-b-0 lg:border-r border-[#18181b]/10 bg-gradient-to-br from-[#fff9f3] to-[#f5efe6]">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#c9a830]/15 border border-[#c9a830]/35 w-fit mb-6">
                   <div className="w-1.5 h-1.5 rounded-full bg-[#c9a830]" />
-                  <span className="text-[#c9a830] text-[10px] font-bold tracking-[0.2em] uppercase">The Triple Threat</span>
+                  <span className="text-[#755f00] text-[10px] font-bold tracking-[0.22em] uppercase">The Triple Threat</span>
                 </div>
-                <h3 className="font-display text-3xl md:text-5xl font-black text-[#1a1a1a] uppercase leading-[1.1] mb-4 tracking-tighter">
+                <h3 className="font-display text-3xl md:text-5xl font-black text-[#18181b] uppercase leading-[1.05] mb-4 tracking-tighter">
                   DadHat SM
                 </h3>
-                <p className="text-[#666] font-sans text-sm md:text-base leading-relaxed mb-8 max-w-md">
-                  A modelagem clássica com acabamento impecável. Escolha sua cor: <strong className="text-black">Preto, Cinza ou Off-White</strong>.
+                <p className="text-[#3f3f46] font-sans text-sm md:text-base leading-relaxed mb-8 max-w-md">
+                  A modelagem clássica com acabamento impecável. Escolha sua cor: <strong className="text-[#0a0a0a] font-bold">Preto, Cinza ou Off-White</strong>.
                 </p>
                 <div className="flex">
-                  <button 
+                  <motion.button 
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.96 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
                     onClick={() => { setSelectedCategory("bones"); scrollTo("catalogo"); }}
-                    className="bg-[#1a1a1a] text-white px-8 py-3.5 text-xs font-bold uppercase tracking-widest hover:bg-[#c9a830] transition-colors"
+                    className="bg-[#0a0a0a] text-[#fff9f3] px-8 py-4 text-xs font-bold uppercase tracking-[0.2em] hover:bg-[#c9a830] hover:text-[#0a0a0a] transition-colors duration-300 cursor-pointer shadow-md"
                   >
                     Explorar Modelos
-                  </button>
+                  </motion.button>
                 </div>
               </div>
               
               {/* Asymmetric Image Layout */}
-              <div className="lg:col-span-7 relative h-[300px] md:h-[450px] w-full bg-[#fafafa] overflow-hidden flex items-center justify-center">
+              <div className="lg:col-span-7 relative h-[300px] md:h-[450px] w-full bg-[radial-gradient(circle_at_center,#ffffff_0%,#f0ece1_100%)] overflow-hidden flex items-center justify-center">
                 {/* Center Main - Preto */}
                 <motion.div 
                   className="absolute z-20 w-[45%] md:w-[45%] drop-shadow-2xl"
@@ -473,7 +515,7 @@ export default function Home() {
                 
                 {/* Left - Cinza */}
                 <motion.div 
-                  className="absolute z-10 w-[35%] md:w-[35%] -translate-x-[55%] md:-translate-x-[60%] -rotate-12 opacity-70 hover:opacity-100 drop-shadow-xl"
+                  className="absolute z-10 w-[35%] md:w-[35%] -translate-x-[55%] md:-translate-x-[60%] -rotate-12 opacity-75 hover:opacity-100 drop-shadow-xl"
                   whileHover={{ scale: 1.1, zIndex: 30, rotate: 0 }}
                   whileTap={{ scale: 0.95, zIndex: 30, rotate: 0 }}
                   transition={{ type: "spring", stiffness: 200, damping: 20 }}
@@ -483,7 +525,7 @@ export default function Home() {
 
                 {/* Right - Off White */}
                 <motion.div 
-                  className="absolute z-10 w-[35%] md:w-[35%] translate-x-[55%] md:translate-x-[60%] rotate-12 opacity-70 hover:opacity-100 drop-shadow-xl"
+                  className="absolute z-10 w-[35%] md:w-[35%] translate-x-[55%] md:translate-x-[60%] rotate-12 opacity-75 hover:opacity-100 drop-shadow-xl"
                   whileHover={{ scale: 1.1, zIndex: 30, rotate: 0 }}
                   whileTap={{ scale: 0.95, zIndex: 30, rotate: 0 }}
                   transition={{ type: "spring", stiffness: 200, damping: 20 }}
@@ -494,14 +536,23 @@ export default function Home() {
             </motion.div>
 
             {/* Header info */}
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12">
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ type: "spring", stiffness: 100, damping: 20 }}
+              className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12 pb-6 border-b border-white/[0.07]"
+            >
               <div>
-                <p className="text-primary-container font-sans text-xs font-bold tracking-widest uppercase mb-2">PRODUTOS EM DESTAQUE</p>
-                <h2 className="font-display text-2xl md:text-3xl font-extrabold text-primary uppercase">Drops Exclusivos</h2>
+                <div className="inline-flex items-center gap-2 mb-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#ffdb58]" />
+                  <p className="text-[#ffdb58] font-sans text-xs font-bold tracking-[0.22em] uppercase">PRODUTOS EM DESTAQUE</p>
+                </div>
+                <h2 className="font-display text-2xl md:text-4xl font-extrabold text-[#fff9f3] tracking-tight uppercase">Drops Exclusivos</h2>
               </div>
               
               {/* Category Filter Tabs */}
-              <div className="flex gap-4 md:gap-6 border-b border-white/5 pb-2">
+              <div className="flex gap-2 md:gap-3 bg-[#18181b]/80 p-1.5 rounded-full border border-white/10">
                 {[
                   { label: "Todos os produtos", value: "todos" },
                   { label: "Bonés", value: "bones" },
@@ -510,23 +561,24 @@ export default function Home() {
                   <button
                     key={tab.value}
                     onClick={() => setSelectedCategory(tab.value as any)}
-                    className={`font-sans text-xs uppercase tracking-widest pb-1 transition-all cursor-pointer relative font-bold ${
+                    className={`font-sans text-[11px] md:text-xs uppercase tracking-widest px-4 py-2 rounded-full transition-colors cursor-pointer relative font-bold z-10 ${
                       selectedCategory === tab.value
-                        ? "text-primary"
-                        : "text-on-surface-variant hover:text-primary"
+                        ? "text-[#0a0a0a]"
+                        : "text-[#cfc6af] hover:text-[#fff9f3]"
                     }`}
                   >
-                    {tab.label}
                     {selectedCategory === tab.value && (
                       <motion.div 
                         layoutId="activeCategoryIndicator"
-                        className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#ffdb58]"
+                        transition={{ type: "spring", stiffness: 120, damping: 18 }}
+                        className="absolute inset-0 rounded-full bg-[#ffdb58] -z-10 shadow-[0_0_20px_rgba(255,219,88,0.3)]"
                       />
                     )}
+                    {tab.label}
                   </button>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
             {/* Catalog Grid */}
             <div className="grid grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-8 md:gap-x-8 md:gap-y-12">
@@ -534,10 +586,10 @@ export default function Home() {
                 <motion.div
                   key={product.id}
                   layout
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.4 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.96 }}
+                  transition={{ type: "spring", stiffness: 100, damping: 20 }}
                   className="group cursor-pointer flex flex-col"
                 >
                   <ProductCard product={product} />
@@ -549,22 +601,25 @@ export default function Home() {
         </section>
 
         {/* 4. BRAND ORIGIN STORY */}
-        <section id="sobre" className="relative overflow-hidden bg-[#050505] pt-16 pb-8 md:py-24 px-margin-mobile md:px-margin-desktop border-b border-white/5">
-          <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
+        <section id="sobre" className="relative overflow-hidden bg-[#0a0a0a] pt-20 pb-12 md:py-28 px-margin-mobile md:px-margin-desktop border-b border-white/[0.06]">
+          <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
             
             {/* LEFT — Text content */}
             <div className="lg:col-span-7 flex flex-col justify-center order-2 lg:order-1">
               
               {/* Bubble title — matching the reference image style */}
               <motion.div
-                initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                initial={{ opacity: 0, scale: 0.95, y: 24 }}
                 whileInView={{ opacity: 1, scale: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.7, ease: "easeOut" }}
+                transition={{ type: "spring", stiffness: 100, damping: 20 }}
               >
-                <p className="text-[#FF6B1A] font-sans text-xs font-bold tracking-[0.3em] uppercase mb-4 opacity-80">
-                  A ORIGEM
-                </p>
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FF6B1A]/10 border border-[#FF6B1A]/30 mb-4">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#FF6B1A]" />
+                  <p className="text-[#FF6B1A] font-sans text-[11px] font-bold tracking-[0.28em] uppercase">
+                    A ORIGEM
+                  </p>
+                </div>
                 <h2 className="bubble-title text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl mb-8">
                   A Resenha<br/>Que Virou<br/>Marca.
                 </h2>
@@ -575,7 +630,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.8, delay: 0.2 }}
+                transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.15 }}
                 className="space-y-5"
               >
                 <p className="text-[#e2e2e2] font-sans text-sm sm:text-base leading-relaxed font-light">
@@ -587,10 +642,10 @@ export default function Home() {
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.5 }}
-                  className="border-l-4 border-[#FF6B1A] pl-5 py-3 my-6 bg-[#FF6B1A]/5 rounded-r-lg"
+                  transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.3 }}
+                  className="border-l-4 border-[#FF6B1A] pl-5 py-4 my-6 bg-gradient-to-r from-[#FF6B1A]/10 to-transparent rounded-r-xl"
                 >
-                  <p className="text-white font-sans text-base sm:text-lg md:text-xl font-semibold italic leading-relaxed">
+                  <p className="text-[#fff9f3] font-sans text-base sm:text-lg md:text-xl font-semibold italic leading-relaxed">
                     &ldquo;Coé Marquinho, vai querer mais alguma coisa?&rdquo;
                   </p>
                 </motion.div>
@@ -604,7 +659,7 @@ export default function Home() {
                   A zoeira virou piada interna e, logo depois, o estalo definitivo. Aquele nome tinha a energia e a espontaneidade da resenha deles. Dali para o papel foi um pulo: desenharam a logo e decidiram criar uma marca de bonés e acessórios. Assim nasceu o <span className="text-[#FF6B1A] font-bold"> Seu Marquinho</span>: uma marca que não surgiu de planos corporativos, mas da vivência real da favela.
                 </p>
 
-                <p className="text-[#e2e2e2] font-sans text-sm sm:text-base leading-relaxed font-light mt-4 font-semibold italic">
+                <p className="text-[#fff9f3]/90 font-sans text-sm sm:text-base leading-relaxed font-light mt-4 font-semibold italic border-t border-white/10 pt-4">
                   &ldquo;O streetwear nacional não consome apenas tendências, ele dita o passo do asfalto global.&rdquo;
                 </p>
               </motion.div>
@@ -614,21 +669,23 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.6 }}
-                className="mt-6 flex flex-wrap gap-4"
+                transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.4 }}
+                className="mt-8 flex flex-wrap gap-4"
               >
-                <button 
+                <motion.button 
+                  whileHover={{ scale: 1.04 }}
+                  whileTap={{ scale: 0.95 }}
                   onClick={() => {
                     setSelectedCategory("todos");
                     scrollTo("catalogo");
                   }}
-                  className="bg-[#FF6B1A] text-white px-8 py-4 font-bold tracking-tight hover:scale-105 hover:bg-[#ff7e36] transition-all duration-300 active:scale-95 cursor-pointer uppercase text-xs hover:shadow-[0_0_25px_rgba(255,107,26,0.4)]"
+                  className="bg-[#FF6B1A] text-white px-8 py-4 font-bold tracking-widest hover:bg-[#ff7e36] transition-colors duration-300 cursor-pointer uppercase text-xs shadow-[0_10px_30px_rgba(255,107,26,0.3)]"
                 >
                   VER PRODUTOS
-                </button>
+                </motion.button>
                 <Link
                   href="/blog#origem"
-                  className="border border-[#FF6B1A]/50 text-[#FF6B1A] px-8 py-4 font-bold tracking-tight hover:bg-[#FF6B1A] hover:text-white transition-all duration-300 active:scale-95 uppercase text-xs"
+                  className="border border-[#FF6B1A]/50 text-[#FF6B1A] px-8 py-4 font-bold tracking-widest hover:bg-[#FF6B1A] hover:text-white transition-all duration-300 active:scale-95 uppercase text-xs"
                 >
                   SAIBA MAIS
                 </Link>
@@ -637,19 +694,19 @@ export default function Home() {
 
             {/* RIGHT — Full photo card with correct aspect ratio */}
             <motion.div 
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, scale: 0.95, y: 24 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
+              transition={{ type: "spring", stiffness: 100, damping: 20 }}
               className="lg:col-span-5 order-1 lg:order-2 flex justify-center items-center w-full"
             >
-              <div className="relative w-full max-w-[420px] aspect-[828/1465] overflow-hidden rounded-2xl border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.8)] bg-zinc-950">
+              <div className="relative w-full max-w-[420px] aspect-[828/1465] overflow-hidden rounded-2xl border border-[#ffdb58]/20 shadow-[0_25px_60px_rgba(0,0,0,0.85)] bg-[#18181b] group">
                 <Image 
                   src="/PRODUTOS E LOGO/fotos para a capa parte de cima do site/IMG_6448.PNG"
                   alt="Seu Marquinho — A Origem da Marca"
                   fill
                   sizes="(max-width: 768px) 100vw, 420px"
-                  className="object-cover hover:scale-102 transition-transform duration-700 select-none pointer-events-none"
+                  className="object-cover group-hover:scale-105 transition-transform duration-700 select-none pointer-events-none"
                   priority
                 />
               </div>
@@ -667,21 +724,27 @@ export default function Home() {
 
 
         {/* 9. BRAND IDENTITY & CONCEPT SHOWCASE */}
-        <section className="pt-8 pb-24 md:py-32 overflow-hidden bg-street-black">
+        <section className="pt-12 pb-24 md:py-32 overflow-hidden bg-[#0a0a0a]">
           <div className="px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto">
             <div className="flex flex-col md:flex-row items-center gap-16 md:gap-24">
               
               {/* Logo Image Frame with golden-yellow brackets */}
-              <div className="w-full md:w-1/2 relative mt-4 md:mt-0">
-                <div className="absolute -top-3 -left-3 md:-top-6 md:-left-6 w-20 h-20 md:w-32 md:h-32 border-t-2 border-l-2 border-primary-container/60 z-0"></div>
+              <motion.div
+                initial={{ opacity: 0, x: -24 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ type: "spring", stiffness: 100, damping: 20 }}
+                className="w-full md:w-1/2 relative mt-4 md:mt-0"
+              >
+                <div className="absolute -top-3 -left-3 md:-top-6 md:-left-6 w-20 h-20 md:w-32 md:h-32 border-t-2 border-l-2 border-[#ffdb58]/60 z-0"></div>
                 
-                <div className="relative w-full aspect-square md:aspect-[4/3] bg-white flex items-center justify-center overflow-hidden rounded-2xl shadow-[0_15px_50px_-10px_rgba(0,0,0,0.8)] z-10 border border-white/5">
+                <div className="relative w-full aspect-square md:aspect-[4/3] bg-[#fff9f3] flex items-center justify-center overflow-hidden rounded-2xl shadow-[0_20px_60px_-10px_rgba(0,0,0,0.85)] z-10 border border-[#c9a830]/25">
                   
                   {/* Main Logo Container */}
                   <motion.div 
                     className="relative w-full h-full flex items-center justify-center z-10 p-2"
                     whileHover={{ scale: 1.05 }}
-                    transition={{ duration: 0.5, ease: "easeOut" }}
+                    transition={{ type: "spring", stiffness: 120, damping: 18 }}
                   >
                     <div className="relative w-full h-full">
                       <Image 
@@ -695,57 +758,76 @@ export default function Home() {
                   </motion.div>
                 </div>
 
-                <div className="absolute -bottom-3 -right-3 md:-bottom-6 md:-right-6 w-20 h-20 md:w-32 md:h-32 border-b-2 border-r-2 border-primary-container/60 z-0"></div>
-              </div>
+                <div className="absolute -bottom-3 -right-3 md:-bottom-6 md:-right-6 w-20 h-20 md:w-32 md:h-32 border-b-2 border-r-2 border-[#ffdb58]/60 z-0"></div>
+              </motion.div>
 
               {/* Identity & Rio de Janeiro Reference Highlights */}
-              <div className="w-full md:w-1/2">
-                <p className="text-primary-container font-sans text-xs font-bold tracking-[0.25em] mb-4 uppercase">IDENTIDADE</p>
-                <h2 className="font-display text-4xl md:text-5xl font-black text-street-white mb-8 leading-tight uppercase tracking-tighter">
+              <motion.div
+                initial={{ opacity: 0, x: 24 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.1 }}
+                className="w-full md:w-1/2"
+              >
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#ffdb58]/10 border border-[#ffdb58]/30 mb-4">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#ffdb58]" />
+                  <p className="text-[#ffdb58] font-sans text-[11px] font-bold tracking-[0.25em] uppercase">IDENTIDADE</p>
+                </div>
+                <h2 className="font-display text-4xl md:text-5xl font-black text-[#fff9f3] mb-8 leading-tight uppercase tracking-tighter">
                   Nossa Origem &amp;<br/>Conceito.
                 </h2>
                 
                 <div className="space-y-8">
-                  <div className="flex gap-6">
-                    <div className="w-10 h-10 rounded-full border border-primary-container/30 flex items-center justify-center text-primary-container bg-[#111] shrink-0">
+                  <div className="flex gap-6 p-5 rounded-xl bg-[#18181b]/45 border border-white/[0.06] hover:border-[#ffdb58]/30 transition-colors duration-300">
+                    <div className="w-10 h-10 rounded-full border border-[#ffdb58]/40 flex items-center justify-center text-[#ffdb58] bg-[#0a0a0a] shrink-0">
                       <span className="material-symbols-outlined text-sm">location_on</span>
                     </div>
                     <div>
-                      <h4 className="text-primary font-bold mb-2 uppercase text-sm tracking-wider">Alma do Rio de Janeiro</h4>
-                      <p className="text-on-surface-variant font-sans text-sm leading-relaxed font-light">
+                      <h4 className="text-[#fff9f3] font-bold mb-2 uppercase text-sm tracking-wider">Alma do Rio de Janeiro</h4>
+                      <p className="text-[#cfc6af] font-sans text-sm leading-relaxed font-light">
                         Nascido e criado sob a energia das ruas do Rio. Nossa marca é moldada pelas vivências do asfalto, da orla à favela, capturando a irreverência e a atitude da cultura carioca.
                       </p>
                     </div>
                   </div>
 
-                  <div className="flex gap-6">
-                    <div className="w-10 h-10 rounded-full border border-primary-container/30 flex items-center justify-center text-primary-container bg-[#111] shrink-0">
+                  <div className="flex gap-6 p-5 rounded-xl bg-[#18181b]/45 border border-white/[0.06] hover:border-[#ffdb58]/30 transition-colors duration-300">
+                    <div className="w-10 h-10 rounded-full border border-[#ffdb58]/40 flex items-center justify-center text-[#ffdb58] bg-[#0a0a0a] shrink-0">
                       <span className="material-symbols-outlined text-sm">palette</span>
                     </div>
                     <div>
-                      <h4 className="text-primary font-bold mb-2 uppercase text-sm tracking-wider">O Personagem &amp; Monograma SM</h4>
-                      <p className="text-on-surface-variant font-sans text-sm leading-relaxed font-light mb-2">
+                      <h4 className="text-[#fff9f3] font-bold mb-2 uppercase text-sm tracking-wider">O Personagem &amp; Monograma SM</h4>
+                      <p className="text-[#cfc6af] font-sans text-sm leading-relaxed font-light mb-2">
                         O monograma SM nasceu com a missão de unir as três linhas retas do asfalto com as curvas e labirintos das vielas. Cada ângulo foi planejado para carregar peso e presença.
                       </p>
-                      <p className="text-on-surface-variant font-sans text-sm leading-relaxed font-light">
+                      <p className="text-[#cfc6af] font-sans text-sm leading-relaxed font-light">
                         O Marquinho queríamos um personagem raiz, nada contemporâneo, mas que carregasse a alma do malandro carioca. O olhar do personagem pode dizer várias coisas ou simplesmente nada!
                       </p>
                     </div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
 
             </div>
           </div>
         </section>
 
         {/* 10. NEWSLETTER / COMMUNITY */}
-        <section id="contato" className="py-24 border-y border-white/5 bg-[#050505]">
-          <div className="px-margin-mobile md:px-margin-desktop max-w-2xl mx-auto text-center">
-            <h2 className="font-display text-2xl md:text-3xl font-extrabold text-primary mb-4 uppercase tracking-tight">
+        <section id="contato" className="py-24 border-y border-white/[0.06] bg-[#0d0f0f]">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ type: "spring", stiffness: 100, damping: 20 }}
+            className="px-margin-mobile md:px-margin-desktop max-w-2xl mx-auto text-center"
+          >
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#ffdb58]/10 border border-[#ffdb58]/30 mb-4">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#ffdb58]" />
+              <span className="text-[#ffdb58] font-sans text-[10px] font-bold tracking-[0.24em] uppercase">VIP ACCESS</span>
+            </div>
+            <h2 className="font-display text-2xl md:text-4xl font-extrabold text-[#fff9f3] mb-4 uppercase tracking-tight">
               Entre no Círculo
             </h2>
-            <p className="text-on-surface-variant mb-10 font-sans text-sm leading-relaxed font-light">
+            <p className="text-[#cfc6af] mb-10 font-sans text-sm leading-relaxed font-light">
               Receba acesso exclusivo a drops secretos, cupons de desconto especiais e lançamentos de coleções underground em primeira mão.
             </p>
             <form 
@@ -760,16 +842,18 @@ export default function Home() {
                 type="email" 
                 required
                 placeholder="Seu melhor e-mail" 
-                className="flex-grow bg-[#080808] border-b-2 border-[#4c4635] focus:border-primary-container text-primary placeholder:text-outline p-4 outline-none focus:ring-0 transition-colors font-mono"
+                className="flex-grow bg-[#18181b]/80 border border-white/10 focus:border-[#ffdb58] text-[#fff9f3] placeholder:text-[#98907b] p-4 outline-none focus:ring-0 transition-colors font-mono text-sm"
               />
-              <button 
+              <motion.button 
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.96 }}
                 type="submit"
-                className="bg-primary text-black px-8 py-4 font-bold hover:bg-primary-container hover:text-black transition-colors uppercase tracking-widest text-xs cursor-pointer"
+                className="bg-[#ffdb58] text-[#0a0a0a] px-8 py-4 font-bold hover:bg-[#c9a830] hover:text-[#0a0a0a] transition-colors uppercase tracking-widest text-xs cursor-pointer shadow-[0_8px_25px_rgba(255,219,88,0.2)]"
               >
                 INSCREVER-SE
-              </button>
+              </motion.button>
             </form>
-          </div>
+          </motion.div>
         </section>
 
       </main>

@@ -56,7 +56,7 @@ const HERO_MEDIA = [
   },
 ];
 
-const SLIDE_DURATION = 5000; // 5 seconds
+const SLIDE_DURATION = 6000; // 6 seconds
 
 // Rio Landmarks line-art overlay options that change dynamically per transition
 const LANDMARK_DRAWINGS = [
@@ -548,23 +548,23 @@ export default function HeroCarousel({
   const currentDrawing =
     LANDMARK_DRAWINGS[currentIndex % LANDMARK_DRAWINGS.length];
 
-  // Framer motion variants for crossfade + subtle scale
+  // Framer motion variants for editorial blur-dissolve + Ken Burns scale
   const slideVariants = {
-    enter: (dir: number) => ({
+    enter: {
       opacity: 0,
-      scale: 1.12,
-      x: dir > 0 ? 40 : -40,
-    }),
+      scale: 1.07,
+      filter: "blur(8px)",
+    },
     center: {
       opacity: 1,
       scale: 1,
-      x: 0,
+      filter: "blur(0px)",
     },
-    exit: (dir: number) => ({
+    exit: {
       opacity: 0,
-      scale: 0.95,
-      x: dir > 0 ? -40 : 40,
-    }),
+      scale: 0.98,
+      filter: "blur(4px)",
+    },
   };
 
   return (
@@ -578,8 +578,8 @@ export default function HeroCarousel({
         {/* Ambient glow behind */}
         <div className="hero-carousel-glow" />
 
-        {/* Slide content */}
-        <AnimatePresence mode="wait" custom={direction}>
+        {/* Slide content — synchronous crossfade for zero black-gap flicker */}
+        <AnimatePresence initial={false} custom={direction}>
           <motion.div
             key={currentIndex}
             custom={direction}
@@ -588,11 +588,10 @@ export default function HeroCarousel({
             animate="center"
             exit="exit"
             transition={{
-              opacity: { duration: 0.8, ease: "easeInOut" },
-              scale: { duration: 1.6, ease: [0.22, 1, 0.36, 1] },
-              x: { duration: 0.8, ease: "easeInOut" },
+              duration: 1.1,
+              ease: [0.16, 1, 0.3, 1],
             }}
-            className="hero-carousel-slide"
+            className="hero-carousel-slide will-change-[transform,opacity,filter]"
           >
             {currentMedia.type === "image" ? (
               <div className="hero-carousel-image-wrapper">
@@ -600,7 +599,7 @@ export default function HeroCarousel({
                   src={currentMedia.src}
                   alt={currentMedia.alt}
                   fill
-                  priority={currentIndex === 0}
+                  priority={currentIndex <= 1}
                   sizes="100vw"
                   quality={90}
                   className="hero-carousel-image"
@@ -620,6 +619,7 @@ export default function HeroCarousel({
                 muted={true}
                 loop={true}
                 playsInline={true}
+                preload="auto"
                 className="hero-carousel-video"
               />
             )}
@@ -633,14 +633,14 @@ export default function HeroCarousel({
         <div className="hero-carousel-overlay-right" />
 
         {/* Rio Skyline Line Overlay — Large & Prominent (changes dynamically per slide) */}
-        <div className="absolute right-0 bottom-[5%] w-full h-[40%] sm:bottom-[5%] sm:w-[95%] sm:h-[45%] md:bottom-0 md:w-[85%] md:h-[60%] lg:w-[80%] lg:h-[65%] z-[15] pointer-events-none select-none opacity-90 md:opacity-100">
+        <div className="absolute right-0 bottom-[6%] w-full h-[38%] sm:bottom-[5%] sm:w-[95%] sm:h-[45%] md:bottom-0 md:w-[85%] md:h-[60%] lg:w-[80%] lg:h-[65%] z-[15] pointer-events-none select-none opacity-90 md:opacity-100">
           <AnimatePresence mode="wait">
             <motion.svg
               key={`drawing-svg-${currentIndex}`}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.8, ease: "easeInOut" }}
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -6 }}
+              transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
               viewBox={currentDrawing.viewBox}
               preserveAspectRatio="xMaxYMax meet"
               className="w-full h-full drop-shadow-[0_0_15px_rgba(255,107,26,0.3)]"
@@ -669,68 +669,95 @@ export default function HeroCarousel({
         {/* Subtle film grain texture */}
         <div className="hero-carousel-grain" />
 
-        {/* Navigation Arrows */}
+        {/* Navigation Arrows — Sleek Glassmorphic with tactile motion */}
         {showArrows && (
           <>
-            <button
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.92 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
               onClick={(e) => {
                 e.stopPropagation();
                 prevSlide();
               }}
-              className="absolute left-4 md:left-6 top-1/2 -translate-y-1/2 z-30 p-2.5 md:p-3 rounded-full bg-black/40 hover:bg-[#FF6B1A] text-white hover:text-white border border-white/10 hover:border-[#FF6B1A] backdrop-blur-md transition-all duration-300 active:scale-90 hover:scale-110 cursor-pointer shadow-[0_0_15px_rgba(0,0,0,0.5)] hover:shadow-[0_0_20px_rgba(255,107,26,0.4)] group pointer-events-auto"
+              className="absolute left-4 md:left-6 top-1/2 -translate-y-1/2 z-30 w-11 h-11 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-[#0a0a0a]/55 hover:bg-[#0a0a0a]/80 text-[#fff9f3] hover:text-[#ffdb58] border border-white/15 hover:border-[#ffdb58]/60 backdrop-blur-xl transition-colors duration-300 cursor-pointer shadow-[0_8px_30px_rgba(0,0,0,0.6)] group pointer-events-auto"
               aria-label="Slide anterior"
             >
               <ChevronLeft className="w-5 h-5 transition-transform duration-300 group-hover:-translate-x-0.5" />
-            </button>
+            </motion.button>
 
-            <button
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.92 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
               onClick={(e) => {
                 e.stopPropagation();
                 nextSlide();
               }}
-              className="absolute right-4 md:right-6 top-1/2 -translate-y-1/2 z-30 p-2.5 md:p-3 rounded-full bg-black/40 hover:bg-[#FF6B1A] text-white hover:text-white border border-white/10 hover:border-[#FF6B1A] backdrop-blur-md transition-all duration-300 active:scale-90 hover:scale-110 cursor-pointer shadow-[0_0_15px_rgba(0,0,0,0.5)] hover:shadow-[0_0_20px_rgba(255,107,26,0.4)] group pointer-events-auto"
+              className="absolute right-4 md:right-6 top-1/2 -translate-y-1/2 z-30 w-11 h-11 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-[#0a0a0a]/55 hover:bg-[#0a0a0a]/80 text-[#fff9f3] hover:text-[#ffdb58] border border-white/15 hover:border-[#ffdb58]/60 backdrop-blur-xl transition-colors duration-300 cursor-pointer shadow-[0_8px_30px_rgba(0,0,0,0.6)] group pointer-events-auto"
               aria-label="Próximo slide"
             >
               <ChevronRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-0.5" />
-            </button>
+            </motion.button>
           </>
         )}
 
-        {/* Dot indicators */}
-        <div className="hero-carousel-dots">
-          {HERO_MEDIA.map((media, index) => (
-            <button
-              key={index}
-              onClick={() => goToSlide(index)}
-              className={`hero-dot ${index === currentIndex ? "hero-dot-active" : ""}`}
-              aria-label={`Ir para slide ${index + 1}`}
-            >
-              {/* Progress bar inside active dot */}
-              {index === currentIndex && !isPaused && (
-                <motion.div
-                  className="hero-dot-progress"
-                  initial={{ scaleX: 0 }}
-                  animate={{ scaleX: 1 }}
-                  transition={{
-                    duration: SLIDE_DURATION / 1000,
-                    ease: "linear",
-                  }}
-                  key={`progress-${currentIndex}`}
-                />
-              )}
-            </button>
-          ))}
-        </div>
+        {/* Editorial Segmented Gold Progress Bars & Counter Metadata */}
+        <div className="absolute bottom-3 sm:bottom-5 left-1/2 -translate-x-1/2 z-20 flex items-center gap-3 sm:gap-4 px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full bg-[#0a0a0a]/65 backdrop-blur-xl border border-white/10 shadow-[0_10px_35px_rgba(0,0,0,0.65)]">
+          {/* Segmented progress bars */}
+          <div className="flex items-center gap-1.5 sm:gap-2">
+            {HERO_MEDIA.map((media, index) => {
+              const isActive = index === currentIndex;
+              const isPast = index < currentIndex;
+              return (
+                <motion.button
+                  key={index}
+                  onClick={() => goToSlide(index)}
+                  whileHover={{ scale: 1.08 }}
+                  whileTap={{ scale: 0.92 }}
+                  className={`relative h-1 sm:h-1.5 rounded-full overflow-hidden transition-all duration-500 cursor-pointer ${
+                    isActive
+                      ? "w-8 sm:w-12 bg-white/15"
+                      : isPast
+                        ? "w-3 sm:w-4 bg-[#ffdb58]/45 hover:bg-[#ffdb58]/70"
+                        : "w-3 sm:w-4 bg-white/20 hover:bg-white/40"
+                  }`}
+                  aria-label={`Ir para slide ${index + 1}: ${media.alt}`}
+                >
+                  {isActive && (
+                    <motion.div
+                      key={`progress-${currentIndex}-${isPaused ? "paused" : "play"}`}
+                      className="absolute inset-y-0 left-0 bg-[#ffdb58] rounded-full"
+                      initial={{ width: "0%" }}
+                      animate={{ width: isPaused ? "65%" : "100%" }}
+                      transition={
+                        isPaused
+                          ? { duration: 0.3, ease: "easeOut" }
+                          : {
+                              duration: SLIDE_DURATION / 1000,
+                              ease: "linear",
+                            }
+                      }
+                    />
+                  )}
+                </motion.button>
+              );
+            })}
+          </div>
 
-        {/* Slide counter */}
-        <div className="hero-carousel-counter">
-          <span className="hero-carousel-counter-current">
-            {String(currentIndex + 1).padStart(2, "0")}
-          </span>
-          <span className="hero-carousel-counter-sep">/</span>
-          <span className="hero-carousel-counter-total">
-            {String(HERO_MEDIA.length).padStart(2, "0")}
-          </span>
+          {/* Divider */}
+          <div className="w-[1px] h-3 bg-white/15" />
+
+          {/* Editorial Slide Counter Metadata (01 / 08) */}
+          <div className="flex items-baseline gap-1 font-mono text-[10px] sm:text-xs tracking-widest select-none">
+            <span className="text-[#ffdb58] font-bold">
+              {String(currentIndex + 1).padStart(2, "0")}
+            </span>
+            <span className="text-white/30">/</span>
+            <span className="text-[#fff9f3]/50">
+              {String(HERO_MEDIA.length).padStart(2, "0")}
+            </span>
+          </div>
         </div>
       </div>
     </div>
