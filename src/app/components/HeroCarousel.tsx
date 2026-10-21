@@ -548,22 +548,19 @@ export default function HeroCarousel({
   const currentDrawing =
     LANDMARK_DRAWINGS[currentIndex % LANDMARK_DRAWINGS.length];
 
-  // Framer motion variants for editorial blur-dissolve + Ken Burns scale
+  // Framer motion variants for crisp high-definition crossfade + subtle scale
   const slideVariants = {
     enter: {
       opacity: 0,
-      scale: 1.07,
-      filter: "blur(8px)",
+      scale: 1.02,
     },
     center: {
       opacity: 1,
       scale: 1,
-      filter: "blur(0px)",
     },
     exit: {
       opacity: 0,
-      scale: 0.98,
-      filter: "blur(4px)",
+      scale: 0.99,
     },
   };
 
@@ -588,10 +585,10 @@ export default function HeroCarousel({
             animate="center"
             exit="exit"
             transition={{
-              duration: 1.1,
-              ease: [0.16, 1, 0.3, 1],
+              duration: 0.9,
+              ease: [0.22, 1, 0.36, 1],
             }}
-            className="hero-carousel-slide will-change-[transform,opacity,filter]"
+            className="hero-carousel-slide will-change-[transform,opacity]"
           >
             {currentMedia.type === "image" ? (
               <div className="hero-carousel-image-wrapper">
@@ -601,7 +598,8 @@ export default function HeroCarousel({
                   fill
                   priority={currentIndex <= 1}
                   sizes="100vw"
-                  quality={90}
+                  quality={100}
+                  unoptimized
                   className="hero-carousel-image"
                   style={{
                     objectPosition:
@@ -702,62 +700,41 @@ export default function HeroCarousel({
           </>
         )}
 
-        {/* Editorial Segmented Gold Progress Bars & Counter Metadata */}
-        <div className="absolute bottom-3 sm:bottom-5 left-1/2 -translate-x-1/2 z-20 flex items-center gap-3 sm:gap-4 px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full bg-[#0a0a0a]/65 backdrop-blur-xl border border-white/10 shadow-[0_10px_35px_rgba(0,0,0,0.65)]">
-          {/* Segmented progress bars */}
-          <div className="flex items-center gap-1.5 sm:gap-2">
-            {HERO_MEDIA.map((media, index) => {
-              const isActive = index === currentIndex;
-              const isPast = index < currentIndex;
-              return (
-                <motion.button
-                  key={index}
-                  onClick={() => goToSlide(index)}
-                  whileHover={{ scale: 1.08 }}
-                  whileTap={{ scale: 0.92 }}
-                  className={`relative h-1 sm:h-1.5 rounded-full overflow-hidden transition-all duration-500 cursor-pointer ${
-                    isActive
-                      ? "w-8 sm:w-12 bg-white/15"
-                      : isPast
-                        ? "w-3 sm:w-4 bg-[#ffdb58]/45 hover:bg-[#ffdb58]/70"
-                        : "w-3 sm:w-4 bg-white/20 hover:bg-white/40"
-                  }`}
-                  aria-label={`Ir para slide ${index + 1}: ${media.alt}`}
-                >
-                  {isActive && (
-                    <motion.div
-                      key={`progress-${currentIndex}-${isPaused ? "paused" : "play"}`}
-                      className="absolute inset-y-0 left-0 bg-[#ffdb58] rounded-full"
-                      initial={{ width: "0%" }}
-                      animate={{ width: isPaused ? "65%" : "100%" }}
-                      transition={
-                        isPaused
-                          ? { duration: 0.3, ease: "easeOut" }
-                          : {
-                              duration: SLIDE_DURATION / 1000,
-                              ease: "linear",
-                            }
-                      }
-                    />
-                  )}
-                </motion.button>
-              );
-            })}
-          </div>
+        {/* Dot indicators */}
+        <div className="hero-carousel-dots">
+          {HERO_MEDIA.map((media, index) => (
+            <button
+              key={index}
+              onClick={() => goToSlide(index)}
+              className={`hero-dot ${index === currentIndex ? "hero-dot-active" : ""}`}
+              aria-label={`Ir para slide ${index + 1}`}
+            >
+              {/* Progress bar inside active dot */}
+              {index === currentIndex && !isPaused && (
+                <motion.div
+                  className="hero-dot-progress"
+                  initial={{ scaleX: 0 }}
+                  animate={{ scaleX: 1 }}
+                  transition={{
+                    duration: SLIDE_DURATION / 1000,
+                    ease: "linear",
+                  }}
+                  key={`progress-${currentIndex}`}
+                />
+              )}
+            </button>
+          ))}
+        </div>
 
-          {/* Divider */}
-          <div className="w-[1px] h-3 bg-white/15" />
-
-          {/* Editorial Slide Counter Metadata (01 / 08) */}
-          <div className="flex items-baseline gap-1 font-mono text-[10px] sm:text-xs tracking-widest select-none">
-            <span className="text-[#ffdb58] font-bold">
-              {String(currentIndex + 1).padStart(2, "0")}
-            </span>
-            <span className="text-white/30">/</span>
-            <span className="text-[#fff9f3]/50">
-              {String(HERO_MEDIA.length).padStart(2, "0")}
-            </span>
-          </div>
+        {/* Slide counter */}
+        <div className="hero-carousel-counter">
+          <span className="hero-carousel-counter-current">
+            {String(currentIndex + 1).padStart(2, "0")}
+          </span>
+          <span className="hero-carousel-counter-sep">/</span>
+          <span className="hero-carousel-counter-total">
+            {String(HERO_MEDIA.length).padStart(2, "0")}
+          </span>
         </div>
       </div>
     </div>

@@ -317,6 +317,8 @@ export default function ColecoesPage() {
                   currentBannerIndex === idx ? "opacity-100" : "opacity-0"
                 }`}
                 priority={idx === 0}
+                quality={100}
+                unoptimized
               />
             ))}
             {/* Overlay Gradients */}

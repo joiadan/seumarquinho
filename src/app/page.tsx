@@ -317,25 +317,22 @@ export default function Home() {
             <div className="absolute inset-0 z-20 flex items-start justify-start pointer-events-none pt-14 sm:pt-20 md:pt-36 lg:pt-48">
               <div className="px-6 sm:px-10 md:px-margin-desktop max-w-4xl w-full flex flex-col items-start text-left justify-start">
                 
-                {/* TEXT CONTAINER (Only visible on first slide, with smooth editorial transition) */}
+                {/* TEXT CONTAINER (Only visible on first slide) */}
                 <div 
                   className={`transition-all duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] transform flex flex-col items-start ${
                     heroSlideIndex === 0
-                      ? "opacity-100 translate-y-0 blur-0 pointer-events-auto"
-                      : "opacity-0 -translate-y-6 blur-sm pointer-events-none"
+                      ? "opacity-100 translate-y-0 pointer-events-auto"
+                      : "opacity-0 -translate-y-6 pointer-events-none"
                   }`}
                 >
-                  <motion.div
-                    initial={{ opacity: 0, y: 18 }}
+                  <motion.p 
+                    initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.2 }}
-                    className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-[#0a0a0a]/65 backdrop-blur-xl border border-[#ffdb58]/30 mb-3 sm:mb-4 md:mb-6 shadow-[0_4px_20px_rgba(0,0,0,0.6)]"
+                    className="text-primary-container font-sans text-[10px] sm:text-xs font-bold tracking-[0.2em] md:tracking-[0.25em] uppercase mb-1 sm:mb-2 md:mb-5 text-glow drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]"
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#ffdb58] animate-pulse" />
-                    <span className="text-[#ffdb58] font-sans text-[10px] sm:text-[11px] font-bold tracking-[0.22em] md:tracking-[0.28em] uppercase">
-                      Underground Essence
-                    </span>
-                  </motion.div>
+                    Underground Essence
+                  </motion.p>
                   <motion.h1 
                     initial={{ opacity: 0, y: 28 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -385,48 +382,19 @@ export default function Home() {
               </div>
             </div>
           </div>
-
-          {/* Subtle Editorial Streetwear Marquee Divider */}
-          <div className="w-full bg-[#0a0a0a] border-y border-white/[0.07] py-2.5 overflow-hidden flex select-none">
-            <div className="flex whitespace-nowrap animate-[marquee_28s_linear_infinite] items-center gap-10 text-[10px] md:text-[11px] font-mono uppercase tracking-[0.28em] text-[#cfc6af]/70">
-              {Array.from({ length: 6 }).map((_, i) => (
-                <div key={i} className="flex items-center gap-10 shrink-0">
-                  <span className="text-[#fff9f3]/90 font-semibold">SEU MARQUINHO</span>
-                  <span className="w-1 h-1 rounded-full bg-[#ffdb58]" />
-                  <span>RIO DE JANEIRO STREETWEAR</span>
-                  <span className="w-1 h-1 rounded-full bg-[#FF6B1A]" />
-                  <span className="text-[#ffdb58]">DROPS LIMITADOS</span>
-                  <span className="w-1 h-1 rounded-full bg-[#ffdb58]" />
-                  <span>DO ASFALTO AO TOPO</span>
-                  <span className="w-1 h-1 rounded-full bg-[#FF6B1A]" />
-                </div>
-              ))}
-            </div>
-          </div>
         </section>
 
         {/* ── LANÇAMENTOS (NEW RELEASES) SECTION ── */}
         {PRODUCTS.some((p) => p.badge === "LANÇAMENTO") && (
-          <section className="pt-14 md:pt-20 pb-12 md:pb-16 bg-gradient-to-b from-[#0a0a0a] via-[#111113] to-[#0a0a0a] border-b border-white/[0.06] relative overflow-hidden">
+          <section className="pt-12 md:pt-16 pb-8 md:pb-12 bg-gradient-to-b from-[#111111] to-black border-y border-white/5">
             <div className="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop">
-              <motion.div
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ type: "spring", stiffness: 100, damping: 20 }}
-                className="flex flex-col md:flex-row md:items-end justify-between mb-10 md:mb-12 pb-6 border-b border-white/[0.07]"
-              >
-                <div>
-                  <div className="inline-flex items-center gap-2.5 px-3 py-1 rounded-full bg-[#d30017]/10 border border-[#d30017]/30 mb-3">
-                    <div className="w-2 h-2 rounded-full bg-[#d30017] animate-pulse" />
-                    <p className="text-[#ffb4ab] font-sans text-[10px] md:text-xs font-bold tracking-[0.22em] uppercase">Acabou de Chegar</p>
-                  </div>
-                  <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-extrabold text-[#fff9f3] tracking-tight uppercase">Lançamentos</h2>
+              <div className="flex flex-col mb-8 md:mb-10">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-2 h-2 rounded-full bg-[#d30017] animate-pulse" />
+                  <p className="text-[#d30017] font-sans text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase">Acabou de Chegar</p>
                 </div>
-                <p className="text-xs md:text-sm text-[#cfc6af]/70 font-sans mt-2 md:mt-0 tracking-wide">
-                  Peças recém-saídas da fábrica com tiragem exclusiva.
-                </p>
-              </motion.div>
+                <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-extrabold text-street-white uppercase">Lançamentos</h2>
+              </div>
               <motion.div 
                 className="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-8 md:gap-x-8 md:gap-y-12"
                 initial="hidden"
@@ -478,9 +446,9 @@ export default function Home() {
               className="mb-20 grid grid-cols-1 lg:grid-cols-12 gap-0 items-stretch bg-[#fff9f3] border border-[#c9a830]/30 rounded-2xl overflow-hidden relative shadow-[0_25px_70px_-15px_rgba(0,0,0,0.75)]"
             >
               <div className="lg:col-span-5 p-8 md:p-12 z-10 flex flex-col justify-center border-b lg:border-b-0 lg:border-r border-[#18181b]/10 bg-gradient-to-br from-[#fff9f3] to-[#f5efe6]">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#c9a830]/15 border border-[#c9a830]/35 w-fit mb-6">
+                <div className="inline-flex items-center gap-2 mb-6">
                   <div className="w-1.5 h-1.5 rounded-full bg-[#c9a830]" />
-                  <span className="text-[#755f00] text-[10px] font-bold tracking-[0.22em] uppercase">The Triple Threat</span>
+                  <span className="text-[#c9a830] text-[10px] font-bold tracking-[0.2em] uppercase">The Triple Threat</span>
                 </div>
                 <h3 className="font-display text-3xl md:text-5xl font-black text-[#18181b] uppercase leading-[1.05] mb-4 tracking-tighter">
                   DadHat SM
@@ -544,11 +512,8 @@ export default function Home() {
               className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12 pb-6 border-b border-white/[0.07]"
             >
               <div>
-                <div className="inline-flex items-center gap-2 mb-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#ffdb58]" />
-                  <p className="text-[#ffdb58] font-sans text-xs font-bold tracking-[0.22em] uppercase">PRODUTOS EM DESTAQUE</p>
-                </div>
-                <h2 className="font-display text-2xl md:text-4xl font-extrabold text-[#fff9f3] tracking-tight uppercase">Drops Exclusivos</h2>
+                <p className="text-primary-container font-sans text-xs font-bold tracking-widest uppercase mb-2">PRODUTOS EM DESTAQUE</p>
+                <h2 className="font-display text-2xl md:text-3xl font-extrabold text-primary uppercase">Drops Exclusivos</h2>
               </div>
               
               {/* Category Filter Tabs */}
@@ -614,12 +579,9 @@ export default function Home() {
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ type: "spring", stiffness: 100, damping: 20 }}
               >
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FF6B1A]/10 border border-[#FF6B1A]/30 mb-4">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#FF6B1A]" />
-                  <p className="text-[#FF6B1A] font-sans text-[11px] font-bold tracking-[0.28em] uppercase">
-                    A ORIGEM
-                  </p>
-                </div>
+                <p className="text-[#FF6B1A] font-sans text-xs font-bold tracking-[0.3em] uppercase mb-4 opacity-80">
+                  A ORIGEM
+                </p>
                 <h2 className="bubble-title text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl mb-8">
                   A Resenha<br/>Que Virou<br/>Marca.
                 </h2>
@@ -769,11 +731,8 @@ export default function Home() {
                 transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.1 }}
                 className="w-full md:w-1/2"
               >
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#ffdb58]/10 border border-[#ffdb58]/30 mb-4">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#ffdb58]" />
-                  <p className="text-[#ffdb58] font-sans text-[11px] font-bold tracking-[0.25em] uppercase">IDENTIDADE</p>
-                </div>
-                <h2 className="font-display text-4xl md:text-5xl font-black text-[#fff9f3] mb-8 leading-tight uppercase tracking-tighter">
+                <p className="text-primary-container font-sans text-xs font-bold tracking-[0.25em] mb-4 uppercase">IDENTIDADE</p>
+                <h2 className="font-display text-4xl md:text-5xl font-black text-street-white mb-8 leading-tight uppercase tracking-tighter">
                   Nossa Origem &amp;<br/>Conceito.
                 </h2>
                 
@@ -820,11 +779,7 @@ export default function Home() {
             transition={{ type: "spring", stiffness: 100, damping: 20 }}
             className="px-margin-mobile md:px-margin-desktop max-w-2xl mx-auto text-center"
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#ffdb58]/10 border border-[#ffdb58]/30 mb-4">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#ffdb58]" />
-              <span className="text-[#ffdb58] font-sans text-[10px] font-bold tracking-[0.24em] uppercase">VIP ACCESS</span>
-            </div>
-            <h2 className="font-display text-2xl md:text-4xl font-extrabold text-[#fff9f3] mb-4 uppercase tracking-tight">
+            <h2 className="font-display text-2xl md:text-3xl font-extrabold text-primary mb-4 uppercase tracking-tight">
               Entre no Círculo
             </h2>
             <p className="text-[#cfc6af] mb-10 font-sans text-sm leading-relaxed font-light">

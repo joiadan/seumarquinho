@@ -299,6 +299,7 @@
   position: relative;
   width: 100%;
   aspect-ratio: 21 / 9;
+  max-height: 76vh;
   overflow: hidden;
   background: #000;
 }
@@ -378,7 +379,7 @@
     transform: scale(1);
   }
   100% {
-    transform: scale(1.08);
+    transform: scale(1.02);
   }
 }
 
