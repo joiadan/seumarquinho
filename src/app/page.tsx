@@ -262,7 +262,7 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="fixed top-16 left-0 right-0 z-40 bg-[#121414] border-b border-white/10 px-6 py-6 flex flex-col gap-5 md:hidden"
+            className="fixed top-12 md:top-16 left-0 right-0 z-40 bg-[#121414] border-b border-white/10 px-6 py-6 flex flex-col gap-5 md:hidden shadow-xl"
           >
             <button
               onClick={() => {
@@ -517,16 +517,18 @@ export default function Home() {
               </div>
               
               {/* Category Filter Tabs */}
-              <div className="flex gap-2 md:gap-3 bg-[#18181b]/80 p-1.5 rounded-full border border-white/10">
+              <div className="flex gap-1.5 sm:gap-2 md:gap-3 bg-[#18181b]/80 p-1.5 rounded-full border border-white/10 max-w-full overflow-x-auto scrollbar-none">
                 {[
                   { label: "Todos os produtos", value: "todos" },
                   { label: "Bonés", value: "bones" },
                   { label: "Camisetas", value: "camisas" }
                 ].map((tab) => (
-                  <button
+                  <motion.button
                     key={tab.value}
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.96 }}
                     onClick={() => setSelectedCategory(tab.value as any)}
-                    className={`font-sans text-[11px] md:text-xs uppercase tracking-widest px-4 py-2 rounded-full transition-colors cursor-pointer relative font-bold z-10 ${
+                    className={`font-sans text-[11px] md:text-xs uppercase tracking-widest px-3.5 sm:px-4 py-2 min-h-[38px] rounded-full transition-colors cursor-pointer relative font-bold z-10 whitespace-nowrap ${
                       selectedCategory === tab.value
                         ? "text-[#0a0a0a]"
                         : "text-[#cfc6af] hover:text-[#fff9f3]"
@@ -540,7 +542,7 @@ export default function Home() {
                       />
                     )}
                     {tab.label}
-                  </button>
+                  </motion.button>
                 ))}
               </div>
             </motion.div>

@@ -244,17 +244,15 @@ export default function ColecoesPage() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="fixed top-16 left-0 right-0 z-40 bg-white border-b border-[#e5e5e5] px-6 py-6 flex flex-col gap-5 md:hidden shadow-xl"
+            className="fixed top-14 left-0 right-0 z-40 bg-white border-b border-[#e5e5e5] px-6 py-6 flex flex-col gap-5 md:hidden shadow-xl"
           >
-            <button
-              onClick={() => {
-                setSelectedCategory("todos");
-                setIsMobileMenuOpen(false);
-              }}
-              className={`text-left text-base uppercase tracking-widest font-bold py-2 border-b border-zinc-100 transition-colors text-[#1a1a1a] hover:text-[#c9a830]`}
+            <Link
+              href="/#catalogo"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="text-left text-base uppercase tracking-widest font-bold py-2 border-b border-zinc-100 transition-colors text-[#1a1a1a] hover:text-[#c9a830]"
             >
               Drops
-            </button>
+            </Link>
             <Link href="/colecoes" onClick={() => setIsMobileMenuOpen(false)} className="text-left text-base uppercase tracking-widest font-bold py-2 border-b border-zinc-100 text-[#c9a830] font-extrabold">Coleções</Link>
             <Link href="/blog" onClick={() => setIsMobileMenuOpen(false)} className="text-left text-base uppercase tracking-widest font-bold py-2 border-b border-zinc-100 text-[#1a1a1a] hover:text-[#c9a830]">Blog</Link>
             <Link href="/blog#origem" onClick={() => setIsMobileMenuOpen(false)} className="text-left text-base uppercase tracking-widest font-bold py-2 border-b border-zinc-100 text-[#1a1a1a] hover:text-[#c9a830]">História</Link>
@@ -302,42 +300,72 @@ export default function ColecoesPage() {
       </div>
 
       {/* ── MAIN CONTENT AREA (Offset by sidebar width) ── */}
-      <main className="pt-16 md:pt-20 pl-[40px] lg:pl-[80px]">
+      <main className="pt-14 md:pt-20 pl-[40px] lg:pl-[80px]">
         {/* ── UPCOMING DROPS ── */}
         <div className="w-full bg-black flex justify-center">
-          <section className="relative w-full max-w-[1024px] aspect-[21/9] overflow-hidden group">
-            {/* Banner Images with crossfade transition */}
-            {bannerImages.map((img, idx) => (
-              <Image 
-                key={idx}
-                src={img} 
-                alt={`Drop 002 Teaser ${idx + 1}`} 
-                fill 
-                className={`object-cover object-center transition-all duration-1000 group-hover:scale-105 ${
-                  currentBannerIndex === idx ? "opacity-100" : "opacity-0"
-                }`}
-                priority={idx === 0}
-                quality={100}
-                unoptimized
-              />
-            ))}
+          <section className="relative w-full max-w-[1024px] aspect-[16/9] sm:aspect-[21/9] max-h-[70vh] overflow-hidden group bg-black">
+            {/* Banner Images with crisp Framer Motion crossfade transition */}
+            <AnimatePresence initial={false}>
+              <motion.div
+                key={currentBannerIndex}
+                initial={{ opacity: 0, scale: 1.02 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.99 }}
+                transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+                className="absolute inset-0 will-change-[transform,opacity]"
+              >
+                <Image 
+                  src={bannerImages[currentBannerIndex]} 
+                  alt={`Drop 002 Teaser ${currentBannerIndex + 1}`} 
+                  fill 
+                  sizes="100vw"
+                  className="object-cover object-center transition-transform duration-1000 group-hover:scale-[1.02] select-none pointer-events-none"
+                  priority
+                  quality={100}
+                  unoptimized
+                />
+              </motion.div>
+            </AnimatePresence>
+
             {/* Overlay Gradients */}
-            <div className="absolute inset-x-0 bottom-0 h-1/3 md:h-1/4 bg-gradient-to-t from-[#000000] to-transparent pointer-events-none" />
-            <div className="absolute inset-y-0 left-0 w-16 md:w-32 bg-gradient-to-r from-[#000000] to-transparent pointer-events-none" />
-            <div className="absolute inset-y-0 right-0 w-16 md:w-32 bg-gradient-to-l from-[#000000] to-transparent pointer-events-none" />
+            <div className="absolute inset-x-0 bottom-0 h-1/3 md:h-1/4 bg-gradient-to-t from-[#000000] to-transparent pointer-events-none z-10" />
+            <div className="absolute inset-y-0 left-0 w-12 sm:w-16 md:w-32 bg-gradient-to-r from-[#000000] to-transparent pointer-events-none z-10" />
+            <div className="absolute inset-y-0 right-0 w-12 sm:w-16 md:w-32 bg-gradient-to-l from-[#000000] to-transparent pointer-events-none z-10" />
+
+            {/* Minimal Dot Indicators */}
+            <div className="hero-carousel-dots !bottom-2.5 sm:!bottom-4">
+              {bannerImages.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setCurrentBannerIndex(idx)}
+                  className={`hero-dot ${idx === currentBannerIndex ? "hero-dot-active" : ""}`}
+                  aria-label={`Ir para banner ${idx + 1}`}
+                >
+                  {idx === currentBannerIndex && (
+                    <motion.div
+                      className="hero-dot-progress"
+                      initial={{ scaleX: 0 }}
+                      animate={{ scaleX: 1 }}
+                      transition={{ duration: 4, ease: "linear" }}
+                      key={`banner-progress-${currentBannerIndex}`}
+                    />
+                  )}
+                </button>
+              ))}
+            </div>
 
             {/* Brutalist Button Aligned Right */}
-            <div className="absolute bottom-1 md:bottom-10 right-1 md:right-10 z-20 flex flex-col items-end">
+            <div className="absolute bottom-2.5 sm:bottom-4 md:bottom-10 right-2.5 sm:right-4 md:right-10 z-20 flex flex-col items-end">
               <a 
                 href="https://wa.me/5521981676041?text=Ol%C3%A1%20Seu%20Marquinho!%20Gostaria%20de%20fazer%20uma%20reserva%20para%20o%20Drop%20002!"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-end justify-between border-b border-white md:border-b-2 pb-1 md:pb-2 w-[110px] md:w-[280px] transition-colors hover:border-[#FF6B1A] cursor-pointer"
+                className="group flex items-end justify-between border-b border-white md:border-b-2 pb-1 md:pb-2 w-[105px] sm:w-[140px] md:w-[280px] transition-colors hover:border-[#FF6B1A] cursor-pointer"
               >
-                <span className="bg-transparent text-white font-bold uppercase tracking-widest text-[8px] md:text-sm text-left group-hover:text-[#FF6B1A] transition-colors pl-1 md:pl-2">
+                <span className="bg-transparent text-white font-bold uppercase tracking-widest text-[8px] sm:text-[10px] md:text-sm text-left group-hover:text-[#FF6B1A] transition-colors pl-1 md:pl-2">
                   Disponível
                 </span>
-                <ArrowRight className="w-3 h-3 md:w-5 md:h-5 text-white group-hover:text-[#FF6B1A] transition-colors mb-0.5 md:mb-0" />
+                <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-5 md:h-5 text-white group-hover:text-[#FF6B1A] transition-colors mb-0.5 md:mb-0" />
               </a>
             </div>
           </section>
@@ -345,7 +373,7 @@ export default function ColecoesPage() {
 
         {/* Breadcrumb row */}
         <div className="border-b border-[#e5e5e5] bg-[#fafafa]">
-          <div className="max-w-7xl mx-auto px-4 md:px-10 py-3">
+          <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-10 py-3">
             <nav className="flex items-center gap-2 text-xs font-sans">
               <Link href="/" className="text-[#999] hover:text-[#1a1a1a] transition-colors flex items-center gap-1.5">
                 <div className="relative w-4 h-4 flex-shrink-0">
@@ -361,104 +389,143 @@ export default function ColecoesPage() {
 
         {/* ── LANÇAMENTOS (NEW RELEASES) SECTION ── */}
         {PRODUCTS.some((p) => p.badge === "LANÇAMENTO") && (
-          <section className="pt-12 md:pt-16 pb-8 md:pb-12 bg-gradient-to-b from-[#fafafa] to-white border-b border-[#e5e5e5]">
-            <div className="max-w-7xl mx-auto px-4 md:px-10">
-              <div className="flex flex-col mb-8 md:mb-10">
+          <section className="pt-10 sm:pt-12 md:pt-16 pb-8 md:pb-12 bg-gradient-to-b from-[#fafafa] to-white border-b border-[#e5e5e5]">
+            <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-10">
+              <motion.div
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ type: "spring", stiffness: 100, damping: 20 }}
+                className="flex flex-col mb-7 sm:mb-8 md:mb-10"
+              >
                 <div className="flex items-center gap-3 mb-2">
                   <div className="w-2 h-2 rounded-full bg-[#d30017] animate-pulse" />
                   <p className="text-[#d30017] font-sans text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase">Acabou de Chegar</p>
                 </div>
-                <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-extrabold text-[#1a1a1a] uppercase">Lançamentos</h2>
-              </div>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-8 md:gap-x-6 md:gap-y-10">
+                <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-[#1a1a1a] uppercase tracking-tight">Lançamentos</h2>
+              </motion.div>
+              <motion.div
+                className="grid grid-cols-2 md:grid-cols-4 gap-x-3 sm:gap-x-4 gap-y-6 sm:gap-y-8 md:gap-x-6 md:gap-y-10"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-50px" }}
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: {
+                    opacity: 1,
+                    transition: { staggerChildren: 0.12 }
+                  }
+                }}
+              >
                 {PRODUCTS.filter((p) => p.badge === "LANÇAMENTO").map((product) => (
                   <motion.div
                     key={`release-${product.id}`}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="group cursor-pointer flex flex-col"
+                    variants={{
+                      hidden: { opacity: 0, y: 32 },
+                      visible: {
+                        opacity: 1,
+                        y: 0,
+                        transition: { type: "spring", stiffness: 100, damping: 20 }
+                      }
+                    }}
+                    whileHover={{
+                      y: -5,
+                      transition: { type: "spring", stiffness: 300, damping: 20 }
+                    }}
+                    className="group cursor-pointer flex flex-col will-change-transform"
                   >
                     <ProductCard product={product} />
                   </motion.div>
                 ))}
-              </div>
+              </motion.div>
             </div>
           </section>
         )}
 
         {/* Catalog Body */}
-        <section className="py-12 md:py-16">
-          <div className="max-w-7xl mx-auto px-4 md:px-10">
+        <section className="py-10 sm:py-12 md:py-16">
+          <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-10">
             {/* Header info */}
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12">
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ type: "spring", stiffness: 100, damping: 20 }}
+              className="flex flex-col md:flex-row justify-between items-start md:items-end gap-5 sm:gap-6 mb-10 md:mb-12"
+            >
               <div>
                 <p className="text-[#c9a830] font-sans text-xs font-bold tracking-widest uppercase mb-2">CATÁLOGO COMPLETO</p>
-                <h1 className="font-display text-2xl md:text-4xl font-extrabold text-[#1a1a1a] uppercase">Coleções</h1>
+                <h1 className="font-display text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#1a1a1a] uppercase tracking-tight">Coleções</h1>
               </div>
 
               {/* Category Filter Tabs */}
-              <div className="flex gap-4 md:gap-6 border-b border-[#e5e5e5] pb-2">
+              <div className="flex gap-1.5 sm:gap-2 bg-[#f4f4f5] p-1.5 rounded-full border border-[#e5e5e5] max-w-full overflow-x-auto scrollbar-none">
                 {[
                   { label: "Todos", value: "todos" },
                   { label: "Bonés", value: "bones" },
                   { label: "Camisetas", value: "camisas" }
                 ].map((tab) => (
-                  <button
+                  <motion.button
                     key={tab.value}
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.96 }}
                     onClick={() => setSelectedCategory(tab.value as any)}
-                    className={`font-sans text-xs uppercase tracking-widest pb-1 transition-all cursor-pointer relative font-bold ${
+                    className={`font-sans text-[11px] sm:text-xs uppercase tracking-widest px-4 py-2 min-h-[38px] rounded-full transition-colors cursor-pointer relative font-bold z-10 whitespace-nowrap ${
                       selectedCategory === tab.value
-                        ? "text-[#c9a830]"
-                        : "text-[#888] hover:text-[#1a1a1a]"
+                        ? "text-[#1a1a1a]"
+                        : "text-[#666] hover:text-[#1a1a1a]"
                     }`}
                   >
-                    {tab.label}
                     {selectedCategory === tab.value && (
                       <motion.div
-                        layoutId="activeCategoryIndicatorColecoes"
-                        className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#c9a830]"
+                        layoutId="collectionsCategoryIndicator"
+                        transition={{ type: "spring", stiffness: 120, damping: 18 }}
+                        className="absolute inset-0 rounded-full bg-[#ffdb58] -z-10 shadow-[0_2px_12px_rgba(201,168,48,0.35)]"
                       />
                     )}
-                  </button>
+                    {tab.label}
+                  </motion.button>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
             {/* ── HIGHLIGHT: DADHAT SM COLLECTION ── */}
             <motion.div 
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 32 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="mb-12 grid grid-cols-1 lg:grid-cols-12 gap-0 items-stretch bg-white border border-[#e5e5e5] overflow-hidden relative shadow-sm"
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ type: "spring", stiffness: 100, damping: 20 }}
+              className="mb-12 md:mb-16 grid grid-cols-1 lg:grid-cols-12 gap-0 items-stretch bg-white border border-[#e5e5e5] rounded-2xl overflow-hidden relative shadow-[0_15px_50px_-15px_rgba(0,0,0,0.08)]"
             >
-              <div className="lg:col-span-5 p-8 md:p-12 z-10 flex flex-col justify-center border-b lg:border-b-0 lg:border-r border-[#e5e5e5]">
-                <div className="inline-flex items-center gap-2 mb-6">
+              <div className="lg:col-span-5 p-6 sm:p-8 md:p-12 z-10 flex flex-col justify-center border-b lg:border-b-0 lg:border-r border-[#e5e5e5]">
+                <div className="inline-flex items-center gap-2 mb-4 sm:mb-6">
                   <div className="w-1.5 h-1.5 rounded-full bg-[#c9a830]" />
                   <span className="text-[#c9a830] text-[10px] font-bold tracking-[0.2em] uppercase">The Triple Threat</span>
                 </div>
-                <h3 className="font-display text-3xl md:text-5xl font-black text-[#1a1a1a] uppercase leading-[1.1] mb-4 tracking-tighter">
+                <h3 className="font-display text-2xl sm:text-3xl md:text-5xl font-black text-[#1a1a1a] uppercase leading-[1.08] mb-3 sm:mb-4 tracking-tighter">
                   DadHat SM
                 </h3>
-                <p className="text-[#666] font-sans text-sm md:text-base leading-relaxed mb-8 max-w-md">
+                <p className="text-[#666] font-sans text-xs sm:text-sm md:text-base leading-relaxed mb-6 sm:mb-8 max-w-md">
                   A modelagem clássica com acabamento impecável. Escolha sua cor: <strong className="text-black">Preto, Cinza ou Off-White</strong>.
                 </p>
                 <div className="flex">
-                  <button 
+                  <motion.button 
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.96 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
                     onClick={() => setSelectedCategory("bones")}
-                    className="bg-[#1a1a1a] text-white px-8 py-3.5 text-xs font-bold uppercase tracking-widest hover:bg-[#c9a830] transition-colors"
+                    className="bg-[#1a1a1a] text-white px-7 sm:px-8 py-3.5 min-h-[44px] text-xs font-bold uppercase tracking-widest hover:bg-[#c9a830] hover:text-black transition-colors cursor-pointer"
                   >
                     Explorar Modelos
-                  </button>
+                  </motion.button>
                 </div>
               </div>
               
               {/* Asymmetric Image Layout */}
-              <div className="lg:col-span-7 relative h-[300px] md:h-[450px] w-full bg-[#fafafa] overflow-hidden flex items-center justify-center">
+              <div className="lg:col-span-7 relative h-[250px] sm:h-[320px] md:h-[450px] w-full bg-[radial-gradient(circle_at_center,#ffffff_0%,#f4f4f5_100%)] overflow-hidden flex items-center justify-center">
                 {/* Center Main - Preto */}
                 <motion.div 
-                  className="absolute z-20 w-[45%] md:w-[45%] drop-shadow-2xl"
+                  className="absolute z-20 w-[46%] sm:w-[45%] md:w-[45%] drop-shadow-2xl"
                   whileHover={{ scale: 1.05, zIndex: 30 }}
                   whileTap={{ scale: 0.95, zIndex: 30 }}
                   transition={{ type: "spring", stiffness: 200, damping: 20 }}
@@ -468,7 +535,7 @@ export default function ColecoesPage() {
                 
                 {/* Left - Cinza */}
                 <motion.div 
-                  className="absolute z-10 w-[35%] md:w-[35%] -translate-x-[55%] md:-translate-x-[80%] -rotate-12 opacity-70 hover:opacity-100 drop-shadow-xl"
+                  className="absolute z-10 w-[36%] sm:w-[35%] md:w-[35%] -translate-x-[52%] sm:-translate-x-[55%] md:-translate-x-[60%] -rotate-12 opacity-75 hover:opacity-100 drop-shadow-xl"
                   whileHover={{ scale: 1.1, zIndex: 30, rotate: 0 }}
                   whileTap={{ scale: 0.95, zIndex: 30, rotate: 0 }}
                   transition={{ type: "spring", stiffness: 200, damping: 20 }}
@@ -478,7 +545,7 @@ export default function ColecoesPage() {
 
                 {/* Right - Off White */}
                 <motion.div 
-                  className="absolute z-10 w-[35%] md:w-[35%] translate-x-[55%] md:translate-x-[80%] rotate-12 opacity-70 hover:opacity-100 drop-shadow-xl"
+                  className="absolute z-10 w-[36%] sm:w-[35%] md:w-[35%] translate-x-[52%] sm:translate-x-[55%] md:translate-x-[60%] rotate-12 opacity-75 hover:opacity-100 drop-shadow-xl"
                   whileHover={{ scale: 1.1, zIndex: 30, rotate: 0 }}
                   whileTap={{ scale: 0.95, zIndex: 30, rotate: 0 }}
                   transition={{ type: "spring", stiffness: 200, damping: 20 }}
@@ -489,14 +556,19 @@ export default function ColecoesPage() {
             </motion.div>
 
             {/* Catalog Grid (2 columns on mobile, 3 on tablet, 4 on desktop) */}
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-8 md:gap-x-6 md:gap-y-10">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-3 sm:gap-x-4 gap-y-6 sm:gap-y-8 md:gap-x-6 md:gap-y-10">
               {displayedProducts.map((product) => (
                 <motion.div
                   key={product.id}
                   layout
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.96 }}
+                  transition={{ type: "spring", stiffness: 100, damping: 20 }}
+                  whileHover={{
+                    y: -4,
+                    transition: { type: "spring", stiffness: 300, damping: 20 }
+                  }}
                   className="group cursor-pointer flex flex-col"
                 >
                   <ProductCard product={product} />
@@ -505,8 +577,6 @@ export default function ColecoesPage() {
             </div>
           </div>
         </section>
-
-
 
         {/* ── BRUTALIST THEMED FOOTER ── */}
         <footer className="w-full py-16 px-4 md:px-10 bg-street-black border-t border-street-dark mt-12 text-street-white">
